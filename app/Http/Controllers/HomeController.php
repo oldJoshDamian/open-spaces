@@ -6,10 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function show() {
-        if (auth()->check()) {
-            return view('dashboard');
-        }
-        return view('welcome');
+    public function show()
+    {
+        //return (auth()->check()) ? view('dashboard') : view('welcome');
     }
 }
