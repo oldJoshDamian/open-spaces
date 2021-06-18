@@ -10,13 +10,11 @@ class Topic extends Model
     protected $guarded = [];
     use HasFactory;
 
-    public function concept()
-    {
+    public function concept() {
         return $this->belongsTo(Concept::class, 'concept_id');
     }
 
-    public function resources()
-    {
-        return $this->hasMany(Resource::class, 'topic_id');
+    public function resources() {
+        return $this->morphMany(Resource::class, 'resourceable');
     }
 }

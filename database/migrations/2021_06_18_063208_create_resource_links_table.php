@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResourcesTable extends Migration
+class CreateResourceLinksTable extends Migration
 {
     /**
     * Run the migrations.
@@ -12,11 +12,10 @@ class CreateResourcesTable extends Migration
     * @return void
     */
     public function up() {
-        Schema::create('resources', function (Blueprint $table) {
+        Schema::create('resource_links', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->morphs('resourceable');
-            $table->morphs('resourceful');
+            $table->string('title')->nullable();
+            $table->string('url');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreateResourcesTable extends Migration
     * @return void
     */
     public function down() {
-        Schema::dropIfExists('resources');
+        Schema::dropIfExists('resource_links');
     }
 }

@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="font-bold leading-tight text-green-500 text-md sm:text-lg">
+            <h2 class="font-semibold mr-4 leading-tight text-green-500 text-md sm:text-lg">
                 <a class="underline" href="{{ route('space.index') }}">Spaces</a>
-                <i class="mx-1 text-gray-6\00 fas fa-chevron-right"></i>
+                <i class="mx-1 text-gray-600 fas fa-chevron-right"></i>
                 <a class="underline" href="{{ route('space.show', ['space' => $space]) }}">
                     {{ $space->name }}
                 </a>
             </h2>
-            <a class="hidden lg:inline" href="{{ route('concept.create', ['space' => $space]) }}">
+            <a class="flex-shrink-0" href="{{ route('concept.create', ['space' => $space]) }}">
                 <x-jet-button class="bg-green-500">
                     add new concept
                 </x-jet-button>
@@ -23,12 +23,14 @@
                     <div class="flex flex-row items-center p-4 border-b border-gray-300 md:flex-col">
                         <div class="flex-shrink-0 mr-3 md:mb-3">
                             <img class="object-cover w-16 h-16 rounded-full md:w-28 md:h-28"
-                                src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
+                            src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
                         </div>
                         <div>
-                            <div class="text-xl font-semibold text-gray-800">{{ $space->name }}
+                            <div class="text-xl font-semibold text-gray-800">
+                                {{ $space->name }}
                             </div>
-                            <div class="text-sm font-medium text-gray-500 md:text-center">{{ $space->visibility }} space
+                            <div class="text-sm font-medium text-gray-500 md:text-center">
+                                {{ $space->visibility }} space
                             </div>
                         </div>
                     </div>

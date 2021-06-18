@@ -11,34 +11,36 @@ use Illuminate\Validation\Rule;
 class SpaceController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        $spaces = (auth()->check()) ? Space::whereIn('id', $request->user()->allSpaces()->pluck('id'))->simplePaginate(8) : Space::where('visibility', 'public')->simplePaginate(8);
-        return view('space.index', compact('spaces'));
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function index(Request $request) {
+        if (auth()->check()) {
+            $spaces = Space::whereIn('id', $request->user()->allSpaces()->pluck('id'))->simplePaginate(8);
+        } else {
+            $spaces = Space::where('creator_id', null)->simplePaginate(12);
+        }
+        $discover = Space::where('visibility', 'public')->whereNotIn('id', $spaces->pluck('id'))->simplePaginate(8);
+        return view('space.index', compact('spaces', 'discover'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function create() {
         return view('space.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+    public function store(Request $request) {
         $user = $request->user();
         $data = $request->validate([
             'space_name' => ['required', 'string', 'min:3', Rule::unique('spaces', 'name')->where('creator_id', $user->id)],
@@ -58,48 +60,44 @@ class SpaceController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Space  $space
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Space $space)
-    {
+    * Display the specified resource.
+    *
+    * @param  \App\Models\Space  $space
+    * @return \Illuminate\Http\Response
+    */
+    public function show(Space $space) {
         $concepts = $space->concepts()->simplePaginate(12);
         return view('space.show', compact('space', 'concepts'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Space  $space
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Space $space)
-    {
+    * Show the form for editing the specified resource.
+    *
+    * @param  \App\Models\Space  $space
+    * @return \Illuminate\Http\Response
+    */
+    public function edit(Space $space) {
         //
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Space  $space
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Space $space)
-    {
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  \App\Models\Space  $space
+    * @return \Illuminate\Http\Response
+    */
+    public function update(Request $request, Space $space) {
         //
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Space  $space
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Space $space)
-    {
+    * Remove the specified resource from storage.
+    *
+    * @param  \App\Models\Space  $space
+    * @return \Illuminate\Http\Response
+    */
+    public function destroy(Space $space) {
         //
     }
 }

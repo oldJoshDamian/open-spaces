@@ -11,8 +11,11 @@ class Concept extends Model
 
     protected $guarded = [];
 
-    public function topics()
-    {
+    public function topics() {
         return $this->hasMany(Topic::class);
+    }
+
+    public function resources() {
+        return $this->morphMany(Resource::class, 'resourceable');
     }
 }

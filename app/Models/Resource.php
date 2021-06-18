@@ -9,8 +9,12 @@ class Resource extends Model
 {
     use HasFactory;
 
-    public function topic()
-    {
-        return $this->belongsTo(Topic::class);
+
+    public function resourceable() {
+        return $this->morphTo();
+    }
+
+    public function resourceful() {
+        return $this->morphTo();
     }
 }

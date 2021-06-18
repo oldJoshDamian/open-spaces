@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-bold leading-tight text-green-500 text-md sm:text-lg">
+        <h2 class="font-semibold leading-tight text-green-500 text-md sm:text-lg">
             <a class="underline" href="{{ route('space.index') }}">Spaces</a>
-            <i class="mx-1 text-gray-6\00 fas fa-chevron-right"></i>
+            <i class="mx-1 text-gray-600 fas fa-chevron-right"></i>
             <a class="underline" href="{{ route('space.create') }}">
                 {{ __('Create New Space') }}
             </a>
@@ -11,7 +11,7 @@
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-            <div class="p-4 overflow-hidden bg-white shadow-xl sm:p-6 sm:rounded-lg">
+            <div class="p-4 overflow-hidden bg-white shadow-md sm:shadow-xl sm:p-6 sm:rounded-lg">
                 <form method="POST" action="{{ route('space.store') }}" class="grid grid-cols-1 gap-4 sm:gap-6">
                     @csrf
                     <div>
@@ -27,7 +27,9 @@
                             class="flex items-start p-4 mt-3 border-t border-l border-r border-gray-300 bg-green-50 rounded-t-md">
                             <x-jet-input checked value="public" name="visibility" type="radio" />
                             <div class="ml-2 -mt-1">
-                                <p class="font-semibold">Public</p>
+                                <p class="font-semibold">
+                                    Public
+                                </p>
                                 <p class="text-sm text-gray-700">
                                     Anyone can find, access and join this space.
                                 </p>
@@ -37,7 +39,9 @@
                             class="flex items-start p-4 border-t border-b border-l border-r border-gray-300 bg-green-50 rounded-b-md">
                             <x-jet-input value="private" name="visibility" type="radio" />
                             <div class="ml-2 -mt-1">
-                                <p class="font-semibold">Private</p>
+                                <p class="font-semibold">
+                                    Private
+                                </p>
                                 <p class="text-sm text-gray-700">
                                     only you can find and access this space.
                                 </p>

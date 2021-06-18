@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-bold leading-tight text-green-500 text-md sm:text-lg">
+        <h2 class="font-semibold leading-tight text-green-500 text-md sm:text-lg">
             <a class="underline" href="{{ route('space.index') }}">{{ __('Spaces') }}</a>
-            <i class="mx-1 text-gray-6\00 fas fa-chevron-right"></i>
+            <i class="mx-1 text-gray-600 fas fa-chevron-right"></i>
             <a class="underline" href="{{ route('space.show', ['space' => $space]) }}">{{ $space->name }}</a>
-            <i class="mx-1 text-gray-6\00 fas fa-chevron-right"></i>
+            <i class="mx-1 text-gray-600 fas fa-chevron-right"></i>
             <a class="underline" href="{{ route('concept.create', ['space' => $space]) }}">
                 {{ __('Add Concept') }}
             </a>
@@ -13,7 +13,7 @@
 
     <div class="py-12">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-            <div class="p-4 overflow-hidden bg-white shadow-xl sm:p-6 sm:rounded-lg">
+            <div class="p-4 overflow-hidden bg-white shadow-md sm:shadow-xl sm:p-6 sm:rounded-lg">
                 <form method="POST" action="{{ route('concept.store', ['space' => $space]) }}"
                     class="grid grid-cols-1 gap-4 sm:gap-6">
                     @csrf
