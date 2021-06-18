@@ -41,6 +41,8 @@ class TopicController extends Controller
     {
         $data = $request->validate([
             'topic_name' => ['required', 'string', Rule::unique('topics', 'name')->where('concept_id', $concept->id)]
+        ], [
+            'topic_name.unique' => 'You have created a topic with this name.'
         ]);
         $concept->topics()->create([
             'name' => $data['topic_name'],

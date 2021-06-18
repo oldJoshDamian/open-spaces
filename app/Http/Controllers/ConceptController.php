@@ -40,6 +40,8 @@ class ConceptController extends Controller
     {
         $data = $request->validate([
             'concept_title' => ['required', 'string', 'min:3', Rule::unique('concepts', 'title')->where('space_id', $space->id)]
+        ], [
+            'concept_title.unique' => 'You have created a concept with this title.'
         ]);
         $space->concepts()->create([
             'title' => $data['concept_title'],
@@ -57,7 +59,8 @@ class ConceptController extends Controller
     public function show(Space $space, Concept $concept)
     {
         $topics = $concept->topics()->simplePaginate(12);
-        return view('concept.show', compact('space', 'concept', 'topics'));
+        $resources = $concept->resources()->simplePaginate(12);
+        return view('concept.show', compact('space', 'concept', 'topics', 'resources'));
     }
 
     /**

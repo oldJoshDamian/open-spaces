@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResourceLinksTable extends Migration
+class AddCoverPageToDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateResourceLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('resource_links', function (Blueprint $table) {
-            $table->id();
-            $table->string('title')->nullable()->default('Untitled link');
-            $table->string('url');
-            $table->timestamps();
+        Schema::table('documents', function (Blueprint $table) {
+            $table->string('cover_page')->nullable();
         });
     }
 
@@ -28,6 +25,8 @@ class CreateResourceLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resource_links');
+        Schema::table('documents', function (Blueprint $table) {
+            $table->dropColumn('cover_page');
+        });
     }
 }

@@ -1,22 +1,29 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="font-semibold mr-4 leading-tight text-green-500 text-md sm:text-lg">
+            <h2 class="mr-4 font-semibold leading-tight text-green-500 text-md sm:text-lg">
                 <a class="underline" href="{{ route('space.index') }}">Spaces</a>
-                <i class="mx-1 text-gray-600 fas fa-chevron-right"></i>
+                <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
                 <a class="underline" href="{{ route('space.show', ['space' => $space]) }}">
                     {{ $space->name }}
                 </a>
-                <i class="mx-1 text-gray-600 fas fa-chevron-right"></i>
+                <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
                 <a class="underline" href="{{ route('concept.show', ['space' => $space, 'concept' => $concept]) }}">
                     {{ $concept->title }}
                 </a>
             </h2>
-            <a class="hidden sm:inline" href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}">
-                <x-jet-button class="bg-green-500">
-                    add new topic
-                </x-jet-button>
-            </a>
+            <div class="justify-end sm:flex">
+                <a class="mr-6" href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}">
+                    <x-jet-button class="bg-green-500">
+                        add new topic
+                    </x-jet-button>
+                </a>
+                <a href="{{ route('concept.resource.create', ['space' => $space, 'concept' => $concept]) }}">
+                    <x-jet-secondary-button class="text-green-500 border-green-500">
+                        add new resource
+                    </x-jet-secondary-button>
+                </a>
+            </div>
         </div>
     </x-slot>
 
@@ -51,17 +58,24 @@
                     </div>
                     @endif
                 </div>
-                <div class="fixed w-full sm:hidden flex justify-center flex-nowrap overflow-x-auto items-center bottom-0 bg-gray-100 p-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                    @foreach ($resources as $resource)
+                    <div class="bg-white">
+
+                    </div>
+                    @endforeach
+                </div>
+                <div
+                    class="fixed bottom-0 flex items-center justify-center w-full p-3 overflow-x-auto bg-gray-100 sm:hidden flex-nowrap">
                     <a class="mr-6" href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}">
                         <x-jet-button class="bg-green-500">
                             add new topic
                         </x-jet-button>
-                        <a
-                            href="{{ route('concept.resource.create', ['space' => $space, 'concept' => $concept]) }}">
-                            <x-jet-secondary-button class="border-green-500 text-green-500">
-                                add new resource
-                            </x-jet-secondary-button>
-                        </a>
+                    </a>
+                    <a href="{{ route('concept.resource.create', ['space' => $space, 'concept' => $concept]) }}">
+                        <x-jet-secondary-button class="text-green-500 border-green-500">
+                            add new resource
+                        </x-jet-secondary-button>
                     </a>
                 </div>
             </div>

@@ -7,25 +7,27 @@ use Illuminate\Support\Facades\Schema;
 class CreatePersonalNotesTable extends Migration
 {
     /**
-    * Run the migrations.
-    *
-    * @return void
-    */
-    public function up() {
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
         Schema::create('personal_notes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->longText('content');
             $table->string('title')->default('Untitled note')->nullable();
-            });
-        }
-
-        /**
-        * Reverse the migrations.
-        *
-        * @return void
-        */
-        public function down() {
-            Schema::dropIfExists('personal_notes');
-        }
+        });
     }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('personal_notes');
+    }
+}

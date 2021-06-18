@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold leading-tight text-green-500 text-md sm:text-lg">
             <a class="underline" href="{{ route('space.index') }}">Spaces</a>
-            <i class="mx-1 text-gray-600 fas fa-chevron-right"></i>
+            <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
             <a class="underline" href="{{ route('space.create') }}">
                 {{ __('Create New Space') }}
             </a>

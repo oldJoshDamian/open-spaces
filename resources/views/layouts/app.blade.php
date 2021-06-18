@@ -18,6 +18,8 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/pdf.js') }}" defer></script>
+    <script src="{{ asset('js/pdf.worker.min.js') }}" defer></script>
 </head>
 
 <body class="font-sans antialiased">

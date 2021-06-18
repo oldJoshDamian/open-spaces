@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resource extends Model
 {
+    protected $guarded = [];
     use HasFactory;
 
-
-    public function resourceable() {
+    public function resourceable()
+    {
         return $this->morphTo();
     }
 
-    public function resourceful() {
+    public function resourceful()
+    {
         return $this->morphTo();
     }
 }

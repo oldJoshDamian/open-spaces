@@ -8,7 +8,7 @@
                     Document
                 </p>
                 <p class="text-sm text-gray-700">
-                    Ebook, Word document, slide.
+                    only PDF documents are supported now!
                 </p>
             </div>
         </div>
@@ -36,14 +36,20 @@
         </div>
         <x-jet-input-error class="mt-2" for="resource_type" />
     </div>
-    <div>
+    <div x-data="data()">
         @switch($resource_type)
         @case('document')
         <x-jet-label value="Document Name (optional)" />
-        <x-jet-input id="document_title" value="{{ old('document_title') }}" placeholder="name" class="block w-full mt-2"
-            type="text" name="document_title" autocomplete="document_title" />
+        <input name="cover_page_data" hidden x-ref="cover_page_data" />
+        <x-jet-input id="document_name" value="{{ old('document_name') }}" placeholder="name" class="block w-full mt-2"
+            type="text" name="document_name" autocomplete="document_name" />
+        <div x-show="preview_ready" class="my-4">
+            Preview
+            <canvas height="0" width="0" id="canvas"></canvas>
+        </div>
         <x-jet-label class="mt-6" value="File" />
-        <input id="file" class="block w-full mt-2" type="file" name="document_file" required />
+        <input id="file" x-on:change="previewPDF()" class="block w-full mt-2" accept=".pdf" type="file"
+            name="document_file" required />
         <x-jet-input-error class="mt-2" for="document_file" />
         @break
         @case('link')
@@ -58,12 +64,54 @@
             type="text" name="note_title" autocomplete="note_title" />
         <x-jet-input-error class="mt-2" for="note_title" />
         <x-jet-label class="mt-6" value="Content" />
-        <textarea name="note_content" rows="5" autocomplete="note_content" placeholder="content" required class="block w-full mt-2 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></textarea>
+        <textarea name="note_content" rows="5" autocomplete="note_content" placeholder="content" required
+            class="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
         <x-jet-input-error class="mt-2" for="note_content" />
         @break
         @endswitch
+        <img x-ref="image">
+        <div class="mt-6 text-right">
+            <x-jet-button x-bind:disabled="!can_add" class="bg-green-500 ">add</x-jet-button>
+        </div>
     </div>
-    <div class="text-right ">
-        <x-jet-button class="bg-green-500 ">add</x-jet-button>
-    </div>
+    <script>
+        function data() {
+            return {
+                can_add: true,
+                preview_ready: false,
+                previewPDF: function() {
+                    this.can_add = false;
+                    let file = event.target.files[0];
+                    const canvas = document.getElementById('canvas');
+                    let url = '';
+                    if(file) {
+                        url = URL.createObjectURL(file);
+                    }
+                    if(url) {
+                        const loadingTask = pdfjsLib.getDocument(url);
+                        loadingTask.promise.then((pdfDoc) => {
+                            return pdfDoc.getPage(1).then((pdfPage) => {
+                                const viewport = pdfPage.getViewport({ scale: 1.0 });
+                                canvas.width = viewport.width;
+                                canvas.height = viewport.height;
+                                const ctx = canvas.getContext('2d');
+                                const renderTask = pdfPage.render({
+                                    canvasContext: ctx,
+                                    viewport
+                                });
+                                return renderTask.promise.then((result) => {
+                                    URL.revokeObjectURL(url);
+                                    this.$refs.cover_page_data.value = canvas.toDataURL();
+                                    this.preview_ready = true;
+                                    this.can_add = true;
+                                });
+                            });
+                        }).catch((error) => {
+                            console.error('Error: ' + error);
+                        });
+                    }
+                }
+            }
+        }
+    </script>
 </div>
