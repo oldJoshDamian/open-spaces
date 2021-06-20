@@ -8,8 +8,7 @@ $resourceful = $resource->resourceful;
     <a class="block"
         href="/pdf-reader/web/viewer.html?file=/storage/{{ $resourceful->url }}@if($resourceful->specific_pages)#page={{ $resourceful->specific_pages['start_page'] }} @endif">
         <div class="p-3 border-b border-gray-400">
-            <div title="{{ $resourceful->title }}"
-                class="text-lg font-semibold text-blue-700 sm:truncate sm:line-clamp-1">
+            <div title="{{ $resourceful->title }}" class="text-lg font-semibold text-blue-700 sm:truncate">
                 {{ $resourceful->title }}
             </div>
         </div>

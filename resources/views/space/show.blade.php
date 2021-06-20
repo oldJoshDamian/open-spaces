@@ -25,7 +25,7 @@
                         @endcan
                         <div class="flex flex-row items-center p-4 border-b border-gray-300 md:flex-col">
                             <div class="flex-shrink-0 mr-3 md:mb-3">
-                                <img class="object-cover w-16 h-16 rounded-full md:w-28 md:h-28"
+                                <img class="object-cover w-16 h-16 rounded-full md:w-36 md:h-36"
                                     src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
                             </div>
                             <div>
@@ -55,12 +55,38 @@
                             {{ $space->description ?? __('no description available') }}
                         </div>
                     </div>
+                    @can('share', $space)
+                    <div x-data="{ show_copy_options: false }"
+                        x-init="() => { show_copy_options = (window.outerWidth > 768) ? true : false }"
+                        class="py-3 font-bold text-center text-blue-700 bg-gray-300 bg-opacity-75">
+                        <span x-on:click="show_copy_options = !show_copy_options;" class="text-lg cursor-pointer">
+                            <i class="mr-1 fas fa-share-alt"></i>
+                            Share space
+                        </span>
+                        <div x-show="show_copy_options" class="flex pt-3 mx-4 md:mx-0">
+                            <x-jet-input x-ref="link_input" type="text" class="w-full mr-2 bg-gray-100"
+                                value="{{ route('space.show', ['space' => $space]) }}" />
+                            <x-jet-secondary-button class="bg-gray-100">
+                                <i class="text-lg text-blue-700 far fa-copy"></i>
+                            </x-jet-secondary-button>
+                        </div>
+                    </div>
+                    @endcan
                 </div>
                 <div class="flex-1">
                     <div class="overflow-hidden">
                         <div class="px-4 pt-6 lg:pt-0 md:px-0">
-                            <div class="mb-2 text-lg font-medium text-gray-700">
-                                Concepts
+                            <div class="justify-end mb-6 sm:flex">
+                                <div class="flex">
+                                    <x-jet-input type="search" class="w-full mr-3 bg-gray-100 sm:w-96"
+                                        placeholder="search for concepts, topics and resources" />
+                                    <x-jet-secondary-button class="text-blue-700 bg-gray-100">
+                                        <i class="text-md fas fa-search"></i>
+                                    </x-jet-secondary-button>
+                                </div>
+                            </div>
+                            <div class="mb-2 text-xl font-semibold text-black">
+                                Concepts ({{ $concepts->count() }})
                             </div>
                             <div class="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-3">
                                 @foreach ($concepts as $concept)
@@ -72,8 +98,8 @@
                             </div>
                             @if($concepts->isEmpty())
                             <div class="text-lg font-semibold text-gray-800">
-                                No concepts yet! <a href="{{ route('concept.create', ['space' => $space]) }}"
-                                    class="text-blue-700">add
+                                No concepts yet! <a class="font-bold text-blue-700 underline"
+                                    href="{{ route('concept.create', ['space' => $space]) }}" class="text-blue-700">add
                                     one.</a>
                             </div>
                             @endif

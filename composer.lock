@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc51ffa81875e8fae9fea558a49245af",
+    "content-hash": "3314b9b99e61f080932526b89e6ea46f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1503,6 +1503,75 @@
                 "source": "https://github.com/laravel/sanctum"
             },
             "time": "2021-05-25T16:43:06+00:00"
+        },
+        {
+            "name": "laravel/scout",
+            "version": "v8.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/scout.git",
+                "reference": "7fb1c860a2fd904f0e084a7cc3641eb1448ba278"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/7fb1c860a2fd904f0e084a7cc3641eb1448ba278",
+                "reference": "7fb1c860a2fd904f0e084a7cc3641eb1448ba278",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/bus": "^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^6.0|^7.0|^8.0",
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "illuminate/http": "^6.0|^7.0|^8.0",
+                "illuminate/pagination": "^6.0|^7.0|^8.0",
+                "illuminate/queue": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^8.0|^9.3"
+            },
+            "suggest": {
+                "algolia/algoliasearch-client-php": "Required to use the Algolia engine (^2.2)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Scout\\ScoutServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Scout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Scout provides a driver based solution to searching your Eloquent models.",
+            "keywords": [
+                "algolia",
+                "laravel",
+                "search"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/scout/issues",
+                "source": "https://github.com/laravel/scout"
+            },
+            "time": "2021-04-06T14:35:41+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -5761,6 +5830,61 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
+        },
+        {
+            "name": "yab/laravel-scout-mysql-driver",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yabhq/laravel-scout-mysql-driver.git",
+                "reference": "f63480b201f0d94eb7267709e4673fc93409d113"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yabhq/laravel-scout-mysql-driver/zipball/f63480b201f0d94eb7267709e4673fc93409d113",
+                "reference": "f63480b201f0d94eb7267709e4673fc93409d113",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/scout": "~6.0|~7.0|~8.0",
+                "php": "^7.2|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yab\\MySQLScout\\Providers\\MySQLScoutServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yab\\MySQLScout\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Damian Crisafulli",
+                    "email": "damian.crisafulli@troyweb.com"
+                },
+                {
+                    "name": "Matt Lantz",
+                    "email": "matt@yabhq.com"
+                }
+            ],
+            "description": "MySQL driver for Laravel Scout.",
+            "support": {
+                "issues": "https://github.com/yabhq/laravel-scout-mysql-driver/issues",
+                "source": "https://github.com/yabhq/laravel-scout-mysql-driver/tree/v4.0.0"
+            },
+            "time": "2021-04-16T05:35:03+00:00"
         }
     ],
     "packages-dev": [

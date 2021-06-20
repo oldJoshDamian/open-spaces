@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Spatie\PdfToImage\Pdf;
 use Illuminate\Support\Str;
+use Laravel\Scout\Searchable;
 
 class Document extends Model
 {
@@ -18,9 +19,5 @@ class Document extends Model
         'specific_pages' => "[]"
     ];
 
-    use HasFactory;
-
-    public function resource() {
-        return $this->morphOne(Resource::class, 'resourceful');
-    }
+    use HasFactory, Searchable;
 }

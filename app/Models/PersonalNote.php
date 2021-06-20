@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\IsResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class PersonalNote extends Model
 {
     protected $guarded = [];
 
-    use HasFactory;
-
-    public function resource() {
-        return $this->morphOne(Resource::class, 'resourceful');
-    }
+    use HasFactory, Searchable, IsResource;
 }

@@ -28,11 +28,20 @@
     </x-slot>
 
     <div class="py-6 md:py-12">
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden sm:mb-0">
                 <div class="px-4 pt-6 lg:pt-0 md:px-0">
+                    <div class="justify-end mb-6 sm:flex">
+                        <div class="flex">
+                            <x-jet-input type="search" class="w-full mr-3 bg-gray-100 sm:w-96"
+                                placeholder="search for topics and resources" />
+                            <x-jet-secondary-button class="text-blue-700 bg-gray-100">
+                                <i class="text-md fas fa-search"></i>
+                            </x-jet-secondary-button>
+                        </div>
+                    </div>
                     <div class="mb-3 text-xl font-bold text-black">
-                        Topics
+                        Topics ({{ $topics->count() }})
                     </div>
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                         @foreach ($topics as $topic)
@@ -56,9 +65,9 @@
                     @endif
                 </div>
                 <div class="px-4 mt-10 mb-3 text-xl font-bold text-black md:px-0">
-                    Resources
+                    Resources ({{ $resources->count() }})
                 </div>
-                <div class="grid grid-cols-1 gap-6 px-4 sm:gap-4 md:px-0 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="grid grid-cols-1 gap-6 px-4 sm:gap-4 md:px-0 sm:grid-cols-2 lg:grid-cols-4">
                     @foreach ($resources as $resource)
                     <div class="self-top">
                         <x-resource.preview :resource="$resource" />

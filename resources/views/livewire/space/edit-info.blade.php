@@ -25,22 +25,22 @@
             <!-- Current Profile Photo -->
             <div class="mt-2" x-show="! photoPreview">
                 <img src="{{ $this->space->profile_photo_url }}" alt="{{ $this->space->name }}"
-                    class="object-cover h-48 w-72">
+                    class="object-cover w-full h-56 lg:h-72">
             </div>
 
             <!-- New Profile Photo Preview -->
             <div class="mt-2" x-show="photoPreview">
-                <span class="block h-48 w-72"
+                <span class="block w-full h-56 lg:h-72"
                     x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
                 </span>
             </div>
 
-            <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
+            <x-jet-secondary-button class="mt-3 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
                 {{ __('Select A New Photo') }}
             </x-jet-secondary-button>
 
             @if ($this->space->profile_photo_path)
-            <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
+            <x-jet-secondary-button type="button" class="mt-3" wire:click="deleteProfilePhoto">
                 {{ __('Remove Photo') }}
             </x-jet-secondary-button>
             @endif

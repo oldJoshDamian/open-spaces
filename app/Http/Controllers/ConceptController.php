@@ -61,11 +61,7 @@ class ConceptController extends Controller
     public function show(Space $space, Concept $concept)
     {
         $topics = $concept->topics()->simplePaginate(12);
-        $resources = Resource::with(['resourceful'])->where(function ($query) use ($topics, $concept) {
-            return $query->whereIn('resourceable_id', $topics->pluck('id'))->where('resourceable_type', 'App\Models\Topic')->orWhere(function ($query) use ($concept) {
-                return $query->where('resourceable_id', $concept->id)->where('resourceable_type', 'App\Models\Concept');
-            });
-        })->latest()->simplePaginate(12);
+        $resources = $concept->resources()->latest()->simplePaginate(12);
         return view('concept.show', compact('space', 'concept', 'topics', 'resources'));
     }
 
