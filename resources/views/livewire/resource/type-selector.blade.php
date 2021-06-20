@@ -2,13 +2,24 @@
     <div>
         <x-jet-label value="Type" />
         <div class="flex items-start p-4 mt-3 border-t border-l border-r border-gray-300 bg-green-50 rounded-t-md">
-            <x-jet-input value="document" wire:model="resource_type" name="resource_type" type="radio" />
+            <x-jet-input value="new_document" wire:model="resource_type" name="resource_type" type="radio" />
             <div class="ml-2 -mt-1">
                 <p class="font-semibold">
-                    Document
+                    Upload new Document
                 </p>
                 <p class="text-sm text-gray-700">
                     only PDF documents are supported now!
+                </p>
+            </div>
+        </div>
+        <div class="flex items-start p-4 border-t border-l border-r border-gray-300 bg-green-50">
+            <x-jet-input value="existing_document" name="resource_type" wire:model="resource_type" type="radio" />
+            <div class="ml-2 -mt-1">
+                <p class="font-semibold">
+                    Choose From My Documents.
+                </p>
+                <p class="text-sm text-gray-700">
+                    choose a document from your existing documents.
                 </p>
             </div>
         </div>
@@ -24,7 +35,7 @@
             </div>
         </div>
         <div class="flex items-start p-4 border-t border-b border-l border-r border-gray-300 bg-green-50 rounded-b-md">
-            <x-jet-input value="link" name="resource_type" wire:model="resource_type" type="radio" />
+            <x-jet-input value="resource_link" name="resource_type" wire:model="resource_type" type="radio" />
             <div class="ml-2 -mt-1">
                 <p class="font-semibold">
                     Resource link
@@ -38,22 +49,68 @@
     </div>
     <div x-data="data()">
         @switch($resource_type)
-        @case('document')
+        @case('new_document')
         <x-jet-label value="Document Name (optional)" />
         <input name="cover_page_data" hidden x-ref="cover_page_data" />
         <x-jet-input id="document_name" value="{{ old('document_name') }}" placeholder="name" class="block w-full mt-2"
             type="text" name="document_name" autocomplete="document_name" />
-        <div x-show="preview_ready" class="my-4">
+        <x-jet-input-error class="mt-2" for="document_name" />
+
+        <x-jet-label class="mt-6" value="Specific Pages (optional)" />
+        <div class="pt-3 grid gap-4 grid-cols-2">
+            <div>
+                <x-jet-input id="document_start_page" value="{{ old('document_start_page') }}" placeholder="from" class="block w-full"
+                    type="number" name="document_start_page" autocomplete="document_start_page" />
+                <x-jet-input-error class="mt-2" for="document_start_page" />
+            </div>
+            <div>
+                <x-jet-input id="document_end_page" value="{{ old('document_end_page') }}" placeholder="to" class="block w-full"
+                    type="number" name="document_end_page" autocomplete="document_end_page" />
+                <x-jet-input-error class="mt-2" for="document_end_page" />
+            </div>
+        </div>
+
+        <div x-show="preview_ready" class="my-4 w-full overflow-x-auto">
             Preview
-            <canvas height="0" width="0" id="canvas"></canvas>
+            <canvas id="canvas"></canvas>
         </div>
         <x-jet-label class="mt-6" value="File" />
         <input id="file" x-on:change="previewPDF()" class="block w-full mt-2" accept=".pdf" type="file"
-            name="document_file" required />
+        name="document_file" required />
         <x-jet-input-error class="mt-2" for="document_file" />
         @break
-        @case('link')
-        <x-jet-label value="Resource link" />
+
+        @case('existing_document')
+        <select class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" name="existing_document">
+            <option>Select Document</option>
+            @foreach($documents as $document)
+            <option @if($document->id === old('existing_document'))  __('selected') @endif value="{{ $document->id }}">
+                {{ $document->title }}
+            </option>
+            @endforeach
+        </select>
+        <x-jet-input-error class="mt-2" for="existing_document" />
+
+        <x-jet-label class="mt-6" value="Specific Pages (optional)" />
+        <div class="pt-3 grid gap-4 grid-cols-2">
+            <div>
+                <x-jet-input id="document_start_page" value="{{ old('document_start_page') }}" placeholder="from" class="block w-full"
+                    type="number" name="document_start_page" autocomplete="document_start_page" />
+                <x-jet-input-error class="mt-2" for="document_start_page" />
+            </div>
+            <div>
+                <x-jet-input id="document_end_page" value="{{ old('document_end_page') }}" placeholder="to" class="block w-full"
+                    type="number" name="document_end_page" autocomplete="document_end_page" />
+                <x-jet-input-error class="mt-2" for="document_end_page" />
+            </div>
+        </div>
+        @break
+
+        @case('resource_link')
+        <x-jet-label value="Link Title (optional)" />
+        <x-jet-input id="link_title" value="{{ old('link_title') }}" placeholder="title" class="block w-full mt-2"
+            type="text" name="link_title" autocomplete="link_title" />
+        <x-jet-label class="mt-6" value="Resource link" />
         <x-jet-input id="link" value="{{ old('resource_link') }}" placeholder="resource link" class="block w-full mt-2"
             type="text" name="resource_link" required autocomplete="resource_link" />
         <x-jet-input-error class="mt-2" for="resource_link" />
@@ -65,7 +122,7 @@
         <x-jet-input-error class="mt-2" for="note_title" />
         <x-jet-label class="mt-6" value="Content" />
         <textarea name="note_content" rows="5" autocomplete="note_content" placeholder="content" required
-            class="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+            class="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ old('note_content') }}</textarea>
         <x-jet-input-error class="mt-2" for="note_content" />
         @break
         @endswitch
@@ -84,14 +141,16 @@
                     let file = event.target.files[0];
                     const canvas = document.getElementById('canvas');
                     let url = '';
-                    if(file) {
+                    if (file) {
                         url = URL.createObjectURL(file);
                     }
-                    if(url) {
+                    if (url) {
                         const loadingTask = pdfjsLib.getDocument(url);
                         loadingTask.promise.then((pdfDoc) => {
                             return pdfDoc.getPage(1).then((pdfPage) => {
-                                const viewport = pdfPage.getViewport({ scale: 1.0 });
+                                const viewport = pdfPage.getViewport({
+                                    scale: 1.0
+                                });
                                 canvas.width = viewport.width;
                                 canvas.height = viewport.height;
                                 const ctx = canvas.getContext('2d');

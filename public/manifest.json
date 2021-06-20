@@ -1,0 +1,27 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Ecorun",
+    "short_name": "Ecorun",
+    "scope": "/",
+    "display": "standalone",
+    "start_url": "/",
+    "background_color": "#1E40AF",
+    "theme_color": "#1E40AF",
+    "description": "Ecorun naturally blends social interaction with doing business.",
+    "orientation": "natural",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [{
+        "src": "icon/logo.png",
+        "sizes": "150x150",
+        "type": "image/png",
+        "purpose": "any maskable"
+    },
+        {
+            "src": "icon/logo_512.png",
+            "sizes": "512x512"
+        }],
+    "url": "https://ecorun.com.ng",
+    "generated": true
+}

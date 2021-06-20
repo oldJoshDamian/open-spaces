@@ -17,11 +17,11 @@ class SpaceController extends Controller
     */
     public function index(Request $request) {
         if (auth()->check()) {
-            $spaces = Space::whereIn('id', $request->user()->allSpaces()->pluck('id'))->simplePaginate(8);
+            $spaces = Space::whereIn('id', $request->user()->allSpaces()->pluck('id'))->latest('updated_at')->simplePaginate(8);
         } else {
             $spaces = Space::where('creator_id', null)->simplePaginate(12);
         }
-        $discover = Space::where('visibility', 'public')->whereNotIn('id', $spaces->pluck('id'))->simplePaginate(8);
+        $discover = Space::where('visibility', 'public')->whereNotIn('id', $spaces->pluck('id'))->latest('updated_at')->simplePaginate(8);
         return view('space.index', compact('spaces', 'discover'));
     }
 
@@ -66,6 +66,10 @@ class SpaceController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function show(Space $space) {
+        if ($space->visibility === 'private' && !auth()->user()) {
+            return response(404);
+        }
+        $this->authorize('view', $space);
         $concepts = $space->concepts()->simplePaginate(12);
         return view('space.show', compact('space', 'concepts'));
     }
@@ -77,7 +81,8 @@ class SpaceController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function edit(Space $space) {
-        //
+        $this->authorize('update', $space);
+        return view('space.edit', compact('space'));
     }
 
     /**

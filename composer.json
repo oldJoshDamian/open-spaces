@@ -14,7 +14,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
-        "spatie/pdf-to-image": "^2.1"
+        "lorisleiva/artisan-ui": "^0.3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

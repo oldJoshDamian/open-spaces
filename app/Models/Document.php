@@ -11,10 +11,16 @@ use Illuminate\Support\Str;
 class Document extends Model
 {
     protected $guarded = [];
+    protected $casts = [
+        'specific_pages' => 'array',
+    ];
+    protected $attributes = [
+        'specific_pages' => "[]"
+    ];
+
     use HasFactory;
 
-    public function resource()
-    {
+    public function resource() {
         return $this->morphOne(Resource::class, 'resourceful');
     }
 }

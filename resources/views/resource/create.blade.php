@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-base font-semibold leading-tight text-green-500 sm:text-lg">
+        <h2 class="text-base font-semibold leading-tight text-blue-700 sm:text-lg">
             <a class="underline" href="{{ route('space.index') }}">{{ __('Spaces') }}</a>
             <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
             <a class="underline" href="{{ route('space.show', ['space' => $space]) }}">{{ $space->name }}</a>
@@ -29,7 +29,7 @@
                 <form enctype="multipart/form-data" method="POST"
                     action="{{ (isset($topic)) ? route('topic.resource.store', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) : route('concept.resource.store', ['space' => $space, 'concept' => $concept]) }}">
                     @csrf
-                    @livewire('resource.type-selector')
+                    @livewire('resource.type-selector', ['resource_type' => old('resource_type') ?? 'new_document'])
                 </form>
             </div>
         </div>

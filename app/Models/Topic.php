@@ -10,6 +10,15 @@ class Topic extends Model
     protected $guarded = [];
     use HasFactory;
 
+    /**
+    * Get the value of the model's route key.
+    *
+    * @return mixed
+    */
+    public function getRouteKey() {
+        return $this->slug;
+    }
+
     public function concept() {
         return $this->belongsTo(Concept::class, 'concept_id');
     }
