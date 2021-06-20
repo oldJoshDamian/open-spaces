@@ -11,10 +11,7 @@
         <!-- Profile Photo -->
         <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
             <!-- Profile Photo File Input -->
-            <input type="file" class="hidden"
-            wire:model="photo"
-            x-ref="photo"
-            x-on:change="
+            <input type="file" class="hidden" wire:model="photo" x-ref="photo" x-on:change="
             photoName = $refs.photo.files[0].name;
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -27,12 +24,13 @@
 
             <!-- Current Profile Photo -->
             <div class="mt-2" x-show="! photoPreview">
-                <img src="{{ $this->space->profile_photo_url }}" alt="{{ $this->space->name }}" class="rounded-full h-20 w-20 object-cover">
+                <img src="{{ $this->space->profile_photo_url }}" alt="{{ $this->space->name }}"
+                    class="object-cover h-48 w-72">
             </div>
 
             <!-- New Profile Photo Preview -->
             <div class="mt-2" x-show="photoPreview">
-                <span class="block rounded-full w-20 h-20"
+                <span class="block h-48 w-72"
                     x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
                 </span>
             </div>
@@ -54,15 +52,15 @@
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="name" value="{{ __('Name') }}" />
-            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
+            <x-jet-input id="name" type="text" class="block w-full mt-1" wire:model.defer="state.name"
+                autocomplete="name" />
             <x-jet-input-error for="state.name" class="mt-2" />
         </div>
 
         <!-- Visibility -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="visibility" value="{{ __('Visibility') }}" />
-            <div
-                class="flex items-start p-4 mt-3 border-t border-l border-r border-gray-300 bg-green-50 rounded-t-md">
+            <div class="flex items-start p-4 mt-3 border-t border-l border-r border-gray-300 bg-green-50 rounded-t-md">
                 <x-jet-input value="public" wire:model.defer="state.visibility" name="visibility" type="radio" />
                 <div class="ml-2 -mt-1">
                     <p class="font-semibold">
@@ -91,7 +89,8 @@
         <!-- Description -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="description" value="{{ __('Description') }}" />
-            <textarea id="description" name="space_description" rows="5" autocomplete="space_description" wire:model.defer="state.description" placeholder="description"
+            <textarea id="description" name="space_description" rows="5" autocomplete="space_description"
+                wire:model.defer="state.description" placeholder="description"
                 class="block w-full mt-2 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
             <x-jet-input-error for="state.description" class="mt-2" />
         </div>

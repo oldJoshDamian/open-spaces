@@ -26,7 +26,7 @@
                         <div class="flex flex-row items-center p-4 border-b border-gray-300 md:flex-col">
                             <div class="flex-shrink-0 mr-3 md:mb-3">
                                 <img class="object-cover w-16 h-16 rounded-full md:w-28 md:h-28"
-                                src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
+                                    src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
                             </div>
                             <div>
                                 <div class="text-xl font-semibold text-gray-800">
@@ -66,7 +66,7 @@
                                 @foreach ($concepts as $concept)
                                 <a href="{{ route('concept.show', ['concept' => $concept, 'space' => $space]) }}"
                                     class="p-3 text-lg font-semibold text-center text-blue-700 bg-white shadow-md md:text-xl">
-                                    {{ Str::upper($concept->title) }}
+                                    {{ $concept->title }}
                                 </a>
                                 @endforeach
                             </div>

@@ -46,7 +46,8 @@ class TopicController extends Controller
         ]);
         $concept->topics()->create([
             'name' => $data['topic_name'],
-            'slug' => Str::random(9)
+            'slug' => Str::random(9),
+            'creator_id' => $request->user()->id
         ]);
         return redirect()->route('concept.show', ['space' => $space, 'concept' => $concept])->with('flash.banner', 'Topic added successfully!');
     }

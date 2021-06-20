@@ -57,34 +57,36 @@
         <x-jet-input-error class="mt-2" for="document_name" />
 
         <x-jet-label class="mt-6" value="Specific Pages (optional)" />
-        <div class="pt-3 grid gap-4 grid-cols-2">
+        <div class="grid grid-cols-2 gap-4 pt-3">
             <div>
-                <x-jet-input id="document_start_page" value="{{ old('document_start_page') }}" placeholder="from" class="block w-full"
-                    type="number" name="document_start_page" autocomplete="document_start_page" />
+                <x-jet-input id="document_start_page" value="{{ old('document_start_page') }}" placeholder="from"
+                    class="block w-full" type="number" name="document_start_page" autocomplete="document_start_page" />
                 <x-jet-input-error class="mt-2" for="document_start_page" />
             </div>
             <div>
-                <x-jet-input id="document_end_page" value="{{ old('document_end_page') }}" placeholder="to" class="block w-full"
-                    type="number" name="document_end_page" autocomplete="document_end_page" />
+                <x-jet-input id="document_end_page" value="{{ old('document_end_page') }}" placeholder="to"
+                    class="block w-full" type="number" name="document_end_page" autocomplete="document_end_page" />
                 <x-jet-input-error class="mt-2" for="document_end_page" />
             </div>
         </div>
 
-        <div x-show="preview_ready" class="my-4 w-full overflow-x-auto">
+        <div x-show="preview_ready" class="w-full my-4 overflow-x-auto max-h-96">
             Preview
             <canvas id="canvas"></canvas>
         </div>
         <x-jet-label class="mt-6" value="File" />
         <input id="file" x-on:change="previewPDF()" class="block w-full mt-2" accept=".pdf" type="file"
-        name="document_file" required />
+            name="document_file" required />
         <x-jet-input-error class="mt-2" for="document_file" />
         @break
 
         @case('existing_document')
-        <select class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" name="existing_document">
+        <select
+            class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            name="existing_document">
             <option>Select Document</option>
             @foreach($documents as $document)
-            <option @if($document->id === old('existing_document'))  __('selected') @endif value="{{ $document->id }}">
+            <option @if($document->id === old('existing_document')) __('selected') @endif value="{{ $document->id }}">
                 {{ $document->title }}
             </option>
             @endforeach
@@ -92,15 +94,15 @@
         <x-jet-input-error class="mt-2" for="existing_document" />
 
         <x-jet-label class="mt-6" value="Specific Pages (optional)" />
-        <div class="pt-3 grid gap-4 grid-cols-2">
+        <div class="grid grid-cols-2 gap-4 pt-3">
             <div>
-                <x-jet-input id="document_start_page" value="{{ old('document_start_page') }}" placeholder="from" class="block w-full"
-                    type="number" name="document_start_page" autocomplete="document_start_page" />
+                <x-jet-input id="document_start_page" value="{{ old('document_start_page') }}" placeholder="from"
+                    class="block w-full" type="number" name="document_start_page" autocomplete="document_start_page" />
                 <x-jet-input-error class="mt-2" for="document_start_page" />
             </div>
             <div>
-                <x-jet-input id="document_end_page" value="{{ old('document_end_page') }}" placeholder="to" class="block w-full"
-                    type="number" name="document_end_page" autocomplete="document_end_page" />
+                <x-jet-input id="document_end_page" value="{{ old('document_end_page') }}" placeholder="to"
+                    class="block w-full" type="number" name="document_end_page" autocomplete="document_end_page" />
                 <x-jet-input-error class="mt-2" for="document_end_page" />
             </div>
         </div>

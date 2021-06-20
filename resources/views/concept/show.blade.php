@@ -28,16 +28,16 @@
     </x-slot>
 
     <div class="py-6 md:py-12">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden mb-20 sm:mb-0">
+        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <div class="mb-20 overflow-hidden sm:mb-0">
                 <div class="px-4 pt-6 lg:pt-0 md:px-0">
-                    <div class="mb-3 font-bold text-xl text-black">
+                    <div class="mb-3 text-xl font-bold text-black">
                         Topics
                     </div>
-                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                         @foreach ($topics as $topic)
                         <a href="{{ route('topic.show', ['concept' => $concept, 'space' => $space, 'topic' => $topic]) }}"
-                            class="p-3 text-base font-semibold text-center text-blue-700 shadow bg-gray-100 md:text-xl">
+                            class="p-3 text-base font-semibold text-center text-blue-700 bg-gray-100 shadow md:text-xl">
                             {{ Str::title($topic->name) }}
                         </a>
                         @endforeach
@@ -55,10 +55,10 @@
                     </div>
                     @endif
                 </div>
-                <div class="mt-10 px-4 md:px-0 mb-3 font-bold text-black text-xl">
+                <div class="px-4 mt-10 mb-3 text-xl font-bold text-black md:px-0">
                     Resources
                 </div>
-                <div class="grid grid-cols-1 px-4 md:px-0 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="grid grid-cols-1 gap-6 px-4 sm:gap-4 md:px-0 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($resources as $resource)
                     <div class="self-top">
                         <x-resource.preview :resource="$resource" />
@@ -66,7 +66,7 @@
                     @endforeach
                 </div>
                 @if($resources->isEmpty())
-                <div class="text-lg px-4 font-semibold text-gray-600">
+                <div class="px-4 text-lg font-semibold text-gray-600 md:px-0">
                     No resources yet! <a
                         href="{{ route('concept.resource.create', ['space' => $space, 'concept' => $concept]) }}"
                         class="text-blue-700">add

@@ -5,33 +5,39 @@ $resourceful = $resource->resourceful;
 <div class="bg-gray-100">
     @switch($resourceful::class)
     @case('App\Models\Document')
-    <a class="block" href="/pdfjs-2.8.335-dist/web/viewer.html?file=/storage/{{ $resourceful->url }}@if($resourceful->specific_pages)#page={{ $resourceful->specific_pages['start_page'] }} @endif">
+    <a class="block"
+        href="/pdf-reader/web/viewer.html?file=/storage/{{ $resourceful->url }}@if($resourceful->specific_pages)#page={{ $resourceful->specific_pages['start_page'] }} @endif">
         <div class="p-3 border-b border-gray-400">
-            <div class="font-semibold text-blue-700 text-lg">
+            <div title="{{ $resourceful->title }}"
+                class="text-lg font-semibold text-blue-700 sm:truncate sm:line-clamp-1">
                 {{ $resourceful->title }}
             </div>
         </div>
         <div>
             <div class="p-3">
-                <img class="object-cover w-60 mx-auto h-72 sm:h-40 sm:w-32"
-                src="/storage/{{ $resourceful->cover_page }}" alt="{{ $resourceful->title }}" />
+                <img class="object-cover mx-auto w-60 h-72 sm:h-40 sm:w-32"
+                    src="/storage/{{ $resourceful->cover_page }}" alt="{{ $resourceful->title }}" />
             </div>
-            <div class="text-md p-3 bg-white font-semibold text-blue-700">
+            <div class="p-3 font-semibold text-blue-700 bg-white text-md">
                 <div class="flex items-center justify-between">
-                    <div class="mr-4 flex items-center flex-1">
-                        <i class="fas mr-2 text-xl fa-file-pdf"></i> PDF document
+                    <div class="flex items-center flex-1 mr-4">
+                        <i class="mr-2 text-xl fas fa-file-pdf"></i> PDF document
                     </div>
-                    <div class="text-gray-700 flex-shrink-0 font-medium text-base">
+                    <div class="flex-shrink-0 text-base font-medium text-gray-700">
                         {{ $resourceful->created_at->diffForHumans() }}
                     </div>
                 </div>
                 @if($resourceful->specific_pages)
                 <div class="pt-3 text-blue-700">
                     @if($resourceful->specific_pages['start_page'])
-                    <a class="underline" href="/pdfjs-2.8.335-dist/web/viewer.html?file=/storage/{{ $resourceful->url }}#page={{ $resourceful->specific_pages['start_page'] }}">Page {{ $resourceful->specific_pages['start_page'] }}</a>
+                    <a class="underline"
+                        href="/pdf-reader/web/viewer.html?file=/storage/{{ $resourceful->url }}#page={{ $resourceful->specific_pages['start_page'] }}">Page
+                        {{ $resourceful->specific_pages['start_page'] }}</a>
                     @endif
                     @if($resourceful->specific_pages['end_page'])
-                    - <a class="underline" href="/pdfjs-2.8.335-dist/web/viewer.html?file=/storage/{{ $resourceful->url }}#page={{ $resourceful->specific_pages['end_page'] }}">Page {{ $resourceful->specific_pages['end_page'] }}</a>
+                    - <a class="underline"
+                        href="/pdf-reader/web/viewer.html?file=/storage/{{ $resourceful->url }}#page={{ $resourceful->specific_pages['end_page'] }}">Page
+                        {{ $resourceful->specific_pages['end_page'] }}</a>
                     @endif
                 </div>
                 @endif
@@ -42,18 +48,19 @@ $resourceful = $resource->resourceful;
     @case('App\Models\PersonalNote')
     <div x-data="{ show_full: false }">
         <div class="p-3 border-b border-gray-400">
-            <div class="font-semibold text-blue-700 text-lg">
+            <div class="text-lg font-semibold text-blue-700">
                 {{ $resourceful->title ?? __('Untitled note') }}
             </div>
         </div>
-        <p x-on:click="show_full = !show_full" :class="{ 'line-clamp-4 select-none': !show_full }" class="cursor-pointer p-3 break-words">
+        <p x-on:click="show_full = !show_full" :class="{ 'line-clamp-4 select-none': !show_full }"
+            class="p-3 break-words cursor-pointer">
             {{ $resourceful->content }}
         </p>
-        <div class="flex text-md p-3 bg-white font-semibold text-blue-700 items-center justify-between">
-            <div class="mr-4 flex-1 flex items-center">
-                <i class="fas text-xl mr-2 fa-sticky-note"></i> Note
+        <div class="flex items-center justify-between p-3 font-semibold text-blue-700 bg-white text-md">
+            <div class="flex items-center flex-1 mr-4">
+                <i class="mr-2 text-xl fas fa-sticky-note"></i> Note
             </div>
-            <div class="text-gray-700 flex-shrink-0 font-medium text-base">
+            <div class="flex-shrink-0 text-base font-medium text-gray-700">
                 {{ $resourceful->created_at->diffForHumans() }}
             </div>
         </div>
@@ -62,18 +69,18 @@ $resourceful = $resource->resourceful;
     @case('App\Models\ResourceLink')
     <div>
         <div class="p-3 border-b border-gray-400">
-            <div class="font-semibold text-blue-700 text-lg">
+            <div class="text-lg font-semibold text-blue-700">
                 {{ $resourceful->title }}
             </div>
         </div>
         <p class="p-3 break-words">
             <a class="text-blue-700" href="{{ $resourceful->url }}">{{ $resourceful->url }}</a>
         </p>
-        <div class="flex text-md p-3 bg-white font-semibold text-blue-700 items-center justify-between">
-            <div class="mr-4 flex-1 flex items-center">
-                <i class="fas text-xl mr-2 fa-link"></i> Link
+        <div class="flex items-center justify-between p-3 font-semibold text-blue-700 bg-white text-md">
+            <div class="flex items-center flex-1 mr-4">
+                <i class="mr-2 text-xl fas fa-link"></i> Link
             </div>
-            <div class="text-gray-700 flex-shrink-0 font-medium text-base">
+            <div class="flex-shrink-0 text-base font-medium text-gray-700">
                 {{ $resourceful->created_at->diffForHumans() }}
             </div>
         </div>
