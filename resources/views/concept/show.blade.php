@@ -31,7 +31,7 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden sm:mb-0">
                 <div class="px-4 pt-6 lg:pt-0 md:px-0">
-                    <div class="justify-end mb-6 sm:flex">
+                    <div class="justify-end mb-6 sm:mb-0 sm:flex">
                         <div class="flex">
                             <x-jet-input type="search" class="w-full mr-3 bg-gray-100 sm:w-96"
                                 placeholder="search for topics and resources" />
@@ -43,7 +43,7 @@
                     <div class="mb-3 text-xl font-bold text-black">
                         Topics ({{ $topics->count() }})
                     </div>
-                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+                    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                         @foreach ($topics as $topic)
                         <a href="{{ route('topic.show', ['concept' => $concept, 'space' => $space, 'topic' => $topic]) }}"
                             class="p-3 text-base font-semibold text-center text-blue-700 bg-gray-100 shadow md:text-xl">

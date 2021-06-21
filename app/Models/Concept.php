@@ -55,6 +55,11 @@ class Concept extends Model
         return $this->hasMany(Topic::class);
     }
 
+    public function space()
+    {
+        return $this->belongsTo(Space::class);
+    }
+
     public function allResources()
     {
         return Resource::with(['resourceful'])->where(function ($query) {

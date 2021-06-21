@@ -30,7 +30,7 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden sm:mb-0">
                 <div class="px-4 pt-6 lg:pt-0 md:px-0">
-                    <div class="justify-end mb-6 sm:flex">
+                    <div class="justify-end mb-6 sm:mb-0 sm:flex">
                         <div class="flex">
                             <x-jet-input type="search" class="w-full mr-3 bg-gray-100 sm:w-96"
                                 placeholder="search for resources" />
@@ -45,7 +45,7 @@
                     <div class="mt-6 mb-3 text-lg font-bold">
                         Resources ({{ $resources->count() }})
                     </div>
-                    <div class="grid grid-cols-1 gap-6 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="grid grid-cols-1 gap-6 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         @foreach ($resources as $resource)
                         <div class="self-top">
                             <x-resource.preview :resource="$resource" />
