@@ -7,14 +7,14 @@ use Illuminate\Support\Facades\Schema;
 class CreateDocumentsTable extends Migration
 {
     /**
-    * Run the migrations.
-    *
-    * @return void
-    */
-    public function up() {
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->string('mime_type');
             $table->string('url');
             $table->timestamps();
@@ -22,11 +22,12 @@ class CreateDocumentsTable extends Migration
     }
 
     /**
-    * Reverse the migrations.
-    *
-    * @return void
-    */
-    public function down() {
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
         Schema::dropIfExists('documents');
     }
 }

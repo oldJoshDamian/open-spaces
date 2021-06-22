@@ -15,7 +15,6 @@ class CreateResourceLinksTable extends Migration
     {
         Schema::create('resource_links', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable()->default('Untitled link');
             $table->string('url');
             $table->timestamps();
         });

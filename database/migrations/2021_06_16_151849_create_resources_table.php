@@ -7,14 +7,16 @@ use Illuminate\Support\Facades\Schema;
 class CreateResourcesTable extends Migration
 {
     /**
-    * Run the migrations.
-    *
-    * @return void
-    */
-    public function up() {
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
         Schema::create('resources', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
+            $table->string('title')->nullable()->default('Untitled Resource');
             $table->morphs('resourceable');
             $table->morphs('resourceful');
             $table->timestamps();
@@ -22,11 +24,12 @@ class CreateResourcesTable extends Migration
     }
 
     /**
-    * Reverse the migrations.
-    *
-    * @return void
-    */
-    public function down() {
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
         Schema::dropIfExists('resources');
     }
 }

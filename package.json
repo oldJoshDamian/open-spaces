@@ -27,6 +27,9 @@
     "dependencies": {
         "@babel/preset-env": "^7.14.4",
         "@tailwindcss/line-clamp": "^0.2.1",
-        "caniuse-lite": "^1.0.30001236"
+        "caniuse-lite": "^1.0.30001236",
+        "dexie": "^3.0.3",
+        "dexie-observable": "*",
+        "dexie-syncable": "*"
     }
 }

@@ -17,7 +17,6 @@ class CreatePersonalNotesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->longText('content');
-            $table->string('title')->default('Untitled note')->nullable();
         });
     }
 
