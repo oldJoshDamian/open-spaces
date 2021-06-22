@@ -11,5 +11,16 @@ class PersonalNote extends Model
 {
     protected $guarded = [];
 
-    use HasFactory, Searchable, IsResource;
+    use HasFactory,
+    Searchable;
+
+    public function resource() {
+        return $this->morphOne(Resource::class, 'resourceful');
+    }
+
+    public function toSearchableArray() {
+        return [
+            'title' => $this->title
+        ];
+    }
 }

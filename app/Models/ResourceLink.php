@@ -11,5 +11,16 @@ class ResourceLink extends Model
 {
     protected $guarded = [];
 
-    use HasFactory, Searchable, IsResource;
+    use HasFactory,
+    Searchable;
+
+    public function toSearchableArray() {
+        return [
+            'title' => $this->title
+        ];
+    }
+
+    public function resource() {
+        return $this->morphOne(Resource::class, 'resourceful');
+    }
 }

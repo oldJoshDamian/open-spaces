@@ -15,8 +15,10 @@ class CreateResourcesTable extends Migration
         Schema::create('resources', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
-            $table->morphs('resourceable');
-            $table->morphs('resourceful');
+            $table->string('resourceable_type')->nullable();
+            $table->integer('resourceable_id')->nullable();
+            $table->string('resourceful_type')->nullable();
+            $table->integer('resourceful_id')->nullable();
             $table->timestamps();
         });
     }
