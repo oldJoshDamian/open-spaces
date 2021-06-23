@@ -40,13 +40,13 @@
                             </x-jet-secondary-button>
                         </div>
                     </div>
-                    <div class="mb-3 text-xl font-bold text-black">
+                    <div class="mb-3 text-lg font-bold text-black">
                         Topics ({{ $topics->count() }})
                     </div>
                     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                         @foreach ($topics as $topic)
                         <a href="{{ route('topic.show', ['concept' => $concept, 'space' => $space, 'topic' => $topic]) }}"
-                            class="p-3 text-base font-semibold text-center text-blue-700 bg-gray-100 shadow md:text-xl">
+                            class="p-3 text-base font-semibold text-center text-blue-700 bg-gray-100 shadow md:text-lg">
                             {{ Str::title($topic->name) }}
                         </a>
                         @endforeach
@@ -64,7 +64,7 @@
                     </div>
                     @endif
                 </div>
-                <div class="px-4 mt-10 mb-3 text-xl font-bold text-black md:px-0">
+                <div class="px-4 mt-10 mb-3 text-lg font-bold text-black md:px-0">
                     Resources ({{ $resources->count() }})
                 </div>
                 <div class="grid grid-cols-1 gap-6 px-4 sm:gap-4 md:px-0 sm:grid-cols-2 lg:grid-cols-4">

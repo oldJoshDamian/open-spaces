@@ -87,7 +87,7 @@
             <option>Select Document</option>
             @foreach($documents as $document)
             <option @if($document->id === old('existing_document')) __('selected') @endif value="{{ $document->id }}">
-                {{ $document->title }}
+                {{ $document->resource->title }}
             </option>
             @endforeach
         </select>

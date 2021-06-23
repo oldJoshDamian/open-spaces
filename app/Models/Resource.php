@@ -9,7 +9,7 @@ use Laravel\Scout\Searchable;
 class Resource extends Model
 {
     protected $guarded = [];
-    use HasFactory;
+    use HasFactory, Searchable;
 
     /**
      * Get the route key for the model.
@@ -29,6 +29,13 @@ class Resource extends Model
     public function getRouteKey()
     {
         return $this->slug;
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title
+        ];
     }
 
     public function resourceable()

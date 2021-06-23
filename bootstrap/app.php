@@ -11,6 +11,9 @@
 |
 */
 
+use App\Tools\Crawler;
+use App\Tools\SearchEngine;
+
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
@@ -35,6 +38,14 @@ $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
 );
+
+$app->singleton('SearchEngine', function () {
+    return new SearchEngine();
+});
+
+$app->singleton('SearchEngine\Crawler', function () {
+    return new Crawler();
+});
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,

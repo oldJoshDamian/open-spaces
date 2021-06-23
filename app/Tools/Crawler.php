@@ -2,29 +2,60 @@
 
 namespace App\Tools;
 
-use App\Models\Document;
+use App\Models\Concept;
+use App\Models\Resource;
+use App\Models\Space;
 use App\Models\Topic;
+use Illuminate\Support\Str;
 
 class Crawler
 {
     public function crawl()
     {
-        switch (app('searc_engine')->data_set) {
-            case ('all'):
-                return $this->crawlForDocuments()->crawlForTopics();
-                break;
+        $crawler = "crawlFor" . Str::title($this->getDataSet());
+        if (method_exists($this, $crawler)) {
+            return $this->{$crawler}();
+        } else {
+            return $this->crawlForConcepts()->crawlForResources()->crawlForSpaces()->crawlForTopics();
         }
     }
 
-    private function crawlForDocuments()
+    public function getDataSet(): string
     {
-        app('search_engine')->results->merge(Document::search(app('search_engine')->query)->with(['resource'])->get());
+        return $this->searchEngine()->getDataSet();
+    }
+
+    public function getQuery(): string
+    {
+        return $this->searchEngine()->getQuery();
+    }
+
+    public function searchEngine()
+    {
+        return resolve('SearchEngine');
+    }
+
+    public function crawlForResources()
+    {
+        $this->searchEngine()->compileResults('resources', Resource::search($this->getQuery())->get());
         return $this;
     }
 
-    private function crawlForTopics()
+    public function crawlForTopics()
     {
-        app('search_engine')->results->merge(Topic::search(app('search_engine')->query)->with(['concept'])->get());
+        $this->searchEngine()->compileResults('topics', Topic::search($this->getQuery())->get());
+        return $this;
+    }
+
+    public function crawlForConcepts()
+    {
+        $this->searchEngine()->compileResults('concepts', Concept::search($this->getQuery())->get());
+        return $this;
+    }
+
+    public function crawlForSpaces()
+    {
+        $this->searchEngine()->compileResults('spaces', Space::search($this->getQuery())->get());
         return $this;
     }
 }

@@ -85,13 +85,13 @@
                                     </x-jet-secondary-button>
                                 </div>
                             </div>
-                            <div class="mb-2 text-xl font-semibold text-black">
+                            <div class="mb-2 text-lg font-semibold text-black">
                                 Concepts ({{ $concepts->count() }})
                             </div>
                             <div class="grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-3">
                                 @foreach ($concepts as $concept)
                                 <a href="{{ route('concept.show', ['concept' => $concept, 'space' => $space]) }}"
-                                    class="p-3 text-lg font-semibold text-center text-blue-700 bg-white shadow-md md:text-xl">
+                                    class="p-3 text-lg font-semibold text-center text-blue-700 bg-white shadow-md">
                                     {{ $concept->title }}
                                 </a>
                                 @endforeach

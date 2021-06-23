@@ -7,28 +7,31 @@ use Illuminate\Support\Facades\Schema;
 class CreateResourcesTable extends Migration
 {
     /**
-    * Run the migrations.
-    *
-    * @return void
-    */
-    public function up() {
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
         Schema::create('resources', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
-            $table->string('resourceable_type')->nullable();
+            $table->string('title')->nullable()->default('Untitled Resource');
             $table->integer('resourceable_id')->nullable();
-            $table->string('resourceful_type')->nullable();
+            $table->string('resourceable_type')->nullable();
             $table->integer('resourceful_id')->nullable();
+            $table->string('resourceful_type')->nullable();
             $table->timestamps();
         });
     }
 
     /**
-    * Reverse the migrations.
-    *
-    * @return void
-    */
-    public function down() {
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
         Schema::dropIfExists('resources');
     }
 }

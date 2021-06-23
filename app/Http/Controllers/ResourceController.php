@@ -47,12 +47,6 @@ class ResourceController extends Controller
     public function storeTopicResource(Request $request, Space $space, Concept $concept, Topic $topic)
     {
         $resource = $this->createResource($request, $topic);
-        $topic->resources()->create([
-            'resourceful_type' => $resource::class,
-            'resourceful_id' => $resource->id,
-            'slug' => Str::random(8),
-            'creator_id' => $request->user()->id
-        ]);
         return redirect()->route(
             'topic.show',
             [
@@ -118,7 +112,10 @@ class ResourceController extends Controller
             'resource_link' => ['url', 'string', 'sometimes', 'required_if:resource_type,resource_link'],
             'link_title' => ['string', 'nullable', 'min:3']
         ]);
-
+        $resource = $resourceable->resources()->create([
+            'slug' => Str::random(8),
+            'creator_id' => $request->user()->id
+        ]);
         switch ($data['resource_type']):
             case ('new_document'):
                 $document_file = $request->file('document_file');
@@ -143,49 +140,45 @@ class ResourceController extends Controller
                 if ($resourceable->loadMissing('resources.resourceful')->resources->pluck('resourceful.title')->flatten()->contains($filename)) {
                     $filename .= ' (Possible duplicate)';
                 }
-                $resource = Document::create([
+                $resource->title = $filename;
+                Document::create([
                     'url' => $filepath,
-                    'title' => $filename,
                     'mime_type' => $mime_type,
                     'cover_page' => $cover_page_path,
                     'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null
-                ]);
+                ])->resource()->save($resource);
                 break;
             case ('existing_document'):
                 $document = Document::find($data['existing_document']);
-                $resource = Document::create([
+                $resource->title = $document->resource->title;
+                Document::create([
                     'url' => $document->url,
-                    'title' => $document->title,
                     'mime_type' => $document->mime_type,
                     'cover_page' => $document->cover_page,
                     'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null
-                ]);
+                ])->resource()->save($resource);
                 break;
             case ('personal_note'):
-                $resource = PersonalNote::create([
-                    'title' => $data['note_title'] ?? null,
+                $resource->title = $data['note_title'] ?? 'Untitled Note';
+                PersonalNote::create([
                     'content' => $data['note_content']
-                ]);
+                ])->resource()->save($resource);
                 break;
             case ('resource_link'):
-                $resource = ResourceLink::create([
+                $resource->title = $data['link_title'] ?? 'Untitled Link';
+                ResourceLink::create([
                     'title' => $data['link_title'],
                     'url' => $data['resource_link']
-                ]);
+                ])->resource()->save($resource);
                 break;
         endswitch;
+        $resource->push();
         return $resource;
     }
 
     public function storeConceptResource(Request $request, Space $space, Concept $concept)
     {
         $resource = $this->createResource($request, $concept);
-        $concept->resources()->create([
-            'resourceful_type' => $resource::class,
-            'resourceful_id' => $resource->id,
-            'slug' => Str::random(8),
-            'creator_id' => $request->user()->id
-        ]);
         return redirect()->route('concept.show', ['space' => $space, 'concept' => $concept])->with('flash.banner', 'Resource added successfully!');
     }
 

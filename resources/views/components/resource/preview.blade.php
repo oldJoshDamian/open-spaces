@@ -8,14 +8,14 @@ $resourceful = $resource->resourceful;
     <a class="block"
         href="/pdf-reader/web/viewer.html?file=/storage/{{ $resourceful->url }}@if($resourceful->specific_pages)#page={{ $resourceful->specific_pages['start_page'] }} @endif">
         <div class="p-3 border-b border-gray-400">
-            <div title="{{ $resourceful->title }}" class="text-lg font-semibold text-blue-700 sm:truncate">
-                {{ $resourceful->title }}
+            <div title="{{ $resource->title }}" class="text-lg font-semibold text-blue-700 sm:truncate">
+                {{ $resource->title }}
             </div>
         </div>
         <div>
             <div class="p-3">
                 <img class="object-cover mx-auto w-60 h-72 sm:h-40 sm:w-32"
-                    src="/storage/{{ $resourceful->cover_page }}" alt="{{ $resourceful->title }}" />
+                    src="/storage/{{ $resourceful->cover_page }}" alt="{{ $resource->title }}" />
             </div>
             <div class="p-3 font-semibold text-blue-700 bg-white text-md">
                 <div class="flex items-center justify-between">
@@ -48,7 +48,7 @@ $resourceful = $resource->resourceful;
     <div x-data="{ show_full: false }">
         <div class="p-3 border-b border-gray-400">
             <div class="text-lg font-semibold text-blue-700">
-                {{ $resourceful->title ?? __('Untitled note') }}
+                {{ $resource->title ?? __('Untitled note') }}
             </div>
         </div>
         <p x-on:click="show_full = !show_full" :class="{ 'line-clamp-4 select-none': !show_full }"
@@ -69,7 +69,7 @@ $resourceful = $resource->resourceful;
     <div>
         <div class="p-3 border-b border-gray-400">
             <div class="text-lg font-semibold text-blue-700">
-                {{ $resourceful->title }}
+                {{ $resource->title }}
             </div>
         </div>
         <p class="p-3 break-words">
