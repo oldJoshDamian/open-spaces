@@ -17,8 +17,10 @@ class CreateResourcesTable extends Migration
             $table->id();
             $table->string('slug');
             $table->string('title')->nullable()->default('Untitled Resource');
-            $table->morphs('resourceable');
-            $table->morphs('resourceful');
+            $table->integer('resourceable_id')->nullable();
+            $table->string('resourceable_type')->nullable();
+            $table->integer('resourceful_id')->nullable();
+            $table->string('resourceful_type')->nullable();
             $table->timestamps();
         });
     }

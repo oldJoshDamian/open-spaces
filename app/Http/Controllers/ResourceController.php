@@ -141,35 +141,35 @@ class ResourceController extends Controller
                     $filename .= ' (Possible duplicate)';
                 }
                 $resource->title = $filename;
-                $resource->resourceful()->save(Document::create([
+                Document::create([
                     'url' => $filepath,
                     'mime_type' => $mime_type,
                     'cover_page' => $cover_page_path,
                     'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null
-                ]));
+                ])->resource()->save($resource);
                 break;
             case ('existing_document'):
                 $document = Document::find($data['existing_document']);
                 $resource->title = $document->resource->title;
-                $resource->resourceful()->save(Document::create([
+                Document::create([
                     'url' => $document->url,
                     'mime_type' => $document->mime_type,
                     'cover_page' => $document->cover_page,
                     'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null
-                ]));
+                ])->resource()->save($resource);
                 break;
             case ('personal_note'):
                 $resource->title = $data['note_title'] ?? 'Untitled Note';
-                $resource->resourceful()->save(PersonalNote::create([
+                PersonalNote::create([
                     'content' => $data['note_content']
-                ]));
+                ])->resource()->save($resource);
                 break;
             case ('resource_link'):
                 $resource->title = $data['link_title'] ?? 'Untitled Link';
-                $resource->resourceful()->save(ResourceLink::create([
+                ResourceLink::create([
                     'title' => $data['link_title'],
                     'url' => $data['resource_link']
-                ]));
+                ])->resource()->save($resource);
                 break;
         endswitch;
         $resource->push();
