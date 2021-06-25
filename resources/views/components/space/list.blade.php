@@ -1,5 +1,5 @@
 @props(['spaces'])
-<div class="grid grid-cols-1 gap-6 px-4 md:gap-6 lg:px-0 md:grid-cols-2 lg:grid-cols-3">
+<div class="grid grid-cols-1 gap-6 px-4 md:gap-6 sm:px-0 md:grid-cols-2 lg:grid-cols-3">
     @foreach($spaces as $space)
     <div class="bg-white shadow-md md:rounded-md">
         <a href="{{ route('space.show', ['space' => $space]) }}">

@@ -28,9 +28,9 @@
 
     <div class="py-6 md:py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="mb-20 overflow-hidden sm:mb-0">
-                <div class="px-4 pt-6 lg:pt-0 md:px-0">
-                    <div class="justify-end mb-6 sm:mb-0 sm:flex">
+            <div class="mb-20 overflow-hidden md:mb-0">
+                <div class="px-4 pt-6 lg:pt-0 sm:px-0">
+                    <div class="justify-end mb-6 sm:mb-3 sm:flex">
                         <div class="flex">
                             <x-jet-input type="search" class="w-full mr-3 bg-gray-100 sm:w-96"
                                 placeholder="search for resources" />
@@ -42,7 +42,7 @@
                     <div class="mb-4 text-xl font-bold text-blue-700">
                         {{ $topic->name }}
                     </div>
-                    <div class="mt-6 mb-3 text-md font-semibold">
+                    <div class="mt-6 mb-3 font-semibold text-md">
                         Resources ({{ $resources->count() }})
                     </div>
                     <div class="grid grid-cols-1 gap-6 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -67,7 +67,7 @@
                     @endif
                 </div>
             </div>
-            <div class="fixed bottom-0 flex items-center justify-center w-full p-3 bg-gray-100 sm:hidden">
+            <div class="fixed bottom-0 left-0 flex items-center justify-center w-full p-3 bg-gray-100 lg:hidden">
                 <a
                     href="{{ route('topic.resource.create', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) }}">
                     <x-jet-button class="bg-green-500">

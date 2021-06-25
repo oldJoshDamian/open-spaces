@@ -12,7 +12,7 @@
                     {{ $concept->title }}
                 </a>
             </h2>
-            <div class="justify-end hidden sm:flex">
+            <div class="justify-end hidden md:flex">
                 <a class="mr-6" href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}">
                     <x-jet-button class="bg-green-500">
                         add new topic
@@ -29,8 +29,8 @@
 
     <div class="py-6 md:py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="mb-20 overflow-hidden sm:mb-0">
-                <div class="px-4 pt-6 lg:pt-0 md:px-0">
+            <div class="mb-20 overflow-hidden md:mb-0">
+                <div class="px-4 pt-6 lg:pt-0 sm:px-0">
                     <div class="justify-end mb-6 sm:mb-0 sm:flex">
                         <div class="flex">
                             <x-jet-input type="search" class="w-full mr-3 bg-gray-100 sm:w-96"
@@ -64,10 +64,10 @@
                     </div>
                     @endif
                 </div>
-                <div class="px-4 mt-10 mb-3 text-lg font-bold text-black md:px-0">
+                <div class="px-4 mt-10 mb-3 text-lg font-bold text-black sm:px-0">
                     Resources ({{ $resources->count() }})
                 </div>
-                <div class="grid grid-cols-1 gap-6 px-4 sm:gap-4 md:px-0 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="grid grid-cols-1 gap-6 px-4 sm:gap-4 sm:px-0 sm:grid-cols-2 lg:grid-cols-4">
                     @foreach ($resources as $resource)
                     <div class="self-top">
                         <x-resource.preview :resource="$resource" />
@@ -90,7 +90,7 @@
             </div>
 
             <div
-                class="fixed bottom-0 flex items-center justify-center w-full p-3 overflow-x-auto bg-gray-100 sm:hidden flex-nowrap">
+                class="fixed bottom-0 left-0 flex items-center justify-center w-full p-3 overflow-x-auto bg-gray-100 md:hidden flex-nowrap">
                 <a class="mr-6" href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}">
                     <x-jet-button class="bg-green-500">
                         add new topic

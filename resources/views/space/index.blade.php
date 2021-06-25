@@ -17,14 +17,14 @@
             class="@if($spaces->count() > 0 || $discover->count() > 0) max-w-7xl @else max-w-2xl @endif mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden sm:rounded-lg">
                 @livewire('search.search-all')
-                <div class="px-4 mb-3 text-lg font-semibold text-gray-700 md:px-6 lg:px-0">
+                <div class="px-4 mb-3 text-lg font-semibold text-gray-700 sm:px-0">
                     Your spaces
                 </div>
                 <div>
                     <x-space.list :spaces="$spaces" />
                 </div>
                 @if($spaces->isEmpty())
-                <div class="p-4 mx-4 text-lg font-semibold text-center text-gray-800 bg-gray-100 lg:mx-0">
+                <div class="p-4 mx-4 text-lg font-semibold text-center text-gray-800 bg-gray-100 sm:mx-0">
                     No spaces yet! <a href="{{ route('space.create') }}" class="text-blue-700">create one.</a>
                 </div>
                 @endif
@@ -35,14 +35,14 @@
                 @endif
 
                 @if($discover->count() > 0 || !auth()->user())
-                <div class="px-4 mt-10 mb-3 text-lg font-semibold text-gray-700 lg:px-0">
+                <div class="px-4 mt-10 mb-3 text-lg font-semibold text-gray-700 sm:px-0">
                     Discover spaces
                 </div>
                 <div>
                     <x-space.list :spaces="$discover" />
                 </div>
                 @if($discover->isEmpty())
-                <div class="p-4 mx-4 text-lg font-semibold text-center text-gray-800 bg-gray-100 lg:mx-0">
+                <div class="p-4 mx-4 text-lg font-semibold text-center text-gray-800 bg-gray-100 sm:mx-0">
                     Nothing to discover yet! <a href="{{ route('space.create') }}" class="text-blue-700">create a new
                         space.</a>
                 </div>
