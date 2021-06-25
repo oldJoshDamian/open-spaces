@@ -42,7 +42,7 @@
                     <div class="mb-4 text-xl font-bold text-blue-700">
                         {{ $topic->name }}
                     </div>
-                    <div class="mt-6 mb-3 text-lg font-bold">
+                    <div class="mt-6 mb-3 text-md font-semibold">
                         Resources ({{ $resources->count() }})
                     </div>
                     <div class="grid grid-cols-1 gap-6 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

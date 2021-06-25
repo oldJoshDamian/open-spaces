@@ -13,7 +13,7 @@ class AddSpecificPagesToDocumentsTable extends Migration
     */
     public function up() {
         Schema::table('documents', function (Blueprint $table) {
-            $table->text('specific_pages')->nullable();
+            $table->longText('specific_pages')->nullable();
         });
     }
 
