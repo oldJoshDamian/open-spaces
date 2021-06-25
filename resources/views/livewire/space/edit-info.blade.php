@@ -25,12 +25,12 @@
             <!-- Current Profile Photo -->
             <div class="mt-2" x-show="! photoPreview">
                 <img src="{{ $this->space->profile_photo_url }}" alt="{{ $this->space->name }}"
-                    class="object-cover w-full h-56 lg:h-72">
+                class="object-cover w-full h-72 lg:h-72">
             </div>
 
             <!-- New Profile Photo Preview -->
             <div class="mt-2" x-show="photoPreview">
-                <span class="block w-full h-56 lg:h-72"
+                <span class="block w-full h-72 sm:h-60 md:h-56 lg:h-72"
                     x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' + photoPreview + '\');'">
                 </span>
             </div>

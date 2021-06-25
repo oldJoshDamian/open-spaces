@@ -18,34 +18,31 @@ use App\Models\PersonalNote;
 class ResourceController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function index() {
         //
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createTopicResource(Space $space, Concept $concept, Topic $topic)
-    {
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function createTopicResource(Space $space, Concept $concept, Topic $topic) {
         return view('resource.create', compact('space', 'concept', 'topic'));
     }
 
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function storeTopicResource(Request $request, Space $space, Concept $concept, Topic $topic)
-    {
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+    public function storeTopicResource(Request $request, Space $space, Concept $concept, Topic $topic) {
         $resource = $this->createResource($request, $topic);
         return redirect()->route(
             'topic.show',
@@ -60,13 +57,11 @@ class ResourceController extends Controller
         );
     }
 
-    public function createConceptResource(Space $space, Concept $concept)
-    {
+    public function createConceptResource(Space $space, Concept $concept) {
         return view('resource.create', compact('space', 'concept'));
     }
 
-    private function createResource(Request $request, $resourceable)
-    {
+    private function createResource(Request $request, $resourceable) {
         $data = $request->validate([
             'resource_type' => [
                 'required',
@@ -117,113 +112,107 @@ class ResourceController extends Controller
             'creator_id' => $request->user()->id
         ]);
         switch ($data['resource_type']):
-            case ('new_document'):
-                $document_file = $request->file('document_file');
-                $mime_type = $document_file->getMimeType();
-                $filepath = $document_file->store(
-                    'resource_files',
-                    'public'
-                );
-                $cover_page_data = substr(
-                    $request->cover_page_data,
-                    strpos($request->cover_page_data, ",") + 1
-                );
-                if ($cover_page_data) {
-                    $cover_page_name = Str::random(16) . '.png';
-                    $cover_page_path = 'document_cover_pages/' . $cover_page_name;
-                    Storage::disk('public')->put($cover_page_path, base64_decode($cover_page_data));
-                }
-                /*  if ($data['document_name']) {
+        case ('new_document'):
+            $document_file = $request->file('document_file');
+            $mime_type = $document_file->getMimeType();
+            $filepath = $document_file->store(
+                'resource_files',
+                'public'
+            );
+            $cover_page_data = substr(
+                $request->cover_page_data,
+                strpos($request->cover_page_data, ",") + 1
+            );
+            if ($cover_page_data) {
+                $cover_page_name = Str::random(16) . '.png';
+                $cover_page_path = 'document_cover_pages/' . $cover_page_name;
+                Storage::disk('public')->put($cover_page_path, base64_decode($cover_page_data));
+            }
+            /*  if ($data['document_name']) {
                 $data['document_name'] = $data['document_name'] . '.' . $document_file->extension();
             } */
-                $filename = $data['document_name'] ?? $document_file->getClientOriginalName();
-                if ($resourceable->loadMissing('resources.resourceful')->resources->pluck('resourceful.title')->flatten()->contains($filename)) {
-                    $filename .= ' (Possible duplicate)';
-                }
-                $resource->title = $filename;
-                Document::create([
-                    'url' => $filepath,
-                    'mime_type' => $mime_type,
-                    'cover_page' => $cover_page_path,
-                    'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null
-                ])->resource()->save($resource);
-                break;
-            case ('existing_document'):
-                $document = Document::find($data['existing_document']);
-                $resource->title = $document->resource->title;
-                Document::create([
-                    'url' => $document->url,
-                    'mime_type' => $document->mime_type,
-                    'cover_page' => $document->cover_page,
-                    'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null
-                ])->resource()->save($resource);
-                break;
-            case ('personal_note'):
-                $resource->title = $data['note_title'] ?? 'Untitled Note';
-                PersonalNote::create([
-                    'content' => $data['note_content']
-                ])->resource()->save($resource);
-                break;
-            case ('resource_link'):
-                $resource->title = $data['link_title'] ?? 'Untitled Link';
-                ResourceLink::create([
-                    'title' => $data['link_title'],
-                    'url' => $data['resource_link']
-                ])->resource()->save($resource);
-                break;
+            $filename = $data['document_name'] ?? $document_file->getClientOriginalName();
+            if ($resourceable->loadMissing('resources')->resources->pluck('title')->flatten()->contains($filename)) {
+                $filename .= ' (Possible duplicate)';
+            }
+            $resource->title = $filename;
+            Document::create([
+                'url' => $filepath,
+                'mime_type' => $mime_type,
+                'cover_page' => $cover_page_path,
+                'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null
+            ])->resource()->save($resource);
+            break;
+        case ('existing_document'):
+            $document = Document::find($data['existing_document']);
+            $resource->title = $document->resource->title;
+            Document::create([
+                'url' => $document->url,
+                'mime_type' => $document->mime_type,
+                'cover_page' => $document->cover_page,
+                'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null
+            ])->resource()->save($resource);
+            break;
+        case ('personal_note'):
+            $resource->title = $data['note_title'] ?? 'Untitled Note';
+            PersonalNote::create([
+                'content' => $data['note_content']
+            ])->resource()->save($resource);
+            break;
+        case ('resource_link'):
+            $resource->title = $data['link_title'] ?? 'Untitled Link';
+            ResourceLink::create([
+                'url' => $data['resource_link']
+            ])->resource()->save($resource);
+            break;
         endswitch;
         $resource->push();
         return $resource;
     }
 
-    public function storeConceptResource(Request $request, Space $space, Concept $concept)
-    {
+    public function storeConceptResource(Request $request, Space $space, Concept $concept) {
         $resource = $this->createResource($request, $concept);
         return redirect()->route('concept.show', ['space' => $space, 'concept' => $concept])->with('flash.banner', 'Resource added successfully!');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Resource  $resource
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Resource $resource)
-    {
+    * Display the specified resource.
+    *
+    * @param  \App\Models\Resource  $resource
+    * @return \Illuminate\Http\Response
+    */
+    public function show(Resource $resource) {
         //
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Resource  $resource
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Resource $resource)
-    {
+    * Show the form for editing the specified resource.
+    *
+    * @param  \App\Models\Resource  $resource
+    * @return \Illuminate\Http\Response
+    */
+    public function edit(Resource $resource) {
         //
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Resource  $resource
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Resource $resource)
-    {
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  \App\Models\Resource  $resource
+    * @return \Illuminate\Http\Response
+    */
+    public function update(Request $request, Resource $resource) {
         //
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Resource  $resource
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Resource $resource)
-    {
+    * Remove the specified resource from storage.
+    *
+    * @param  \App\Models\Resource  $resource
+    * @return \Illuminate\Http\Response
+    */
+    public function destroy(Resource $resource) {
         //
     }
 }

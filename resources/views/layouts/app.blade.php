@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="theme-color" content="#10b981">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Open Spaces" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#10b981" />
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -14,6 +18,9 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <link rel="icon" href="{{ asset('icon/logo.png') }}" type="image/x-icon">
+    <link rel="apple--icon" href="{{ asset('icon/logo_180.png') }}">
 
     @livewireStyles
 
@@ -21,6 +28,12 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="{{ asset('js/pdf.js') }}" defer></script>
     <script src="{{ asset('js/pdf.worker.min.js') }}" defer></script>
+    {{--  @env('local')
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>
+        eruda.init();
+    </script>
+    @endenv --}}
 </head>
 
 <body class="font-sans antialiased">
@@ -31,7 +44,7 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-        <header class="bg-white shadow">
+        <header class="bg-white sticky top-16 shadow">
             <div class="px-4 py-5 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 {{ $header }}
             </div>
@@ -41,12 +54,24 @@
         <!-- Page Content -->
         <main>
             {{ $slot }}
+            <script type="module" src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate"></script>
+            <div class="relative z-50 flex justify-center">
+                <pwa-update swpath="/service-worker.js"></pwa-update>
+            </div>
         </main>
     </div>
 
     @stack('modals')
 
     @livewireScripts
-</body>
 
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(console.log('service worker registered'));
+            })
+        }
+    </script>
+</body>
 </html>

@@ -26,7 +26,7 @@
                         <div class="flex flex-row items-center p-4 border-b border-gray-300 md:flex-col">
                             <div class="flex-shrink-0 mr-3 md:mb-3">
                                 <img class="object-cover w-16 h-16 rounded-full md:w-36 md:h-36"
-                                    src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
+                                src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
                             </div>
                             <div>
                                 <div class="text-xl font-semibold text-gray-800">
@@ -42,7 +42,7 @@
                     @endcan
                     <div x-data="{ show_des: false }">
                         <div x-on:click="show_des = !show_des"
-                            class="flex justify-between px-4 py-2 text-lg font-medium text-gray-700 cursor-pointer lg:cursor-auto lg:hidden">
+                            class="flex select-none justify-between px-4 py-2 text-lg font-medium text-gray-700 cursor-pointer lg:cursor-auto lg:hidden">
                             <span>
                                 Description
                             </span>
@@ -55,6 +55,7 @@
                             {{ $space->description ?? __('no description available') }}
                         </div>
                     </div>
+                    @env('production')
                     @can('share', $space)
                     <div x-data="{ show_copy_options: false }"
                         x-init="() => { show_copy_options = (window.outerWidth > 768) ? true : false }"
@@ -72,6 +73,7 @@
                         </div>
                     </div>
                     @endcan
+                    @endenv
                 </div>
                 <div class="flex-1">
                     <div class="overflow-hidden">
