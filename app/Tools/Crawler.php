@@ -12,17 +12,18 @@ class Crawler
 {
     public function crawl()
     {
-        $crawler = "crawlFor" . Str::title($this->getDataSet());
-        if (method_exists($this, $crawler)) {
-            return $this->{$crawler}();
-        } else {
-            return $this->crawlForConcepts()->crawlForResources()->crawlForSpaces()->crawlForTopics();
-        }
+        $data_sets = $this->getDataSets();
+        collect($data_sets)->each(function ($data_set) {
+            $crawler = "crawlFor" . Str::title($data_set);
+            if (method_exists($this, $crawler)) {
+                return $this->{$crawler}();
+            }
+        });
     }
 
-    public function getDataSet(): string
+    public function getDataSets(): array
     {
-        return $this->searchEngine()->getDataSet();
+        return $this->searchEngine()->getDataSets();
     }
 
     public function getQuery(): string
@@ -37,25 +38,25 @@ class Crawler
 
     public function crawlForResources()
     {
-        $this->searchEngine()->compileResults('resources', Resource::search($this->getQuery())->get());
+        $this->searchEngine()->compileRawResults('resources', Resource::search($this->getQuery()));
         return $this;
     }
 
     public function crawlForTopics()
     {
-        $this->searchEngine()->compileResults('topics', Topic::search($this->getQuery())->get());
+        $this->searchEngine()->compileRawResults('topics', Topic::search($this->getQuery()));
         return $this;
     }
 
     public function crawlForConcepts()
     {
-        $this->searchEngine()->compileResults('concepts', Concept::search($this->getQuery())->get());
+        $this->searchEngine()->compileRawResults('concepts', Concept::search($this->getQuery()));
         return $this;
     }
 
     public function crawlForSpaces()
     {
-        $this->searchEngine()->compileResults('spaces', Space::search($this->getQuery())->get());
+        $this->searchEngine()->compileRawResults('spaces', Space::search($this->getQuery()));
         return $this;
     }
 }
