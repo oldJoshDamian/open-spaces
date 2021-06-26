@@ -2,14 +2,15 @@
 
 namespace App\Tools;
 
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Collection;
+use Laravel\Scout\Builder;
 
 class SearchEngine
 {
     private $query;
-    private $data_set = 'all';
-    private Collection $results;
+    private $data_sets = ['concepts', 'topics', 'resources', 'spaces'];
+    private Collection $raw_results;
+    private Collection $baked_results;
     private Crawler $crawler;
 
     public function __construct()
@@ -17,9 +18,9 @@ class SearchEngine
         //
     }
 
-    public function search(string $query = '', string $data_set = 'all')
+    public function search(string $query = '', array $data_sets = ['concepts', 'topics', 'resources', 'spaces'])
     {
-        $this->data_set = $data_set;
+        $this->data_sets = $data_sets;
         $this->query = $query;
         if (!empty(trim($this->query))) {
             $this->crawler = resolve('SearchEngine\Crawler');
@@ -28,9 +29,14 @@ class SearchEngine
         return $this;
     }
 
-    public function getResults()
+    public function getRawResults(): Collection
     {
-        return $this->results ?? collect([]);
+        return $this->raw_results ?? collect([]);
+    }
+
+    public function getBakedResults(): Collection
+    {
+        return $this->baked_results ?? collect([]);
     }
 
     public function getQuery()
@@ -38,17 +44,22 @@ class SearchEngine
         return $this->query;
     }
 
-    public function getDataSet()
+    public function getDataSets()
     {
-        return $this->data_set;
+        return $this->data_sets;
     }
 
-    public function compileResults(string $key, Collection|EloquentCollection $result_set)
+    public function bake(Collection $prepared_results)
     {
-        if (isset($this->results)) {
+        return $this->baked_results = $prepared_results;
+    }
+
+    public function compileRawResults(string $key, Builder $result_set)
+    {
+        if (isset($this->raw_results)) {
         } else {
-            $this->results = collect([]);
+            $this->raw_results = collect([]);
         }
-        return $this->results = $this->results->put($key, $result_set);
+        return $this->raw_results = $this->raw_results->put($key, $result_set);
     }
 }
