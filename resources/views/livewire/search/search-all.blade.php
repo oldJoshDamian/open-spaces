@@ -3,7 +3,7 @@
         <div>
             <div class="flex">
                 <x-jet-input wire:model="query" wire:change="search" type="search"
-                    class="w-full mr-3 bg-gray-100 sm:w-96" placeholder="search for spaces, concepts, topics and resources" />
+                    class="w-full mr-3 bg-gray-100 sm:w-96" placeholder="search Open Spaces" />
                 <x-jet-secondary-button wire:click="stopSuggestion" class="text-blue-700 bg-gray-100">
                     <i class="text-md fas fa-search"></i>
                 </x-jet-secondary-button>
