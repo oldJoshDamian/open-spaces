@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="mr-4 font-semibold leading-tight text-blue-700 text-md sm:text-lg">
-                <a class="underline" href="{{ route('space.index') }}">Spaces</a>
+            <h2 class="mr-4 font-medium leading-wide text-blue-700 text-base sm:text-lg">
+                <a class="" href="{{ route('space.index') }}">Spaces</a>
                 <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-                <a class="underline" href="{{ route('space.show', ['space' => $space]) }}">
+                <a class="text-black">
                     {{ $space->name }}
                 </a>
             </h2>
-            <a class="flex-shrink-0" href="{{ route('concept.create', ['space' => $space]) }}">
+            <a class="flex-shrink-0 hidden sm:inline-flex" href="{{ route('concept.create', ['space' => $space]) }}">
                 <x-jet-button class="bg-green-500">
                     add new concept
                 </x-jet-button>
@@ -18,7 +18,7 @@
 
     <div class="py-6 md:py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row">
+            <div class="flex flex-col mb-20 sm:mb-0 lg:flex-row">
                 <div class="h-full bg-gray-50 lg:w-80 lg:mr-4">
                     @can('update', $space)
                     <a href="{{ route('space.edit', ['space' =>$space]) }}">
@@ -26,7 +26,7 @@
                         <div class="flex flex-row items-center p-4 border-b border-gray-300 md:flex-col">
                             <div class="flex-shrink-0 mr-3 md:mb-3">
                                 <img class="object-cover w-16 h-16 rounded-full md:w-36 md:h-36"
-                                    src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
+                                src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
                             </div>
                             <div>
                                 <div class="text-xl font-semibold text-gray-800">
@@ -59,7 +59,7 @@
                     <div x-data="{ show_copy_options: false }"
                         x-init="() => { show_copy_options = (window.outerWidth > 768) ? true : false }"
                         class="py-3 font-bold text-center text-blue-700 bg-gray-300 bg-opacity-75">
-                        <span x-on:click="show_copy_options = !show_copy_options;" class="text-lg cursor-pointer">
+                        <span x-on:click="show_copy_options = !show_copy_options;" class="text-lg select-none cursor-pointer">
                             <i class="mr-1 fas fa-share-alt"></i>
                             Share space
                         </span>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="flex-1">
                     <div class="overflow-hidden">
-                        <div class="px-4 pt-6 lg:pt-0 sm:px-0">
+                        <div class="px-4 pt-7 lg:pt-0 sm:px-0">
                             <div class="justify-end mb-6 sm:flex">
                                 <div class="flex">
                                     <x-jet-input type="search" class="w-full mr-3 bg-gray-100 sm:w-96"
@@ -85,13 +85,13 @@
                                     </x-jet-secondary-button>
                                 </div>
                             </div>
-                            <div class="mb-2 text-lg font-semibold text-black">
+                            <div class="mb-2 text-md font-breadcrumb font-semibold">
                                 Concepts ({{ $concepts->count() }})
                             </div>
-                            <div class="grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-3">
+                            <div class="grid grid-cols-2 gap-2 md:grid-cols-2 lg:grid-cols-3">
                                 @foreach ($concepts as $concept)
                                 <a href="{{ route('concept.show', ['concept' => $concept, 'space' => $space]) }}"
-                                    class="p-3 text-lg font-semibold text-center text-blue-700 bg-white shadow-md">
+                                    class="p-3 text-md font-medium text-center text-blue-700 bg-white">
                                     {{ $concept->title }}
                                 </a>
                                 @endforeach
@@ -111,6 +111,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="fixed bottom-0 left-0 flex items-center justify-center w-full p-3 bg-gray-100 sm:hidden">
+                <a href="{{ route('concept.create', ['space' => $space]) }}">
+                    <x-jet-button class="bg-green-500">
+                        add new concept
+                    </x-jet-button>
+                </a>
             </div>
         </div>
     </div>

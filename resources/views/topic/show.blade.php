@@ -1,19 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="mr-4 font-semibold leading-tight text-blue-700 text-md sm:text-lg">
-                <a class="underline" href="{{ route('space.index') }}">Spaces</a>
+            <h2 class="mr-4 font-medium font-breadcrumb leading-wide text-blue-700 text-md sm:text-lg">
+                <a class="" href="{{ route('space.index') }}">Spaces</a>
                 <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-                <a class="underline" href="{{ route('space.show', ['space' => $space]) }}">
+                <a class="" href="{{ route('space.show', ['space' => $space]) }}">
                     {{ $space->name }}
                 </a>
                 <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-                <a class="underline" href="{{ route('concept.show', ['space' => $space, 'concept' => $concept]) }}">
+                <a class="" href="{{ route('concept.show', ['space' => $space, 'concept' => $concept]) }}">
                     {{ $concept->title }}
                 </a>
                 <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-                <a class="underline"
-                    href="{{ route('topic.show', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) }}">
+                <a class="text-black">
                     {{ $topic->name }}
                 </a>
             </h2>

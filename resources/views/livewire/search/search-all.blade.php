@@ -1,5 +1,5 @@
 <div>
-    <div class="justify-end mb-6 md:mb-2 sm:flex">
+    <div class="justify-end px-4 sm:px-0 mb-6 md:mb-2 sm:flex">
         <div>
             <div class="flex">
                 <x-jet-input wire:model="query" wire:change="search" type="search"

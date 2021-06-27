@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="mr-4 font-semibold leading-tight text-blue-700 text-md sm:text-lg">
-                <a class="underline" href="{{ route('space.index') }}">Spaces</a>
+            <h2 class="mr-4 capitalize font-medium leading-wide text-blue-700 font-breadcrumb text-md sm:text-lg">
+                <a class="" href="{{ route('space.index') }}">Spaces</a>
                 <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-                <a class="underline" href="{{ route('space.show', ['space' => $space]) }}">
+                <a class="" href="{{ route('space.show', ['space' => $space]) }}">
                     {{ $space->name }}
                 </a>
                 <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-                <a class="underline" href="{{ route('concept.show', ['space' => $space, 'concept' => $concept]) }}">
+                <a class="text-black">
                     {{ $concept->title }}
                 </a>
             </h2>
@@ -40,7 +40,7 @@
                             </x-jet-secondary-button>
                         </div>
                     </div>
-                    <div class="mb-3 text-lg font-bold text-black">
+                    <div class="mb-3 text-lg font-bold text-gray-800">
                         Topics ({{ $topics->count() }})
                     </div>
                     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -52,7 +52,7 @@
                         @endforeach
                     </div>
                     @if($topics->isEmpty())
-                    <div class="text-lg font-semibold text-gray-800">
+                    <div class="text-lg font-semibold text-gray-600">
                         No topics yet! <a href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}"
                             class="text-blue-700">add
                             one.</a>
@@ -64,7 +64,7 @@
                     </div>
                     @endif
                 </div>
-                <div class="px-4 mt-10 mb-3 text-lg font-bold text-black sm:px-0">
+                <div class="px-4 mt-10 mb-3 text-lg font-bold text-gray-700 sm:px-0">
                     Resources ({{ $resources->count() }})
                 </div>
                 <div class="grid grid-cols-1 gap-6 px-4 sm:gap-4 sm:px-0 sm:grid-cols-2 lg:grid-cols-4">

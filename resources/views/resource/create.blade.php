@@ -1,23 +1,22 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-base font-semibold leading-tight text-blue-700 sm:text-lg">
-            <a class="underline" href="{{ route('space.index') }}">{{ __('Spaces') }}</a>
+        <h2 class="text-base font-medium leading-wide font-breadcrumb text-blue-700 sm:text-lg">
+            <a class="" href="{{ route('space.index') }}">{{ __('Spaces') }}</a>
             <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-            <a class="underline" href="{{ route('space.show', ['space' => $space]) }}">{{ $space->name }}</a>
+            <a class="" href="{{ route('space.show', ['space' => $space]) }}">{{ $space->name }}</a>
             <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-            <a class="underline" href="{{ route('concept.show', ['space' => $space, 'concept' => $concept]) }}">
+            <a class="" href="{{ route('concept.show', ['space' => $space, 'concept' => $concept]) }}">
                 {{ $concept->title }}
             </a>
             @isset($topic)
             <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-            <a class="underline"
+            <a class=""
                 href="{{ route('topic.show', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) }}">
                 {{ $topic->name }}
             </a>
             @endisset
             <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-            <a class="underline"
-                href="{{ (isset($topic)) ? route('topic.resource.create', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) : route('concept.resource.create', ['space' => $space, 'concept' => $concept]) }}">
+            <a class="text-black">
                 {{ __('Add resource') }}
             </a>
         </h2>

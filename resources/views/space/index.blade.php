@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="text-xl font-bold leading-tight text-green-500">
+            <h2 class="text-xl font-breadcrumb font-bold leading-wide tracking-wide text-green-600">
                 {{ __('Spaces') }}
             </h2>
             <a href="{{ route('space.create') }}">

@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold leading-tight text-blue-700 text-md sm:text-lg">
-            <a class="underline" href="{{ route('space.index') }}">{{ __('Spaces') }}</a>
-            <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-            <a class="underline" href="{{ route('space.show', ['space' => $space]) }}">{{ $space->name }}</a>
-            <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
-            <a class="underline" href="{{ route('concept.create', ['space' => $space]) }}">
+        <h2 class="font-medium leading-wide text-blue-700 text-md sm:text-lg">
+            <a class="" href="{{ route('space.index') }}">{{ __('Spaces') }}</a>
+            <i class="mx-1 text-gray-400 fas fa-chevron-right"></i>
+            <a class="" href="{{ route('space.show', ['space' => $space]) }}">{{ $space->name }}</a>
+            <i class="mx-1 text-gray-400 fas fa-chevron-right"></i>
+            <a class="" href="{{ route('concept.create', ['space' => $space]) }}">
                 {{ __('Add Concept') }}
             </a>
         </h2>
