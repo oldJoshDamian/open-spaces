@@ -13,9 +13,17 @@ class SearchAll extends Component
 
     public function stopSuggestion()
     {
-        $this->shouldSuggest = false;
+        $this->search();
         $this->showResults = true;
+        $this->shouldSuggest = false;
         return;
+    }
+
+    public function setQuery($queryString)
+    {
+        $this->query = $queryString;
+        $this->stopSuggestion();
+        return true;
     }
 
     public function getResultsProperty()
@@ -26,9 +34,15 @@ class SearchAll extends Component
     public function search()
     {
         $this->shouldSuggest = true;
+        $this->showResults = false;
         $this->search_engine->search($this->query)->bake($this->search_engine->getRawResults()->mapWithKeys(function ($result_build, $key) {
             return [$key => $result_build->get()];
         }));
+    }
+
+    public function updatedQuery()
+    {
+        $this->search();
     }
 
     public function getSearchEngineProperty()
@@ -39,7 +53,7 @@ class SearchAll extends Component
     public function render()
     {
         return view('livewire.search.search-all', [
-            'results' => $this->results->flatten()
+            'results' => ($this->only === 'all') ? $this->results->flatten() : $this->results[$this->only]
         ]);
     }
 }

@@ -16,7 +16,7 @@ module.exports = {
                     ...defaultTheme.fontFamily.sans
                 ],
                 breadcrumb: [
-                    'Verdana'
+                    'Lato', 'sans-serif'
                 ]
             },
         },
