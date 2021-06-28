@@ -30,7 +30,7 @@
     <div class="py-6 md:py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden md:mb-0">
-                <div class="px-4 pt-6 lg:pt-0 sm:px-0">
+                <div class="px-4 pt-6 sm:pt-0 sm:px-0">
                     <div class="justify-end mb-6 sm:mb-0 sm:flex">
                         <div class="flex">
                             <x-jet-input type="search" class="w-full mr-3 bg-gray-100 sm:w-96"
@@ -47,7 +47,7 @@
                         @foreach ($topics as $topic)
                         <a href="{{ route('topic.show', ['concept' => $concept, 'space' => $space, 'topic' => $topic]) }}"
                             class="p-3 text-base font-semibold text-center text-blue-700 bg-gray-100 shadow md:text-lg">
-                            {{ Str::title($topic->name) }}
+                            {{ $topic->name }}
                         </a>
                         @endforeach
                     </div>
@@ -58,11 +58,7 @@
                             one.</a>
                     </div>
                     @endif
-                    @if($topics->hasPages())
-                    <div class="mt-4">
-                        {{ $topics->links() }}
-                    </div>
-                    @endif
+
                 </div>
                 <div class="px-4 mt-10 mb-3 text-lg font-bold text-gray-700 sm:px-0">
                     Resources ({{ $resources->count() }})
@@ -82,11 +78,7 @@
                         one.</a>
                 </div>
                 @endif
-                @if($resources->hasPages())
-                <div class="mt-4">
-                    {{ $resources->links() }}
-                </div>
-                @endif
+
             </div>
 
             <div

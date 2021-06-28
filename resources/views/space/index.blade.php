@@ -47,11 +47,6 @@
                         space.</a>
                 </div>
                 @endif
-                @if($discover->hasPages())
-                <div class="mt-4">
-                    {{ $discover->links() }}
-                </div>
-                @endif
                 @endif
             </div>
         </div>

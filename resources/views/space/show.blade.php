@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="mr-4 font-medium leading-wide text-blue-700 text-base sm:text-lg">
+            <h2 class="mr-4 font-medium font-breadcrumb leading-wide text-blue-700 text-base sm:text-lg">
                 <a class="" href="{{ route('space.index') }}">Spaces</a>
                 <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
                 <a class="text-black">
