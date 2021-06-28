@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="text-xl font-breadcrumb font-bold leading-wide tracking-wide text-green-600">
+            <h2 class="text-xl font-bold tracking-wide text-green-600 font-breadcrumb leading-wide">
                 {{ __('Spaces') }}
             </h2>
             <a href="{{ route('space.create') }}">
@@ -15,7 +15,7 @@
     <div class="py-12">
         <div
             class="@if($spaces->count() > 0 || $discover->count() > 0) max-w-7xl @else max-w-2xl @endif mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden sm:rounded-lg">
+            <div class="overflow-hidden">
                 @livewire('search.search-all')
                 <div class="px-4 mb-3 text-lg font-semibold text-gray-700 sm:px-0">
                     Your spaces
