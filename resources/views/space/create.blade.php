@@ -1,9 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold leading-tight text-blue-700 text-md sm:text-lg">
-            <a class="underline" href="{{ route('space.index') }}">Spaces</a>
-            <i class="mx-3 text-gray-500 fas fa-chevron-right"></i>
-            <a class="underline" href="{{ route('space.create') }}">
+        <h2 class="font-medium leading-wide font-breadcrumb text-blue-700 text-md sm:text-lg">
+            <a class="" href="{{ route('space.index') }}">Spaces</a>
+            <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
+            <a class="text-black" href="{{ route('space.create') }}">
                 {{ __('Create New Space') }}
             </a>
         </h2>

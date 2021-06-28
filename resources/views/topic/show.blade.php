@@ -27,8 +27,8 @@
 
     <div class="py-6 md:py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="mb-20 overflow-hidden md:mb-0">
-                <div class="px-4 pt-6 lg:pt-0 sm:px-0">
+            <div class="overflow-hidden mb-20 sm:pb-16 md:mb-0">
+                <div class="px-4 pt-6 sm:pt-0 sm:px-0">
                     <div class="justify-end mb-6 sm:mb-3 sm:flex">
                         <div class="flex">
                             <x-jet-input type="search" class="w-full mr-3 bg-gray-100 sm:w-96"
