@@ -30,7 +30,7 @@
     <div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden md:mb-0">
-                <div class="px-4 pt-6 sm:pt-0 sm:px-0">
+                <div class="px-4">
                     <div class="mb-3 text-lg font-bold text-gray-800">
                         Topics ({{ $topics->count() }})
                     </div>
