@@ -1,12 +1,12 @@
 @props(['spaces'])
-<div class="grid grid-cols-1 gap-6 px-4 md:gap-6 sm:px-0 md:grid-cols-2 lg:grid-cols-3">
+<div class="grid grid-cols-1 gap-8 px-4 md:gap-6 sm:px-0 md:grid-cols-2 lg:grid-cols-3">
     @foreach($spaces as $space)
     <div class="bg-white shadow-md md:rounded-md">
         <a href="{{ route('space.show', ['space' => $space]) }}">
             <div class="flex flex-row items-center p-4 border-b border-gray-300">
                 <div class="flex-shrink-0 mr-3">
                     <img class="object-cover w-16 h-16 rounded-full md:w-24 md:h-24"
-                        src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
+                    src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
                 </div>
                 <div>
                     <div class="text-xl font-semibold text-gray-800 break-long-words">
