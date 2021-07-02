@@ -1,5 +1,5 @@
 <div>
-    <div class="justify-end px-4 mb-6 sm:px-0 md:mb-2 md:flex">
+    <div class="justify-end md:flex">
         <div class="relative">
             <div class="flex">
                 <x-jet-input wire:model="query" type="search" class="w-full mr-3 bg-gray-100 md:w-96"
@@ -27,7 +27,7 @@
     <div class="px-4 mb-3 text-lg font-semibold text-gray-700 sm:px-0">
         Search results for "{{ $query }}"
     </div>
-    <div class="grid grid-cols-1 gap-3 pb-10 mt-3 mb-6 border-b border-white md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-3 pb-10 mt-3 mb-3 md:grid-cols-2 lg:grid-cols-3">
         @foreach($results as $key => $result)
         @php
         $modelName = strtolower(class_basename($result));
