@@ -119,7 +119,7 @@ return [
     'mysql' => [
         'mode' => 'NATURAL_LANGUAGE',
         'model_directories' => [app_path('Models')],
-        'min_search_length' => 0,
+        'min_search_length' => 1,
         'min_fulltext_search_length' => 10,
         'min_fulltext_search_fallback' => 'LIKE',
         'query_expansion' => false

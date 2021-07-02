@@ -15,7 +15,7 @@ $resourceful = $resource->resourceful;
         <div>
             <div class="p-3">
                 <img class="object-cover mx-auto w-60 h-72 sm:h-40 sm:w-32"
-                    src="/storage/{{ $resourceful->cover_page }}" alt="{{ $resource->title }}" />
+                src="/storage/{{ $resourceful->cover_page }}" alt="{{ $resource->title }}" />
             </div>
             <div class="p-3 font-semibold text-blue-700 bg-white text-md">
                 <div class="flex items-center justify-between">
@@ -52,7 +52,7 @@ $resourceful = $resource->resourceful;
             </div>
         </div>
         <p x-on:click="show_full = !show_full" :class="{ 'line-clamp-4 select-none': !show_full }"
-            class="p-3 break-words cursor-pointer">
+            class="px-3 pb-3 whitespace-pre-line break-words cursor-pointer">
             {{ $resourceful->content }}
         </p>
         <div class="flex items-center justify-between p-3 font-semibold text-blue-700 bg-white text-md">
