@@ -28,7 +28,7 @@
     <div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden sm:pb-16 md:mb-0">
-                <div class="px-4 pt-6 sm:pt-0 sm:px-0">
+                <div class="px-4">
                     <div class="mb-4 text-xl font-bold text-blue-700">
                         {{ $topic->name }}
                     </div>
