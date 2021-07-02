@@ -2,7 +2,7 @@
     <div class="justify-end md:flex">
         <div class="relative">
             <div class="flex">
-                <x-jet-input wire:model="query" type="search" class="w-full mr-3 bg-gray-100 md:w-96"
+                <x-jet-input wire:model="query" type="search" name="open_search" class="w-full mr-3 bg-gray-100 md:w-96"
                     placeholder="search Open Spaces" />
                 <x-jet-secondary-button wire:click="stopSuggestion" class="text-blue-700 bg-gray-100">
                     <i class="text-md fas fa-search"></i>
