@@ -59,7 +59,17 @@
 
         <!-- Page Content -->
         <main>
+            @can('search')
+            <div class="px-4 mx-auto my-4 sm:px-6 lg:px-8 max-w-7xl">
+                @livewire('search.search-all')
+            </div>
+            <div class="py-6 border-t border-white">
+                {{ $slot }}
+            </div>
+            @endcan
+            @cannot('search')
             {{ $slot }}
+            @endcannot
             <script type="module" src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate"></script>
             <div class="relative z-50 flex justify-center">
                 <pwa-update swpath="/service-worker.js"></pwa-update>

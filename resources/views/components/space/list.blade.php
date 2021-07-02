@@ -5,7 +5,7 @@
         <a href="{{ route('space.show', ['space' => $space]) }}">
             <div class="flex flex-row items-center p-4 border-b border-gray-300">
                 <div class="flex-shrink-0 mr-3">
-                    <img class="object-cover w-16 h-16 rounded-full md:w-24 md:h-24"
+                    <img class="object-cover w-16 h-16 rounded-full brand-image md:w-24 md:h-24"
                         src="{{ $space->profile_photo_url }}" alt="{{ $space->name }}" />
                 </div>
                 <div>

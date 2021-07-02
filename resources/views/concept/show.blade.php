@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="mr-4 capitalize font-medium leading-wide text-blue-700 font-breadcrumb text-md sm:text-lg">
+            <h2 class="mr-4 font-medium text-blue-700 capitalize leading-wide font-breadcrumb text-md sm:text-lg">
                 <a class="" href="{{ route('space.index') }}">Spaces</a>
                 <i class="mx-1 text-gray-500 fas fa-chevron-right"></i>
                 <a class="" href="{{ route('space.show', ['space' => $space]) }}">
@@ -27,19 +27,10 @@
         </div>
     </x-slot>
 
-    <div class="py-6 md:py-12">
+    <div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden md:mb-0">
                 <div class="px-4 pt-6 sm:pt-0 sm:px-0">
-                    <div class="justify-end mb-6 sm:mb-0 sm:flex">
-                        <div class="flex">
-                            <x-jet-input type="search" class="w-full mr-3 bg-gray-100 sm:w-96"
-                                placeholder="search for topics and resources" />
-                            <x-jet-secondary-button class="text-blue-700 bg-gray-100">
-                                <i class="text-md fas fa-search"></i>
-                            </x-jet-secondary-button>
-                        </div>
-                    </div>
                     <div class="mb-3 text-lg font-bold text-gray-800">
                         Topics ({{ $topics->count() }})
                     </div>

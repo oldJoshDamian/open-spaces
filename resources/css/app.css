@@ -3,3 +3,8 @@
 @import 'tailwindcss/utilities';
 
 @import './scrollbar.css';
+
+.brand-image {
+    @apply border-8 border-green-500 border-double;
+    border-right-color: white;
+}
