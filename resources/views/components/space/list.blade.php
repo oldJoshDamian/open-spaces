@@ -1,7 +1,7 @@
 @props(['spaces'])
 <div class="grid grid-cols-1 gap-8 px-4 md:gap-6 sm:px-0 md:grid-cols-2 lg:grid-cols-3">
     @foreach($spaces as $space)
-    <div class="bg-white shadow-md md:rounded-md">
+    <div class="self-start bg-white shadow-md md:rounded-md">
         <a href="{{ route('space.show', ['space' => $space]) }}">
             <div class="flex flex-row items-center p-4 border-b border-gray-300">
                 <div class="flex-shrink-0 mr-3">
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="p-4 text-gray-700 text-md">
+            <div class="p-4 text-gray-700 break-words line-clamp-2 text-md">
                 {{ $space->description ?? __('no description available') }}
             </div>
         </a>

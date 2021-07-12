@@ -9,24 +9,27 @@ use Laravel\Scout\Searchable;
 class Topic extends Model
 {
     protected $guarded = [];
+    protected $withCount = ['resources'];
     use HasFactory,
-    Searchable;
+        Searchable;
 
     /**
-    * Get the route key for the model.
-    *
-    * @return string
-    */
-    public function getRouteKeyName() {
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
         return 'slug';
     }
 
     /**
-    * Get the indexable data array for the model.
-    *
-    * @return array
-    */
-    public function toSearchableArray() {
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
         return [
             'name' => $this->name
         ];
@@ -34,19 +37,22 @@ class Topic extends Model
 
 
     /**
-    * Get the value of the model's route key.
-    *
-    * @return mixed
-    */
-    public function getRouteKey() {
+     * Get the value of the model's route key.
+     *
+     * @return mixed
+     */
+    public function getRouteKey()
+    {
         return $this->slug;
     }
 
-    public function concept() {
+    public function concept()
+    {
         return $this->belongsTo(Concept::class, 'concept_id');
     }
 
-    public function resources() {
+    public function resources()
+    {
         return $this->morphMany(Resource::class, 'resourceable');
     }
 }

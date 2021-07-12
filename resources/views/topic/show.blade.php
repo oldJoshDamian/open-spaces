@@ -28,16 +28,16 @@
     <div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden sm:pb-16 md:mb-0">
-                <div class="px-4">
+                <div class="px-4 sm:px-0">
                     <div class="mb-4 text-xl font-bold text-blue-700">
                         {{ $topic->name }}
                     </div>
                     <div class="mt-6 mb-3 font-semibold text-md">
                         Resources ({{ $resources->count() }})
                     </div>
-                    <div class="grid grid-cols-1 gap-6 sm:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                    <div class="grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         @foreach ($resources as $resource)
-                        <div class="self-top">
+                        <div class="self-start self-top">
                             <x-resource.preview :resource="$resource" />
                         </div>
                         @endforeach

@@ -30,15 +30,15 @@
     <div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden md:mb-0">
-                <div class="px-4">
+                <div class="px-4 sm:px-0">
                     <div class="mb-3 text-lg font-bold text-gray-800">
                         Topics ({{ $topics->count() }})
                     </div>
-                    <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="flex flex-row flex-wrap gap-3 sm:gap-4">
                         @foreach ($topics as $topic)
                         <a href="{{ route('topic.show', ['concept' => $concept, 'space' => $space, 'topic' => $topic]) }}"
-                            class="p-3 text-base font-semibold text-center text-blue-700 bg-gray-100 shadow md:text-lg">
-                            {{ $topic->name }}
+                            class="flex-grow p-3 text-base font-semibold text-center text-blue-700 bg-gray-100 shadow sm:flex-grow-0 md:text-md">
+                            {{ $topic->name }} ({{ $topic->resources_count }})
                         </a>
                         @endforeach
                     </div>
@@ -49,8 +49,9 @@
                             one.</a>
                     </div>
                     @endif
-
                 </div>
+
+                @if($resources->isNotEmpty())
                 <div class="px-4 mt-10 mb-3 text-lg font-bold text-gray-700 sm:px-0">
                     Resources ({{ $resources->count() }})
                 </div>
@@ -61,15 +62,7 @@
                     </div>
                     @endforeach
                 </div>
-                @if($resources->isEmpty())
-                <div class="px-4 text-lg font-semibold text-gray-600 md:px-0">
-                    No resources yet! <a
-                        href="{{ route('concept.resource.create', ['space' => $space, 'concept' => $concept]) }}"
-                        class="text-blue-700">add
-                        one.</a>
-                </div>
                 @endif
-
             </div>
 
             <div

@@ -80,13 +80,22 @@
                             <div class="mb-2 font-semibold text-md font-breadcrumb">
                                 Concepts ({{ $concepts->count() }})
                             </div>
-                            <div class="grid grid-cols-2 gap-2 md:grid-cols-2 lg:grid-cols-3">
-                                @foreach ($concepts as $concept)
-                                <a href="{{ route('concept.show', ['concept' => $concept, 'space' => $space]) }}"
-                                    class="p-3 font-medium text-center text-blue-700 bg-white text-md">
-                                    {{ $concept->title }}
-                                </a>
-                                @endforeach
+                            <div x-data="{ show_options: false, move: function() { console.log('fish') } }" x-cloak>
+                                <div x-show="show_options" class="flex gap-3 mb-3">
+                                    <div ondragenter="console.log('hello')" class="p-4 text-center bg-gray-100">
+                                        <i class="text-3xl text-red-600 fas fa-trash"></i>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2 md:grid-cols-2 lg:grid-cols-3">
+                                    @foreach ($concepts as $concept)
+                                    <a x-on:drag="show_options = true" x-ref="{{ $concept->id }}"
+                                        ondrop="console.log('dropped')" x-on:dragend="show_options = false;"
+                                        href="{{ route('concept.show', ['concept' => $concept, 'space' => $space]) }}"
+                                        class="p-3 font-medium text-center text-blue-700 bg-white text-md">
+                                        {{ $concept->title }} ({{ $concept->topics_count }})
+                                    </a>
+                                    @endforeach
+                                </div>
                             </div>
                             @if($concepts->isEmpty())
                             <div class="text-lg font-semibold text-gray-800">

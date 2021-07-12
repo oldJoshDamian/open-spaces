@@ -141,6 +141,7 @@
                 previewPDF: function() {
                     this.can_add = false;
                     let file = event.target.files[0];
+                    document.getElementById('document_name').value = file.name;
                     const canvas = document.getElementById('canvas');
                     let url = '';
                     if (file) {
