@@ -34,12 +34,12 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="{{ asset('js/pdf.js') }}" defer></script>
     <script src="{{ asset('js/pdf.worker.min.js') }}" defer></script>
-    {{--  @env('local')
+    @env('local')
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>
         eruda.init();
     </script>
-    @endenv --}}
+    @endenv
 </head>
 
 <body class="font-sans antialiased">

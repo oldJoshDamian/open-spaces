@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    @if($showResults)
+    @if($showResults && $results->count() > 0)
     <div class="px-4 mb-3 text-lg font-semibold text-gray-700 sm:px-0">
         Search results for "{{ $query }}"
     </div>
