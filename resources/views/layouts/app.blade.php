@@ -82,7 +82,7 @@
     @livewireScripts
 
     <script>
-        // Check that service workers are supported
+       
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/service-worker.js').then(console.log('service worker registered'));
