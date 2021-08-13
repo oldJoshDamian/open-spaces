@@ -56,7 +56,12 @@
                         </div>
                     </div>
                     @can('share', $space)
-                    <div x-data="{ show_copy_options: false }"
+                    <div x-data="{ show_copy_options: false, copy: function() {
+                        var el = this.$refs.link_input;
+                        el.select();  el.setSelectionRange(0, 99999);
+                        document.execCommand('copy'); alert('Space link copied');
+                        el.blur();
+                      } }"
                         x-init="() => { show_copy_options = (window.outerWidth > 768) ? true : false }"
                         class="py-3 font-bold text-center text-blue-700 bg-gray-300 bg-opacity-75">
                         <span x-on:click="show_copy_options = !show_copy_options;"
@@ -67,7 +72,7 @@
                         <div x-show="show_copy_options" class="flex pt-3 mx-4 sm:mx-0">
                             <x-jet-input x-ref="link_input" type="text" class="w-full mr-2 bg-gray-100"
                                 value="{{ route('space.show', ['space' => $space]) }}" />
-                            <x-jet-secondary-button class="bg-gray-100">
+                            <x-jet-secondary-button x-on:click="copy()" class="bg-gray-100">
                                 <i class="text-lg text-blue-700 far fa-copy"></i>
                             </x-jet-secondary-button>
                         </div>
