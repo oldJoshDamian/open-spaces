@@ -22,7 +22,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-4 md:py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="p-4 overflow-hidden bg-white shadow-md sm:shadow-xl sm:p-6 sm:rounded-lg">
                 <form enctype="multipart/form-data" method="POST"
