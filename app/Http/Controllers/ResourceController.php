@@ -56,6 +56,11 @@ class ResourceController extends Controller
             'Resource added successfully!'
         );
     }
+    
+    private function resourceStorageDisk()
+    {
+        return config('app.storage_disk');
+    }
 
     public function createConceptResource(Space $space, Concept $concept) {
         return view('resource.create', compact('space', 'concept'));
@@ -117,7 +122,7 @@ class ResourceController extends Controller
             $mime_type = $document_file->getMimeType();
             $filepath = $document_file->store(
                 'resource_files',
-                'public'
+                $this->resourceStorageDisk()
             );
             $cover_page_data = substr(
                 $request->cover_page_data,
@@ -126,7 +131,7 @@ class ResourceController extends Controller
             if ($cover_page_data) {
                 $cover_page_name = Str::random(16) . '.png';
                 $cover_page_path = 'document_cover_pages/' . $cover_page_name;
-                Storage::disk('public')->put($cover_page_path, base64_decode($cover_page_data));
+                Storage::disk($this->resourceStorageDisk())->put($cover_page_path, base64_decode($cover_page_data));
             }
             /*  if ($data['document_name']) {
                 $data['document_name'] = $data['document_name'] . '.' . $document_file->extension();

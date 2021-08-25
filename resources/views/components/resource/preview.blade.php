@@ -15,7 +15,7 @@ $resourceful = $resource->resourceful;
         <div>
             <div class="p-3">
                 <img class="object-cover mx-auto w-60 h-72 sm:h-40 sm:w-32"
-                src="/storage/{{ $resourceful->cover_page }}" alt="{{ $resource->title }}" />
+                src="{{ $resourceful->cover_page_url }}" alt="{{ $resource->title }}" />
             </div>
             <div class="p-3 font-semibold text-blue-700 bg-white text-md">
                 <div class="flex items-center justify-between">
@@ -30,7 +30,7 @@ $resourceful = $resource->resourceful;
                 <div class="pt-3 text-blue-700">
                     @if($resourceful->specific_pages['start_page'])
                     <a class="underline"
-                        href="/pdf-reader/web/viewer.html?file=/storage/{{ $resourceful->url }}#page={{ $resourceful->specific_pages['start_page'] }}">Page
+                        href="/pdf-reader/web/viewer.html?file={{ $resourceful->full_url }}#page={{ $resourceful->specific_pages['start_page'] }}">Page
                         {{ $resourceful->specific_pages['start_page'] }}</a>
                     @endif
                     @if($resourceful->specific_pages['end_page'])
@@ -52,9 +52,7 @@ $resourceful = $resource->resourceful;
             </div>
         </div>
         <p x-on:click="show_full = !show_full" :class="{ 'line-clamp-4 select-none': !show_full }"
-            class="px-3 pb-3 whitespace-pre-line break-words cursor-pointer">
-            {{ $resourceful->content }}
-        </p>
+            class="px-3 pb-3 whitespace-pre-line break-words cursor-pointer">{{ $resourceful->content }}</p>
         <div class="flex items-center justify-between p-3 font-semibold text-blue-700 bg-white text-md">
             <div class="flex items-center flex-1 mr-4">
                 <i class="mr-2 text-xl fas fa-sticky-note"></i> Note
