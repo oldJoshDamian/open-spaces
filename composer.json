@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
         "lorisleiva/artisan-ui": "^0.3.0",
-        "yab/laravel-scout-mysql-driver": "^4.0"
+        "yab/laravel-scout-mysql-driver": "^4.0",
+        "ext-ftp": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
