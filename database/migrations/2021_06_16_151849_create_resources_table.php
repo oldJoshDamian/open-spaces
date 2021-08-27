@@ -25,6 +25,7 @@ class CreateResourcesTable extends Migration
         });
         if(config('database.default') === 'pgsql') {
             $DB = config('app.aliases.DB');
+            $DB::statement('ALTER TABLE resources ADD searchable tsvector NULL');
             $DB::statement('CREATE INDEX resources_searchable_index ON resources USING GIST (searchable)');
         }
     }

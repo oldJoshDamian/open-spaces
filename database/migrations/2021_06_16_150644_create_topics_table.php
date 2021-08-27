@@ -22,6 +22,7 @@ class CreateTopicsTable extends Migration
         });
         if(config('database.default') === 'pgsql') {
             $DB = config('app.aliases.DB');
+            $DB::statement('ALTER TABLE topics ADD searchable tsvector NULL');
             $DB::statement('CREATE INDEX topics_searchable_index ON topics USING GIST (searchable)');
         }
     }

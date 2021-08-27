@@ -26,6 +26,7 @@ class CreateSpacesTable extends Migration
         });
         if(config('database.default') === 'pgsql') {
             $DB = config('app.aliases.DB');
+            $DB::statement('ALTER TABLE spaces ADD searchable tsvector NULL');
             $DB::statement('CREATE INDEX spaces_searchable_index ON spaces USING GIST (searchable)');
         }
     }
