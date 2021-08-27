@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-ftp": "*",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -15,8 +16,8 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
         "lorisleiva/artisan-ui": "^0.3.0",
-        "yab/laravel-scout-mysql-driver": "^4.0",
-        "ext-ftp": "*"
+        "pmatseykanets/laravel-scout-postgres": "^7.3",
+        "yab/laravel-scout-mysql-driver": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

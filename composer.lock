@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32dd7d2aa39f157c63940a574f3dc6e8",
+    "content-hash": "584ffc0cd207b601817ac95f87219650",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2934,6 +2934,71 @@
                 }
             ],
             "time": "2020-07-20T17:29:33+00:00"
+        },
+        {
+            "name": "pmatseykanets/laravel-scout-postgres",
+            "version": "v7.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pmatseykanets/laravel-scout-postgres.git",
+                "reference": "64fd3d8021936bbeefe543d1c491402fe2274048"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pmatseykanets/laravel-scout-postgres/zipball/64fd3d8021936bbeefe543d1c491402fe2274048",
+                "reference": "64fd3d8021936bbeefe543d1c491402fe2274048",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "~6.0|~7.0|~8.0",
+                "illuminate/database": "~6.0|~7.0|~8.0",
+                "illuminate/support": "~6.0|~7.0|~8.0",
+                "laravel/scout": "~7.0|~8.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2.3",
+                "phpunit/phpunit": "^8.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ScoutEngines\\Postgres\\PostgresEngineServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ScoutEngines\\Postgres\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Matseykanets",
+                    "email": "pmatseykanets@gmail.com",
+                    "homepage": "https://github.com/pmatseykanets"
+                }
+            ],
+            "description": "PostgreSQL Full Text Search Driver for Laravel Scout",
+            "homepage": "https://github.com/pmatseykanets/laravel-scout-postgres",
+            "keywords": [
+                "fts",
+                "full text search",
+                "laravel",
+                "laravel scout",
+                "postgresql",
+                "search"
+            ],
+            "support": {
+                "issues": "https://github.com/pmatseykanets/laravel-scout-postgres/issues",
+                "source": "https://github.com/pmatseykanets/laravel-scout-postgres"
+            },
+            "time": "2021-01-06T18:43:10+00:00"
         },
         {
             "name": "pragmarx/google2fa",

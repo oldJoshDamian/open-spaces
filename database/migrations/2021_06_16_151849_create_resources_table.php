@@ -22,6 +22,11 @@ class CreateResourcesTable extends Migration
             $table->integer('resourceful_id')->nullable();
             $table->string('resourceful_type')->nullable();
             $table->timestamps();
+            
+            if(config('database.default') === 'pgsql') {
+                $DB = config('app.aliases.DB');
+                $DB::statement('CREATE INDEX resources_searchable_index ON resources USING GIST (searchable)');
+            }
         });
     }
 
