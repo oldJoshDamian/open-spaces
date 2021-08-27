@@ -20,11 +20,11 @@ class CreateConceptsTable extends Migration
             $table->string('slug')->unique();
             $table->string('code')->nullable();
             $table->timestamps();
-            if(config('database.default') === 'pgsql') {
-                $DB = config('app.aliases.DB');
-                $DB::statement('CREATE INDEX concepts_searchable_index ON concepts USING GIST (searchable)');
-            }
         });
+        if(config('database.default') === 'pgsql') {
+            $DB = config('app.aliases.DB');
+            $DB::statement('CREATE INDEX concepts_searchable_index ON concepts USING GIST (searchable)');
+        }
     }
 
     /**

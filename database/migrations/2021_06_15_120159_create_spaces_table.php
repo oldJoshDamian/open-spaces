@@ -23,11 +23,11 @@ class CreateSpacesTable extends Migration
             $table->text('description')->nullable();
             $table->timestamps();
             
-            if(config('database.default') === 'pgsql') {
-                $DB = config('app.aliases.DB');
-                $DB::statement('CREATE INDEX spaces_searchable_index ON spaces USING GIST (searchable)');
-            }
         });
+        if(config('database.default') === 'pgsql') {
+            $DB = config('app.aliases.DB');
+            $DB::statement('CREATE INDEX spaces_searchable_index ON spaces USING GIST (searchable)');
+        }
     }
 
     /**
