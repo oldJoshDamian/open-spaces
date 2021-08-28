@@ -24,7 +24,7 @@
     </div>
 
     @if($showResults && $results->count() > 0)
-    <div class="px-4 mt-4 mb-4 text-lg font-semibold text-gray-700 sm:px-0">
+    <div class="mt-4 mb-4 text-lg font-semibold text-gray-700 sm:px-0">
         Search results for "{{ $query }}"
     </div>
     <div class="grid grid-cols-1 gap-4 pb-10 mt-3 mb-3 md:grid-cols-2 lg:grid-cols-3">
