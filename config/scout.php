@@ -136,6 +136,6 @@ return [
         // You may set the default querying method
         // Possible values: plainquery, phrasequery, tsquery
         // plainquery is used if this option is omitted.
-        'search_using' => 'tsquery'
+        'search_using' => 'plainquery'
     ],
 ];
