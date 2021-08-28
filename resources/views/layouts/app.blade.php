@@ -42,7 +42,7 @@
     @endenv
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-breadcrumb antialiased">
     <x-jet-banner />
 
     <div class="min-h-screen bg-gray-300 bg-opacity-75">
