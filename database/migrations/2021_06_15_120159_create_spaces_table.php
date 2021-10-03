@@ -22,7 +22,13 @@ class CreateSpacesTable extends Migration
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->timestamps();
+            
         });
+        if(config('database.default') === 'pgsql') {
+            $DB = config('app.aliases.DB');
+            $DB::statement('ALTER TABLE spaces ADD searchable tsvector NULL');
+            $DB::statement('CREATE INDEX spaces_searchable_index ON spaces USING GIST (searchable)');
+        }
     }
 
     /**

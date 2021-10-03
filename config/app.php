@@ -53,6 +53,8 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    
+    'storage_disk' => env('STORAGE_DISK', 'public'),
 
     'asset_url' => env('ASSET_URL', null),
 

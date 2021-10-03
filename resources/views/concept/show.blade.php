@@ -30,22 +30,20 @@
     <div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden md:mb-0">
-                <div class="px-4 sm:px-0">
+                <div class="px-4">
                     <div class="mb-3 text-lg font-bold text-gray-800">
                         Topics ({{ $topics->count() }})
                     </div>
                     <div class="flex flex-row flex-wrap gap-3 sm:gap-4">
                         @foreach ($topics as $topic)
-                        <a href="{{ route('topic.show', ['concept' => $concept, 'space' => $space, 'topic' => $topic]) }}"
-                            class="flex-grow p-3 text-base font-semibold text-center text-blue-700 bg-gray-100 shadow sm:flex-grow-0 md:text-md">
-                            {{ $topic->name }} ({{ $topic->resources_count }})
+                        <a href="{{ route('topic.show', ['concept' => $concept, 'space' => $space, 'topic' => $topic]) }}" class="p-3 text-base font-semibold text-center text-blue-700 bg-gray-100 shadow md:text-lg">
+                            {{ $topic->name }}
                         </a>
                         @endforeach
                     </div>
                     @if($topics->isEmpty())
                     <div class="text-lg font-semibold text-gray-600">
-                        No topics yet! <a href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}"
-                            class="text-blue-700">add
+                        No topics yet! <a href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}" class="text-blue-700">add
                             one.</a>
                     </div>
                     @endif
@@ -62,11 +60,17 @@
                     </div>
                     @endforeach
                 </div>
-                @endif
+                <<<<<<< HEAD @endif=======@if($resources->isEmpty())
+                    <div class="px-4 text-lg font-semibold text-gray-600 md:px-0">
+                        No resources yet! <a href="{{ route('concept.resource.create', ['space' => $space, 'concept' => $concept]) }}" class="text-blue-700">add
+                            one.</a>
+                    </div>
+                    @endif
+
+                    >>>>>>> 9948777615df01576d8acefca6883b0730bb9e20
             </div>
 
-            <div
-                class="fixed bottom-0 left-0 flex items-center justify-center w-full p-3 overflow-x-auto bg-gray-100 md:hidden flex-nowrap">
+            <div class="fixed bottom-0 left-0 flex items-center justify-center w-full p-3 overflow-x-auto bg-gray-100 md:hidden flex-nowrap">
                 <a class="mr-6" href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}">
                     <x-jet-button class="bg-green-500">
                         add new topic

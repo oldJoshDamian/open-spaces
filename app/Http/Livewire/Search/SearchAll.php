@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class SearchAll extends Component
 {
-    public $query;
+    public $query = '';
     public $only = 'all';
     public $shouldSuggest = true;
     public $showResults = false;

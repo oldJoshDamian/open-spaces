@@ -30,9 +30,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('search', function (?User $user) {
             $isLoginRoute = request()->routeIs('login');
             $isRegisterRoute = request()->routeIs('register');
-            if ($isLoginRoute) {
-                return false;
-            } elseif ($isRegisterRoute) {
+            $homeRoute = request()->routeIs('home');
+            if (($isLoginRoute) || ($homeRoute) || ($isRegisterRoute)) {
                 return false;
             }
             return true;

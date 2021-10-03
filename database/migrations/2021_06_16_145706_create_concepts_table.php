@@ -21,6 +21,11 @@ class CreateConceptsTable extends Migration
             $table->string('code')->nullable();
             $table->timestamps();
         });
+        if(config('database.default') === 'pgsql') {
+            $DB = config('app.aliases.DB');
+            $DB::statement('ALTER TABLE concepts ADD searchable tsvector NULL');
+            $DB::statement('CREATE INDEX concepts_searchable_index ON concepts USING GIST (searchable)');
+        }
     }
 
     /**

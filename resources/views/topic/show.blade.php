@@ -16,8 +16,7 @@
                     {{ $topic->name }}
                 </a>
             </h2>
-            <a class="flex-shrink-0 hidden lg:inline"
-                href="{{ route('topic.resource.create', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) }}">
+            <a class="flex-shrink-0 hidden lg:inline" href="{{ route('topic.resource.create', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) }}">
                 <x-jet-button class="bg-green-500">
                     add new resource
                 </x-jet-button>
@@ -28,7 +27,7 @@
     <div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden sm:pb-16 md:mb-0">
-                <div class="px-4 sm:px-0">
+                <div class="px-4">
                     <div class="mb-4 text-xl font-bold text-blue-700">
                         {{ $topic->name }}
                     </div>
@@ -44,9 +43,7 @@
                     </div>
                     @if($resources->isEmpty())
                     <div class="text-lg font-semibold text-gray-600">
-                        No resources yet! <a
-                            href="{{ route('topic.resource.create', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) }}"
-                            class="text-blue-700">add
+                        No resources yet! <a href="{{ route('topic.resource.create', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) }}" class="text-blue-700">add
                             one.</a>
                     </div>
                     @endif
@@ -58,8 +55,7 @@
                 </div>
             </div>
             <div class="fixed bottom-0 left-0 flex items-center justify-center w-full p-3 bg-gray-100 lg:hidden">
-                <a
-                    href="{{ route('topic.resource.create', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) }}">
+                <a href="{{ route('topic.resource.create', ['space' => $space, 'concept' => $concept, 'topic' => $topic]) }}">
                     <x-jet-button class="bg-green-500">
                         add new resource
                     </x-jet-button>

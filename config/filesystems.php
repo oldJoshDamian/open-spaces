@@ -29,6 +29,22 @@ return [
     */
 
     'disks' => [
+        
+        'ftp' => [
+            'driver' => 'ftp',
+            'host' => env('FTP_HOST'),
+            'username' => env('FTP_USERNAME'),
+            'password' => env('FTP_PASSWORD'),
+            'url' => env('FTP_URL'),
+
+            // Optional FTP Settings...
+            'port' => env('FTP_PORT'),
+            'root' => 'public_html',
+            // 'passive' => true,
+            // 'ssl' => true,
+            // 'timeout' => 30,
+        ],
+         
 
         'local' => [
             'driver' => 'local',
