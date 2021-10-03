@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="sticky top-0 z-10 bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="sticky top-0 z-10 bg-green-600">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -12,9 +12,9 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    {{-- <x-jet-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
-                    {{ __('Home') }}
-                    </x-jet-nav-link> --}}
+                    <x-jet-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                        {{ __('Home') }}
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('space.index') }}" :active="request()->routeIs('space.index')">
                         {{ __('Spaces') }}
                     </x-jet-nav-link>
@@ -39,7 +39,7 @@
                             <button
                                 class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
                                 <img class="object-cover w-8 h-8 rounded-full"
-                                    src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                             </button>
                             @else
                             <span class="inline-flex rounded-md">
@@ -75,7 +75,7 @@
                                 @csrf
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                    this.closest('form').submit();">
                                     {{ __('Log Out') }}
                                 </x-jet-dropdown-link>
                             </form>
@@ -88,7 +88,7 @@
             <!-- Hamburger -->
             <div class="flex items-center -mr-2 sm:hidden">
                 <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 text-gray-400 transition rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                    class="inline-flex items-center justify-center p-2 text-white transition rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -105,7 +105,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             {{--  <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
-            {{ __('Home') }}
+                {{ __('Home') }}
             </x-jet-responsive-nav-link> --}}
             <x-jet-responsive-nav-link href="{{ route('space.index') }}" :active="request()->routeIs('space.index')">
                 {{ __('Spaces') }}
@@ -127,13 +127,17 @@
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                 <div class="flex-shrink-0 mr-3">
                     <img class="object-cover w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}"
-                        alt="{{ Auth::user()->name }}" />
+                    alt="{{ Auth::user()->name }}" />
                 </div>
                 @endif
 
                 <div>
-                    <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="text-base font-medium text-gray-800">
+                        {{ Auth::user()->name }}
+                    </div>
+                    <div class="text-sm font-medium text-gray-500">
+                        {{ Auth::user()->email }}
+                    </div>
                 </div>
             </div>
 
@@ -156,7 +160,7 @@
                     @csrf
 
                     <x-jet-responsive-nav-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    this.closest('form').submit();">
+                        this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-jet-responsive-nav-link>
                 </form>

@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/spaces', 301);
-//Route::get('/', ['App\Http\Controllers\HomeController', 'show'])->name('home');
+//Route::redirect('/', '/spaces', 301);
+Route::get('/', ['App\Http\Controllers\HomeController', 'index'])->name('home');
 Route::get('/spaces', ['App\Http\Controllers\SpaceController', 'index'])->name('space.index');
 Route::get('/spaces/{space}', ['App\Http\Controllers\SpaceController', 'show'])->name('space.show');
 Route::get('/spaces/{space}/concept/{concept}', ['App\Http\Controllers\ConceptController', 'show'])->name('concept.show');
