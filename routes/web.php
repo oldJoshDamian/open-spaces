@@ -42,4 +42,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('/user/spaces/{space}/concept/{concept}/store-resource', ['App\Http\Controllers\ResourceController', 'storeConceptResource'])->name('concept.resource.store');
 });
 
-Route::redirect('/dashboard', '/spaces', 301);
+Route::redirect('/dashboard', '/spaces');
