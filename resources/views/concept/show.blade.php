@@ -60,14 +60,15 @@
                     </div>
                     @endforeach
                 </div>
-                <<<<<<< HEAD @endif=======@if($resources->isEmpty())
+                @endif
+                @if($resources->isEmpty())
                     <div class="px-4 text-lg font-semibold text-gray-600 md:px-0">
                         No resources yet! <a href="{{ route('concept.resource.create', ['space' => $space, 'concept' => $concept]) }}" class="text-blue-700">add
                             one.</a>
                     </div>
                     @endif
 
-                    >>>>>>> 9948777615df01576d8acefca6883b0730bb9e20
+
             </div>
 
             <div class="fixed bottom-0 left-0 flex items-center justify-center w-full p-3 overflow-x-auto bg-gray-100 md:hidden flex-nowrap">
