@@ -1,38 +1,57 @@
 <x-app-layout>
-    <div class="pt-10 pb-10 md:pt-14 md:pb-14 px-4 bg-green-600">
-        <div class="grid grid-cols-1 gap-10 md:gap-14">
-            <div class="font-bold col-span-12 md:col-span-12 text-white md:text-6xl text-4xl">
-                Open Spaces
-            </div>
-            {{-- <div class="text-center col-span-12 md:col-span-4">
-                <i class="fas text-8xl md:text-9xl text-white fa-users"></i>
-            </div>
-            --}}
-            <div class="text-white col-span-12 md:col-span-6 text-lg font-semibold">
-                <div class="">
-                    Store, Explore, Share...
+    <div>
+        <div class="bg-green-600">
+            <div
+                class="max-w-6xl mx-auto font-bold leading-normal tracking-wide text-white bg-green-600 md:pt-14 md:pb-6 font-header">
+                <div class="text-3xl px-4 py-8 sm:px-6 lg:px-8 md:text-4xl">
+                    Store, Share and Explore on Open Spaces
                 </div>
-                <div>
-                    Never loose your learning resources.
-                </div>
-            </div>
-            <div class="col-span-12">
-                <div class="">
-                    <x-jet-button type="button" overideBg="yes" class="bg-green-700 border-green-400 py-3 mr-6">
-                        explore spaces
-                    </x-jet-button>
-                    <x-jet-button type="button" overideBg="yes" class="bg-green-500 border-green-400 py-3">
-                        own your space
-                    </x-jet-button>
+                <div
+                    class="grid grid-cols-1 bg-green-600 text-lg font-medium leading-normal text-white break-words sm:text-base">
+                    <div class="py-8 px-4 sm:px-6 lg:px-8 border-b border-green-500">
+                        <div class="max-w-xl">
+                            Create spaces for storing and sharing resource collections, hold topic oriented discussions and build a community around your interests.
+                            <div>
+                                <a href="{{ route('space.create') }}">
+                                    <x-jet-button overideBg="yes" class="mt-6 text-lg mr-5 bg-green-500 shadow-lg">
+                                        Own Your Space
+                                    </x-jet-button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="py-8 px-4 sm:px-6 lg:px-8">
+                        <div class="max-w-xl">
+                            Explore, join free spaces and discover resources based on your interest.
+                            <div>
+                                <a href="{{ route('space.index') }}">
+                                    <x-jet-button overideBg="yes" class="mt-6 mb-6 text-lg bg-green-500 shadow-lg">
+                                        Explore spaces
+                                    </x-jet-button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+        <div class="h-2 mb-14 md:mb-0">
+            <svg class="border-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#059669" fill-opacity="1"
+                    d="M0,256L60,261.3C120,267,240,277,360,245.3C480,213,600,139,720,106.7C840,75,960,85,1080,112C1200,139,1320,181,1380,202.7L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+                </path>
+            </svg>
+        </div>
     </div>
-    {{--  <div class="w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#059669" fill-opacity="1" d="M0,128L80,128C160,128,320,128,480,144C640,160,800,192,960,176C1120,160,1280,96,1360,64L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
 
-        {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#059669" fill-opacity="1" d="M0,256L60,229.3C120,203,240,149,360,154.7C480,160,600,224,720,250.7C840,277,960,267,1080,256C1200,245,1320,235,1380,229.3L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
-        --}}
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center pt-6 mb-5 md:mb-3 md:pt-0 md:mt-0 md:text-white text-green-600 text-2xl font-semibold">
+            Explore Spaces
+        </div>
+        <div class="sm:px-6 pb-6 lg:px-8">
+            <x-space.list :spaces="$spaces" />
+        </div>
     </div>
-    --}}
 </x-app-layout>
