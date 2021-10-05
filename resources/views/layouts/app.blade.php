@@ -42,7 +42,7 @@
 <body class="antialiased font-breadcrumb">
     <x-jet-banner />
 
-    <div class="min-h-screen bg-gray-300 bg-opacity-75">
+    <div class="min-h-screen bg-gray-300 bg-opacity-50">
         @livewire('navigation-menu')
 
         <!-- Page Heading -->
