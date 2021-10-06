@@ -11,7 +11,7 @@
                             Create spaces for storing and sharing resource collections, hold topic oriented discussions and build a community around your interests.
                             <div>
                                 <a href="{{ route('space.create') }}">
-                                    <x-jet-button overideBg="yes" class="mt-6 mr-5 text-lg bg-green-500 shadow-lg">
+                                    <x-jet-button overideBg="yes" class="mt-6 mr-5 text-lg bg-green-600 shadow-lg">
                                         Own Your Space
                                     </x-jet-button>
                                 </a>
@@ -24,7 +24,7 @@
                             Explore, join public spaces and discover resources based on your interest.
                             <div>
                                 <a href="{{ route('space.index') }}">
-                                    <x-jet-button overideBg="yes" class="mt-6 mb-6 text-lg bg-green-500 shadow-lg">
+                                    <x-jet-button overideBg="yes" class="mt-6 mb-6 text-lg bg-green-600 shadow-lg">
                                         Explore spaces
                                     </x-jet-button>
                                 </a>
