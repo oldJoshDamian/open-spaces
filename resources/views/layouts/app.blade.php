@@ -42,7 +42,7 @@
 <body class="antialiased font-breadcrumb">
     <x-jet-banner />
 
-    <div class="min-h-screen bg-gray-300 bg-opacity-50">
+    <div class="min-h-screen bg-gray-300 bg-opacity-75">
         @livewire('navigation-menu')
 
         <!-- Page Heading -->
@@ -60,7 +60,7 @@
             <div class="px-4 mx-auto my-4 sm:px-6 lg:px-8 max-w-7xl">
                 @livewire('search.search-all')
             </div>
-            <div class="py-6 border-t border-white">
+            <div class="py-6 border-t border-gray-300">
                 {{ $slot }}
             </div>
             @endcan
