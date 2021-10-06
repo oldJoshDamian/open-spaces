@@ -1,13 +1,13 @@
 <x-app-layout>
     <div class="">
         <div class="bg-green-600">
-            <div class="mx-auto font-bold leading-normal tracking-wide text-white bg-green-600 max-w-7xl md:pt-14 md:pb-6 font-header">
-                <div class="px-4 py-8 text-3xl md:py-12 sm:px-6 lg:px-8 md:text-5xl">
+            <div class="mx-auto tracking-wide text-white bg-green-600 max-w-7xl md:pt-14 md:pb-6 font-header">
+                <div class="px-4 py-8 text-3xl font-extrabold leading-9 md:py-12 sm:px-6 lg:px-8 md:text-5xl">
                     Store, Share and Explore on Open Spaces
                 </div>
-                <div class="grid grid-cols-1 text-lg font-medium leading-normal text-white break-words bg-green-600 sm:text-base">
+                <div class="grid grid-cols-1 text-xl font-semibold text-white break-words bg-green-600 md:text-2xl sm:text-base">
                     <div class="px-4 py-8 border-b border-green-500 md:py-12 sm:px-0 sm:mx-6 lg:mx-8">
-                        <div class="max-w-xl">
+                        <div class="max-w-xl leading-10">
                             Create spaces for storing and sharing resource collections, hold topic oriented discussions and build a community around your interests.
                             <div>
                                 <a href="{{ route('space.create') }}">
@@ -20,8 +20,8 @@
                     </div>
 
                     <div class="px-4 py-8 sm:px-6 lg:px-8">
-                        <div class="max-w-xl">
-                            Explore, join free spaces and discover resources based on your interest.
+                        <div class="max-w-xl leading-10">
+                            Explore, join public spaces and discover resources based on your interest.
                             <div>
                                 <a href="{{ route('space.index') }}">
                                     <x-jet-button overideBg="yes" class="mt-6 mb-6 text-lg bg-green-500 shadow-lg">
