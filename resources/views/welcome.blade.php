@@ -1,11 +1,11 @@
 <x-app-layout>
     <div class="">
-        <div class="bg-green-600">
-            <div class="mx-auto tracking-wide text-white bg-green-600 max-w-7xl md:pt-14 md:pb-6 font-header">
+        <div class="landing-brand-background">
+            <div class="mx-auto tracking-wide text-white max-w-7xl md:pt-14 md:pb-6 font-header">
                 <div class="max-w-4xl px-4 pt-8 pb-8 text-3xl font-extrabold leading-10 md:pt-20 md:py-12 sm:px-6 lg:px-8 md:text-5xl lg:text-6xl">
                     Store, Share and Explore Resources on Open Spaces
                 </div>
-                <div class="grid grid-cols-1 text-xl font-semibold text-white break-words bg-green-600 md:text-2xl sm:text-base">
+                <div class="grid grid-cols-1 text-xl font-semibold text-white break-words md:text-2xl sm:text-base">
                     <div class="px-4 py-8 border-b border-green-500 md:py-12 sm:px-0 sm:mx-6 lg:mx-8">
                         <div class="max-w-xl leading-10">
                             Create spaces for storing and sharing resource collections, hold topic oriented discussions and build a community around your interests.
@@ -40,7 +40,8 @@
                 <path fill="#059669" fill-opacity="1" d="M0,256L60,261.3C120,267,240,277,360,245.3C480,213,600,139,720,106.7C840,75,960,85,1080,112C1200,139,1320,181,1380,202.7L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
                 </path>
             </svg>
-        </div> --}}
+        </div>
+        --}}
     </div>
 
     <div class="bg-green-50">

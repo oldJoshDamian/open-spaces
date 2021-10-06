@@ -9,6 +9,7 @@
     border-right-color: white;
 }
 
+
 .landing-brand-background {
-    background: radial-gradient(50% 50% at 50% 50%, #0069B3 0%, rgba(196, 196, 196, 0) 100%);
+    background: conic-gradient(from -57.51deg at 70.18% 62%, #059669 0deg,  #10b981 314.96deg, #059669 360deg);
 }
