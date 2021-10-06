@@ -2,8 +2,8 @@
     <div class="">
         <div class="bg-green-600">
             <div class="mx-auto tracking-wide text-white bg-green-600 max-w-7xl md:pt-14 md:pb-6 font-header">
-                <div class="px-4 py-8 text-3xl font-extrabold leading-9 md:py-12 sm:px-6 lg:px-8 md:text-5xl">
-                    Store, Share and Explore on Open Spaces
+                <div class="max-w-4xl px-4 pt-8 pb-8 text-3xl font-extrabold leading-10 md:pt-20 md:py-12 sm:px-6 lg:px-8 md:text-5xl lg:text-6xl">
+                    Store, Share and Explore Resources on Open Spaces
                 </div>
                 <div class="grid grid-cols-1 text-xl font-semibold text-white break-words bg-green-600 md:text-2xl sm:text-base">
                     <div class="px-4 py-8 border-b border-green-500 md:py-12 sm:px-0 sm:mx-6 lg:mx-8">

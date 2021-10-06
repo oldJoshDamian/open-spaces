@@ -8,3 +8,7 @@
     @apply border-8 border-green-500 border-double;
     border-right-color: white;
 }
+
+.landing-brand-background {
+    background: radial-gradient(50% 50% at 50% 50%, #0069B3 0%, rgba(196, 196, 196, 0) 100%);
+}
