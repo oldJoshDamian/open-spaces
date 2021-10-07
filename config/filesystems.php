@@ -28,8 +28,13 @@ return [
     |
     */
 
+    'folders' => [
+        'resources' => env('FOLDER_FOR_RESOURCES', 'resource_files'),
+        'cover_pages' => env('FOLDER_FOR_COVER_PAGES', 'resource_cover_pages'),
+    ],
+
     'disks' => [
-        
+
         'ftp' => [
             'driver' => 'ftp',
             'host' => env('FTP_HOST'),
@@ -44,7 +49,7 @@ return [
             // 'ssl' => true,
             // 'timeout' => 30,
         ],
-         
+
 
         'local' => [
             'driver' => 'local',
@@ -54,8 +59,17 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
+        ],
+
+        'google' => [
+            'driver' => 'google',
+            'clientId' => env('MAIN_GOOGLE_DRIVE_CLIENT_ID'),
+            'clientSecret' => env('MAIN_GOOGLE_DRIVE_CLIENT_SECRET'),
+            'refreshToken' => env('MAIN_GOOGLE_DRIVE_REFRESH_TOKEN'),
+            'folderId' => env('MAIN_GOOGLE_DRIVE_FOLDER_ID'),
+            'url' => 'https://drive.google.com/drive/u/3/folders'
         ],
 
         's3' => [

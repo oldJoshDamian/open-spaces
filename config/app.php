@@ -53,7 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-    
+
     'storage_disk' => env('STORAGE_DISK', 'public'),
 
     'asset_url' => env('ASSET_URL', null),
@@ -179,6 +179,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Yab\MySQLScout\Providers\MySQLScoutServiceProvider::class,
+        App\Providers\GoogleDriveServiceProvider::class,
 
     ],
 

@@ -5,7 +5,8 @@ $resourceful = $resource->resourceful;
 <div class="bg-gray-100">
     @switch($resourceful::class)
     @case('App\Models\Document')
-    <a class="block" href="/pdf-reader/web/viewer.html?file={{ $resourceful->full_url }}@if($resourceful->specific_pages)#page={{ $resourceful->specific_pages['start_page'] }} @endif">
+    @dump( $resourceful->full_url)
+    <a class="block" href="{{ $resourceful->full_url }}@if($resourceful->specific_pages)#page={{ $resourceful->specific_pages['start_page'] }} @endif">
         <div class="p-3 border-b border-gray-400">
             <div title="{{ $resource->title }}" class="font-semibold text-blue-700 text-md sm:truncate">
                 {{ $resource->title }}
@@ -27,11 +28,11 @@ $resourceful = $resource->resourceful;
                 @if($resourceful->specific_pages)
                 <div class="pt-3 text-blue-700">
                     @if($resourceful->specific_pages['start_page'])
-                    <a class="underline" href="/pdf-reader/web/viewer.html?file={{ $resourceful->full_url }}#page={{ $resourceful->specific_pages['start_page'] }}">Page
+                    <a class="underline" href="{{ $resourceful->full_url }}#page={{ $resourceful->specific_pages['start_page'] }}">Page
                         {{ $resourceful->specific_pages['start_page'] }}</a>
                     @endif
                     @if($resourceful->specific_pages['end_page'])
-                    - <a class="underline" href="/pdf-reader/web/viewer.html?file={{ $resourceful->full_url }}#page={{ $resourceful->specific_pages['end_page'] }}">Page
+                    - <a class="underline" href="{{ $resourceful->full_url }}#page={{ $resourceful->specific_pages['end_page'] }}">Page
                         {{ $resourceful->specific_pages['end_page'] }}</a>
                     @endif
                 </div>

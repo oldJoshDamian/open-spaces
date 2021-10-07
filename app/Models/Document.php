@@ -30,7 +30,13 @@ class Document extends Model
 
     public function getFullUrlAttribute()
     {
-        return Storage::disk($this->resourseStorageDisk())->url($this->url);
+        if ($this->resourseStorageDisk() === 'public') {
+            return url('/pdf-reader/web/viewer.html?file=/storage/' . $this->url);
+        }
+        if ($this->resourseStorageDisk() === 'google') {
+            return "";
+        }
+        return Storage::disk($this->resourseStorageDisk())->url('/pdf-reader/web/viewer.html?file=') . Storage::disk($this->resourseStorageDisk())->url($this->url);
     }
 
     private function resourseStorageDisk()
