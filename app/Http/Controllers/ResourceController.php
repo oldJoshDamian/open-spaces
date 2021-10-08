@@ -62,7 +62,7 @@ class ResourceController extends Controller
 
     private function resourceStorageDisk()
     {
-        return config('app.storage_disk');
+        return config('filesystems.resource_disk');
     }
 
     public function createConceptResource(Space $space, Concept $concept)
@@ -125,8 +125,9 @@ class ResourceController extends Controller
             case ('new_document'):
                 $document_file = $request->file('document_file');
                 $mime_type = $document_file->getMimeType();
-                $filepath = ($this->resourceStorageDisk() === 'IPFS') ? IPFS::add($document_file, $fileName, ['only-hash' => true])['Hash']
- : Storage::disk($this->resourceStorageDisk())->putFile($this->folders()['resources'], $document_file);
+                $fileName = $document_file->getFilename();
+                $filepath = ($this->resourceStorageDisk() === 'IPFS') ? \IPFS::add($document_file, $fileName, ['only-hash' => true])['Hash']
+                    : Storage::disk($this->resourceStorageDisk())->putFile($this->folders()['resources'], $document_file);
                 $cover_page_data = substr(
                     $request->cover_page_data,
                     strpos($request->cover_page_data, ",") + 1
@@ -134,7 +135,7 @@ class ResourceController extends Controller
                 if ($cover_page_data) {
                     $cover_page_name = Str::random(16) . '.png';
                     $cover_page_path = $this->folders()['cover_pages'] . '/' . $cover_page_name;
-                    Storage::disk($this->resourceStorageDisk())->put($cover_page_path, base64_decode($cover_page_data));
+                    //Storage::disk($this->resourceStorageDisk())->put($cover_page_path, base64_decode($cover_page_data));
                 }
                 /*  if ($data['document_name']) {
                 $data['document_name'] = $data['document_name'] . '.' . $document_file->extension();

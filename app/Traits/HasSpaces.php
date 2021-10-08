@@ -7,18 +7,20 @@ use App\Models\SpaceUser;
 
 trait HasSpaces
 {
-    public function spaces() {
+    public function spaces()
+    {
         return $this->belongsToMany(Space::class)->using(SpaceUser::class)
-        ->withPivot([
-            'role_hash',
-        ])->as('membership')->withTimestamps();
+            ->withPivot([
+                'role_hash',
+            ])->as('membership')->withTimestamps();
     }
 
-    public function ownedSpaces() {
+    public function ownedSpaces()
+    {
         return $this->hasMany(Space::class, 'creator_id');
     }
 
-    public function spaceRole(Space $space): string|null
+    public function spaceRole(Space $space): mixed
     {
         if (!$space) {
             return null;
@@ -38,11 +40,13 @@ trait HasSpaces
         return null;
     }
 
-    public function ownsSpace(Space $space) {
+    public function ownsSpace(Space $space)
+    {
         return $this->id === $space->creator_id;
     }
 
-    public function allSpaces() {
+    public function allSpaces()
+    {
         return $this->ownedSpaces->merge($this->spaces)->sortBy('updated_at');
     }
 }
