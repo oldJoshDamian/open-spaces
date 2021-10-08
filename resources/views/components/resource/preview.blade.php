@@ -5,7 +5,6 @@ $resourceful = $resource->resourceful;
 <div class="bg-gray-100">
     @switch($resourceful::class)
     @case('App\Models\Document')
-    @dump( $resourceful->full_url)
     <a class="block" href="{{ $resourceful->full_url }}@if($resourceful->specific_pages)#page={{ $resourceful->specific_pages['start_page'] }} @endif">
         <div class="p-3 border-b border-gray-400">
             <div title="{{ $resource->title }}" class="font-semibold text-blue-700 text-md sm:truncate">
