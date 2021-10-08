@@ -125,7 +125,8 @@ class ResourceController extends Controller
             case ('new_document'):
                 $document_file = $request->file('document_file');
                 $mime_type = $document_file->getMimeType();
-                $filepath = Storage::disk($this->resourceStorageDisk())->putFile($this->folders()['resources'], $document_file);
+                $filepath = ($this->resourceStorageDisk() === 'IPFS') ? IPFS::add($document_file, $fileName, ['only-hash' => true])['Hash']
+ : Storage::disk($this->resourceStorageDisk())->putFile($this->folders()['resources'], $document_file);
                 $cover_page_data = substr(
                     $request->cover_page_data,
                     strpos($request->cover_page_data, ",") + 1

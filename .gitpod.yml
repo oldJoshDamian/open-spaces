@@ -1,0 +1,5 @@
+image:
+  file: .gitpod.Dockerfile
+tasks:
+  - init: bash .gitpod-init.sh
+    command: php artisan migrate && php artisan serve
