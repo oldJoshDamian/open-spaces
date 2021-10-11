@@ -16,10 +16,6 @@
                 , metaData: {
                     fileName: "<<PDF File Name>>"
                 }
-            }, {
-                embedMode: "IN_LINE"
-                , showDownloadPDF: false
-                , showPrintPDF: false
             });
         });
 
