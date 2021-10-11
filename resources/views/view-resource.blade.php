@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div id="adobe-dc-view"></div>
+    <div class="h-screen" id="adobe-dc-view"></div>
     <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
     <script type="text/javascript">
         document.addEventListener("adobe_dc_view_sdk.ready", function() {
