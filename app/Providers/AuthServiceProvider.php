@@ -31,7 +31,8 @@ class AuthServiceProvider extends ServiceProvider
             $isLoginRoute = request()->routeIs('login');
             $isRegisterRoute = request()->routeIs('register');
             $homeRoute = request()->routeIs('home');
-            if (($isLoginRoute) || ($homeRoute) || ($isRegisterRoute)) {
+            $viewResourceRoute = request()->routeIs('resource.view');
+            if (($isLoginRoute) || ($homeRoute) || ($isRegisterRoute) || ($viewResourceRoute)) {
                 return false;
             }
             return true;

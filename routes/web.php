@@ -20,9 +20,9 @@ Route::get('/spaces/{space}', ['App\Http\Controllers\SpaceController', 'show'])-
 Route::get('/spaces/{space}/concept/{concept}', ['App\Http\Controllers\ConceptController', 'show'])->name('concept.show');
 Route::get('/spaces/{space}/concept/{concept}/topic/{topic}', ['App\Http\Controllers\TopicController', 'show'])->name('topic.show');
 
-Route::get('/resource-viewer/{resource}', function($resource) {
+Route::get('/resource-viewer/{resource}', function ($resource) {
     return view('view-resource', compact('resource'));
-});
+})->name('resource.view');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {

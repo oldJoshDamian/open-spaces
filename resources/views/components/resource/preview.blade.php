@@ -2,6 +2,7 @@
 @php
 $resourceful = $resource->resourceful;
 @endphp
+@if($resourceful)
 <div class="bg-gray-100">
     @switch($resourceful::class)
     @case('App\Models\Document')
@@ -83,3 +84,4 @@ $resourceful = $resource->resourceful;
     @break
     @endswitch
 </div>
+@endif
