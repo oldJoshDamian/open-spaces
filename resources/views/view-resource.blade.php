@@ -1,3 +1,27 @@
 <x-app-layout>
-    <iframe x-data x-init="$el.src = 'https://ipfs.io/ipfs/{{ $resource }}#page=5'" style="height: 100vh;" frameborder="0" width="100%"></iframe>
+    <div id="adobe-dc-view" style="width: 100%;"></div>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("adobe_dc_view_sdk.ready", function() {
+            var adobeDCView = new AdobeDC.View({
+                clientId: "{{ env('ADOBE_CLIENT_ID') }}"
+                , divId: "adobe-dc-view"
+            });
+            adobeDCView.previewFile({
+                content: {
+                    location: {
+                        url: "https://ipfs.io/ipfs/{{ $resource }}"
+                    }
+                }
+                , metaData: {
+                    fileName: "<<PDF File Name>>"
+                }
+            }, {
+                embedMode: "IN_LINE"
+                , showDownloadPDF: false
+                , showPrintPDF: false
+            });
+        });
+
+    </script>
 </x-app-layout>
