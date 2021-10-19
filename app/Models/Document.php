@@ -29,7 +29,7 @@ class Document extends Model
         if ($resourceDisk === 'IPFS') {
             return "https://ipfs.io/ipfs/" . $this->cover_page;
         }
-        return Storage::disk($this->resourseStorageDisk())->url($this->cover_page);
+        return Storage::disk($resourceDisk)->url($this->cover_page);
     }
 
     public function getFullUrlAttribute()
