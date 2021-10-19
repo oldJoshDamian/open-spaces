@@ -7,23 +7,24 @@ use Illuminate\Support\Facades\Schema;
 class AddStoredOnToDocumentsTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    * Run the migrations.
+    *
+    * @return void
+    */
+    public function up() 
     {
         Schema::table('documents', function (Blueprint $table) {
-            $table->string('stored_on')->comment('storage system for document');
+            $table->string('stored_on')->default('public')->comment('storage system for document');
         });
+        
     }
 
     /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    * Reverse the migrations.
+    *
+    * @return void
+    */
+    public function down() 
     {
         Schema::table('documents', function (Blueprint $table) {
             $table->dropColumn('stored_on');
