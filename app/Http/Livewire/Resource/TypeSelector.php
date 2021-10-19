@@ -10,7 +10,8 @@ class TypeSelector extends Component
 {
     public $resource_type;
 
-    private function getUserDocuments() {
+    private function getUserDocuments()
+    {
         $user = User::with([
             'spaces.concepts.resources' => function ($query) {
                 return $query->where('resourceful_type', Document::class);
@@ -45,7 +46,8 @@ class TypeSelector extends Component
 
 
 
-    public function render() {
+    public function render()
+    {
         return view('livewire.resource.type-selector', [
             'resource_type' => old('resource_type') ?? 'new_document',
             'documents' => $this->getUserDocuments()

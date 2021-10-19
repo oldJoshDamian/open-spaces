@@ -10,11 +10,11 @@
             adobeDCView.previewFile({
                 content: {
                     location: {
-                        url: "https://ipfs.io/ipfs/{{ $resource }}"
+                        url: "{{ $resource->resourceful->full_url }}"
                     }
                 }
                 , metaData: {
-                    fileName: "Bodea Brochure.pdf"
+                    fileName: "{{ $resource->title }}"
                 }
             }, {});
         });

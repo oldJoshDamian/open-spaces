@@ -6,7 +6,7 @@ $resourceful = $resource->resourceful;
 <div class="bg-gray-100">
     @switch($resourceful::class)
     @case('App\Models\Document')
-    <a class="block" href="{{ $resourceful->full_url }}@if($resourceful->specific_pages)#page={{ $resourceful->specific_pages['start_page'] }} @endif">
+    <a class="block" href="{{ route('resource.view', ['resource' => $resource, 'type' => 'document']) }}">
         <div class="p-3 border-b border-gray-400">
             <div title="{{ $resource->title }}" class="font-semibold text-blue-700 text-md sm:truncate">
                 {{ $resource->title }}
@@ -41,27 +41,31 @@ $resourceful = $resource->resourceful;
         </div>
     </a>
     @break
+
     @case('App\Models\PersonalNote')
-    <div x-data="{ show_full: false }">
-        <div class="p-3 border-b border-gray-400">
-            <div class="flex justify-between gap-3 font-semibold text-blue-700 text-md">
-                <span>
-                    {{ $resource->title ?? __('Untitled note') }}
-                </span>
-                <i class="fas fa-map-pin"></i>
+    <a class="block" href="{{ route('resource.view', ['resource' => $resource, 'type' => 'personal-note']) }}">
+        <div>
+            <div class="p-3 border-b border-gray-400">
+                <div class="flex justify-between gap-3 font-semibold text-blue-700 text-md">
+                    <span>
+                        {{ $resource->title ?? __('Untitled note') }}
+                    </span>
+                    <i class="fas fa-map-pin"></i>
+                </div>
+            </div>
+            <p class="px-3 pb-3 break-words truncate whitespace-pre-line cursor-pointer line-clamp-4">{{ $resourceful->content }}</p>
+            <div class="flex items-center justify-between p-3 font-semibold text-blue-700 bg-white text-md">
+                <div class="flex items-center flex-1 mr-4">
+                    <i class="mr-2 text-lg fas fa-sticky-note"></i> Sticky Note
+                </div>
+                <div class="flex-shrink-0 text-sm font-medium text-gray-700">
+                    {{ $resourceful->created_at->diffForHumans() }}
+                </div>
             </div>
         </div>
-        <p x-on:click="show_full = !show_full" :class="{ 'line-clamp-4 select-none': !show_full }" class="px-3 pb-3 break-words whitespace-pre-line cursor-pointer">{{ $resourceful->content }}</p>
-        <div class="flex items-center justify-between p-3 font-semibold text-blue-700 bg-white text-md">
-            <div class="flex items-center flex-1 mr-4">
-                <i class="mr-2 text-lg fas fa-sticky-note"></i> Sticky Note
-            </div>
-            <div class="flex-shrink-0 text-sm font-medium text-gray-700">
-                {{ $resourceful->created_at->diffForHumans() }}
-            </div>
-        </div>
-    </div>
+    </a>
     @break
+
     @case('App\Models\ResourceLink')
     <div>
         <div class="p-3 border-b border-gray-400">

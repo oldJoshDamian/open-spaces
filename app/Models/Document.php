@@ -25,23 +25,20 @@ class Document extends Model
 
     public function getCoverPageUrlAttribute()
     {
+        $resourceDisk = $this->stored_on;
+        if ($resourceDisk === 'IPFS') {
+            return "https://ipfs.io/ipfs/" . $this->cover_page;
+        }
         return Storage::disk($this->resourseStorageDisk())->url($this->cover_page);
     }
 
     public function getFullUrlAttribute()
     {
-        if ($this->resourseStorageDisk() === 'public') {
-            return url('/pdf-reader/web/viewer.html?file=/storage/' . $this->url);
+        $resourceDisk = $this->stored_on;
+        if ($resourceDisk === 'IPFS') {
+            return "https://ipfs.io/ipfs/" . $this->url;
         }
-        if ($this->resourseStorageDisk() === 'google') {
-            return "";
-        }
-        return Storage::disk($this->resourseStorageDisk())->url('/pdf-reader/web/viewer.html?file=') . Storage::disk($this->resourseStorageDisk())->url($this->url);
-    }
-
-    private function resourseStorageDisk()
-    {
-        return config('app.storage_disk');
+        return Storage::disk($resourceDisk)->url($this->url);
     }
 
     public function resource()
