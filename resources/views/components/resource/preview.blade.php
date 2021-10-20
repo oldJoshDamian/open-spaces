@@ -8,7 +8,7 @@ $resourceful = $resource->resourceful;
     @case('App\Models\Document')
     <a class="block" href="{{ route('resource.view', ['resource' => $resource, 'type' => 'document']) }}">
         <div class="p-3 border-b border-gray-400">
-            <div title="{{ $resource->title }}" class="font-semibold text-blue-700 text-md sm:truncate">
+            <div title="{{ $resource->title }}" class="font-semibold text-blue-700 text-md truncate">
                 {{ $resource->title }}
             </div>
         </div>
