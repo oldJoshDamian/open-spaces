@@ -223,7 +223,7 @@
                     <a href="{{ route('space.show', ['space' => $space]) }}" class="flex flex-wrap no-underline hover:no-underline">
                         <div class="flex items-center w-full px-6 my-4">
                             <div>
-                                <img src="/storage/{{ $space->profile_photo_path }}" class="object-cover w-20 h-20 rounded-full" />
+                                <img src="{{ $space->profile_photo_url }}" class="object-cover w-20 h-20 rounded-full" />
                             </div>
                             <div class="flex-1 w-full pl-3 text-xl font-bold text-gray-800">
                                 {{ $space->name }}
