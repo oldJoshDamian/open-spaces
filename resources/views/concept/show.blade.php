@@ -48,7 +48,7 @@
                     </div>
                     @endif
                     @if($resources->isNotEmpty())
-                    <div class="px-4 mt-10 mb-3 text-lg font-bold text-gray-700 sm:px-0">
+                    <div class="mt-10 mb-3 text-lg font-bold text-gray-700 sm:px-0">
                         Resources ({{ $resources->count() }})
                     </div>
                     <div class="grid grid-cols-1 gap-6 px-4 sm:gap-4 sm:px-0 sm:grid-cols-2 lg:grid-cols-4">

@@ -105,20 +105,6 @@
                 <div class="h-1 py-0 mx-auto my-0 rounded-t opacity-25 w-96 gradient"></div>
             </div>
             <div class="flex flex-wrap">
-                <div class="w-5/6 p-6 sm:w-1/2">
-                    <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800">
-                        Lorem ipsum dolor sit amet
-                    </h3>
-                    <p class="mb-8 text-gray-600">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
-                        <br />
-                        <br />
-
-                        Images from:
-
-                        <a class="text-pink-500 underline" href="https://undraw.co/">undraw.co</a>
-                    </p>
-                </div>
                 <div class="w-full p-6 sm:w-1/2">
                     <svg class="w-full mx-auto sm:h-64" viewBox="0 0 1177 598.5" xmlns="http://www.w3.org/2000/svg">
                         <title>travel booking</title>
@@ -172,6 +158,20 @@
                         <path transform="translate(-11.5 -150.75)" d="M998.23,509.4A15.27,15.27,0,0,1,1014,512c5.47,4.88,6.57,12.85,8,20s4.17,15.21,11,18a28.35,28.35,0,0,1-9.19-.27l10.25,9.19-17.27-5.63c-5.42-1.77-11.11-3.56-16.72-2.56-9.3,1.65-15.78,10.4-24.71,13.47l1-4.85-6,0a11.75,11.75,0,0,0,3.43-4,3.27,3.27,0,0,0-2.29-1.2c-2.5-15.59,6.76-31,18.81-41.17,2.38-2,5-3.92,8.06-4.42s6.64.87,7.71,3.78" fill="#3c354c" />
                     </svg>
                 </div>
+                <div class="w-5/6 p-6 sm:w-1/2">
+                    <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800">
+                       Organized storage buckets for your resources.
+                    </h3>
+                    <p class="mb-8 text-gray-600">
+                        Spaces on open spaces are organized storage buckets for your resources, grouped by concepts and topics.
+                        <br />
+                        <br />
+
+                        Images from:
+
+                        <a class="text-pink-500 underline" href="https://undraw.co/">undraw.co</a>
+                    </p>
+                </div>
             </div>
             <div class="flex flex-col-reverse flex-wrap sm:flex-row">
                 <div class="w-full p-6 mt-6 sm:w-1/2">
@@ -214,10 +214,10 @@
                 <div class="w-full p-6 mt-6 sm:w-1/2">
                     <div class="align-middle">
                         <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800">
-                            Lorem ipsum dolor sit amet
+                            Experience Blockchain technology for storage.
                         </h3>
                         <p class="mb-8 text-gray-600">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+                            Our storage system is powered by IPFS (Interplanetary File System), a blockchain implementation for decentralised storage.
                             <br />
                             <br />
                             Images from:
@@ -232,7 +232,7 @@
     <section class="py-8 bg-white border-b">
         <div class="container flex flex-wrap pt-4 pb-12 mx-auto">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                Title
+                Explore Spaces
             </h1>
             <div class="w-full mb-4">
                 <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
