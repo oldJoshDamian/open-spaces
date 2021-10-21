@@ -28,11 +28,11 @@ $resourceful = $resource->resourceful;
                 @if($resourceful->specific_pages)
                 <div class="pt-3 text-blue-700">
                     @if($resourceful->specific_pages['start_page'])
-                    <a class="underline" href="{{ route('resource.view', ['resource' => $resource, 'type' => 'document']) }}#page={{ $resourceful->specific_pages['start_page'] }}">Page
+                    <a class="underline" href="{{ route('resource.view', ['resource' => $resource, 'type' => 'document']) }}?page={{ $resourceful->specific_pages['start_page'] }}">Page
                         {{ $resourceful->specific_pages['start_page'] }}</a>
                     @endif
                     @if($resourceful->specific_pages['end_page'])
-                    - <a class="underline" href="{{ route('resource.view', ['resource' => $resource, 'type' => 'document']) }}#page={{ $resourceful->specific_pages['end_page'] }}">Page
+                    - <a class="underline" href="{{ route('resource.view', ['resource' => $resource, 'type' => 'document']) }}?page={{ $resourceful->specific_pages['end_page'] }}">Page
                         {{ $resourceful->specific_pages['end_page'] }}</a>
                     @endif
                 </div>
