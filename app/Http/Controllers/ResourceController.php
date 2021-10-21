@@ -150,7 +150,8 @@ class ResourceController extends Controller
                     'url' => $document->url,
                     'mime_type' => $document->mime_type,
                     'cover_page' => $document->cover_page,
-                    'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null
+                    'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null,
+                    'stored_on' => $document->stored_on
                 ])->resource()->save($resource);
                 break;
             case ('personal_note'):
