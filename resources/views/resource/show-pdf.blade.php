@@ -16,7 +16,13 @@
                 , metaData: {
                     fileName: "{{ $resource->title }}"
                 }
-            }, {});
+            }, {}).then(adobeViewer => {
+                adobeViewer.getAPIs().then(apis => {
+                    apis.gotoLocation({{ request()->input('page') }})
+                        .then(() => console.log("Success"))
+                        .catch(error => console.log(error));
+         });
+        });
         });
 
     </script>
