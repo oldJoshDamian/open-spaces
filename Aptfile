@@ -1,3 +1,4 @@
 letsencrypt
 python3
 git-core
+python3-setuptools
