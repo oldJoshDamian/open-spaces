@@ -1,12 +1,13 @@
-<nav x-data="{ open: false }" class="sticky top-0 z-10 bg-green-600">
+<nav x-data="{ open: false }" class="sticky top-0 z-10 bg-[#0652c5]">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto text-lg font-bold uppercase max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center flex-shrink-0">
-                    <a href="/">
-                        <x-jet-application-mark class="block w-auto h-9" />
+                    <a class="flex items-center p-2 text-2xl font-bold no-underline bg-white border-8 border-blue-600 border-double rounded-full toggleColour hover:no-underline lg:text-4xl" href="{{ route('home') }}">
+                        <!--Icon from: http://www.potlabicons.com/ -->
+                        <img src="{{ asset('icon/open spaces - logo _ edited.png') }}" class="object-scale-down object-center w-9 h-9" />
                     </a>
                 </div>
 
@@ -95,7 +96,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             {{-- <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
-                {{ __('Home') }}
+            {{ __('Home') }}
             </x-jet-responsive-nav-link> --}}
             <x-jet-responsive-nav-link href="{{ route('space.index') }}" :active="request()->routeIs('space.index')">
                 {{ __('Spaces') }}

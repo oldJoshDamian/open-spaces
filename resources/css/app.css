@@ -5,11 +5,11 @@
 @import './scrollbar.css';
 
 .brand-image {
-    @apply border-8 border-green-500 border-double;
+    @apply border-8 border-[#0652c5] border-double;
     border-right-color: white;
 }
 
-
-.landing-brand-background {
-    background: conic-gradient(from -57.51deg at 70.18% 62%, #059669 0deg,  #10b981 314.96deg, #059669 360deg);
+.gradient {
+    background-color: #d4418e;
+    background: linear-gradient(315deg, #242022 0%, #0652c5 74%);
 }
