@@ -26,7 +26,7 @@
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
     <!--Nav-->
     <nav id="header" class="fixed top-0 z-30 w-full text-white">
-        <div class="container flex flex-wrap items-center justify-between w-full py-2 mx-auto mt-0">
+        <div class="container flex flex-wrap items-center justify-between w-full py-4 mx-auto mt-0">
             <div class="flex items-center pl-4">
                 <a class="flex items-center p-2 text-2xl font-bold no-underline bg-white border-8 border-blue-600 border-double rounded-full shadow-lg toggleColour hover:no-underline lg:text-4xl" href="{{ route('home') }}">
                     <!--Icon from: http://www.potlabicons.com/ -->
@@ -53,9 +53,11 @@
                         <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 lg:text-white toggleColour hover:text-underline" href="{{ route('register') }}">Sign Up</a>
                     </li>
                 </ul>
-                <a href="{{ route('space.create') }}" role="button" id="navAction" class="px-8 py-4 mx-auto mt-4 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow opacity-75 lg:mx-0 hover:underline lg:mt-0 focus:outline-none focus:shadow-outline hover:scale-105">
-                    Create Your Space
-                </a>
+                <div class="mx-auto mt-4 lg:mt-0 lg:mx-0">
+                    <a href="{{ route('space.create') }}" role="button" id="navAction" class="px-8 py-4 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow opacity-75 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
+                        Create Your Space
+                    </a>
+                </div>
             </div>
         </div>
         <hr class="py-0 my-0 border-b border-gray-100 opacity-25" />
