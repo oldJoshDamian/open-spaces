@@ -30,7 +30,7 @@
             <div class="flex items-center pl-4">
                 <a class="flex items-center p-2 text-2xl font-bold no-underline bg-white border-8 border-blue-600 border-double rounded-full shadow-lg toggleColour hover:no-underline lg:text-4xl" href="{{ route('home') }}">
                     <!--Icon from: http://www.potlabicons.com/ -->
-                    <img src="{{ asset('icon/open spaces - logo _ edited.png') }}" class="object-scale-down object-center w-16 h-16" />
+                    <img src="/icon/open spaces - logo _ edited.png" class="object-scale-down object-center w-16 h-16" />
                 </a>
             </div>
             <div class="block pr-4 lg:hidden">
