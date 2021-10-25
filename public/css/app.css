@@ -8959,6 +8959,10 @@ select {
 		height: 90.3vh;
 	}
 
+	.md\:h-16 {
+		height: 4rem;
+	}
+
 	.md\:max-h-96 {
 		max-height: 24rem;
 	}
@@ -8989,6 +8993,10 @@ select {
 
 	.md\:w-36 {
 		width: 9rem;
+	}
+
+	.md\:w-16 {
+		width: 4rem;
 	}
 
 	.md\:grid-cols-3 {
