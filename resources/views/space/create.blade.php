@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div
-                            class="flex items-start p-4 border-t border-b border-l border-r border-gray-300 bg-green-50 rounded-b-md">
+                            class="flex items-start p-4 border-t border-b border-l border-r border-gray-300 bg-blue-50 rounded-b-md">
                             <x-jet-input value="private" name="visibility" type="radio" />
                             <div class="ml-2 -mt-1">
                                 <p class="font-semibold text-blue-700">
