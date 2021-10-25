@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="theme-color" content="#10b981">
+    <meta name="theme-color" content="#0652c5">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Open Spaces" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#10b981" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#0652c5" />
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -20,16 +20,14 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="manifest" href="{{ asset('manifest.json') }}">
-    <link rel="icon" href="{{ asset('icon/logo.png') }}" type="image/x-icon">
-    <link rel="apple--icon" href="{{ asset('icon/logo_180.png') }}">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon/logo.png" type="image/x-icon">
+    <link rel="apple--icon" href="/icon/logo_180.png">
 
     @livewireStyles
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/pdf.js') }}" defer></script>
-    <script src="{{ asset('js/pdf.worker.min.js') }}" defer></script>
     @env('local')
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>
