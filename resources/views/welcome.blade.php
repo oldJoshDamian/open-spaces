@@ -10,6 +10,12 @@
     <meta name="description" content="Create an organized and decentralized resource collection in minutes for free." />
     <meta name="keywords" content="decentralized e-library resource colection free organized" />
     <meta name="author" content="" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0652c5">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Open Spaces" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#0652c5" />
+
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
     {{-- <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" /> --}}
     <!--Replace with your tailwind.css once created-->
