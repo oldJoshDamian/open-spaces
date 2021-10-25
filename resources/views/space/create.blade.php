@@ -24,10 +24,10 @@
                     <div>
                         <x-jet-label value="Visibility" />
                         <div
-                            class="flex items-start p-4 mt-3 border-t border-l border-r border-gray-300 bg-green-50 rounded-t-md">
+                            class="flex items-start p-4 mt-3 border-t border-l border-r border-gray-300 bg-blue-50 rounded-t-md">
                             <x-jet-input checked value="public" name="visibility" type="radio" />
                             <div class="ml-2 -mt-1">
-                                <p class="font-semibold">
+                                <p class="font-semibold text-blue-700">
                                     Public
                                 </p>
                                 <p class="text-sm text-gray-700">
@@ -39,7 +39,7 @@
                             class="flex items-start p-4 border-t border-b border-l border-r border-gray-300 bg-green-50 rounded-b-md">
                             <x-jet-input value="private" name="visibility" type="radio" />
                             <div class="ml-2 -mt-1">
-                                <p class="font-semibold">
+                                <p class="font-semibold text-blue-700">
                                     Private
                                 </p>
                                 <p class="text-sm text-gray-700">

@@ -122,10 +122,10 @@
                 @endif
 
                 <div>
-                    <div class="text-base font-medium text-gray-800">
+                    <div class="text-base text-white font-medium">
                         {{ Auth::user()->name }}
                     </div>
-                    <div class="text-sm font-medium text-gray-500">
+                    <div class="text-sm text-white font-medium">
                         {{ Auth::user()->email }}
                     </div>
                 </div>
