@@ -27,6 +27,8 @@
     @livewireStyles
 
     <!-- Scripts -->
+    <script src="{{ asset('js/pdf.js') }}" defer></script>
+    <script src="{{ asset('js/pdf.worker.min.js') }}" defer></script>
     <script src="{{ mix('js/app.js') }}" defer></script>
     @env('local')
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
