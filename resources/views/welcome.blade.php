@@ -59,7 +59,7 @@
                         <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 lg:text-white toggleColour hover:text-underline" href="{{ route('register') }}">Sign Up</a>
                     </li>
                 </ul>
-                <div class="mx-auto mt-4 lg:mt-0 lg:mx-0">
+                <div class="mx-auto mt-4 mb-4 lg:mb-0 lg:mt-0 lg:mx-0">
                     <a href="{{ route('space.create') }}" role="button" id="navAction" class="px-8 py-4 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow opacity-75 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
                         Create Your Space
                     </a>
@@ -69,7 +69,7 @@
         <hr class="py-0 my-0 border-b border-gray-100 opacity-25" />
     </nav>
     <!--Hero-->
-    <div class="pt-24">
+    <div class="pt-36">
         <div class="container flex flex-col flex-wrap items-center px-3 mx-auto md:flex-row">
             <!--Left Col-->
             <div class="flex flex-col items-start justify-center w-full text-center md:w-2/5 md:text-left">
