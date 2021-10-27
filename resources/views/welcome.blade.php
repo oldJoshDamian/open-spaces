@@ -345,7 +345,7 @@
                             <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">About Us</a>
                         </li>
                         <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-                            <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Contact</a>
+                            <a href="mailto:akachijc@gmail.com" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Contact</a>
                         </li>
                     </ul>
                 </div>
