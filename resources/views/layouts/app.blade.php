@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-title" content="Open Spaces" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#0652c5" />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Open Spaces') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
