@@ -395,8 +395,8 @@
 
     </script>
     <script>
-        /*Toggle dropdown list*/
-        /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+        /* Toggle dropdown list
+        https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8 */
 
         var navMenuDiv = document.getElementById("nav-content");
         var navMenu = document.getElementById("nav-toggle");

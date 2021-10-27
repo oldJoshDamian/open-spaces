@@ -20,8 +20,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="manifest" href="{{ asset('manifest.json') }}">
-    <link rel="icon" href="{{ asset('icon/logo.png') }}" type="image/x-icon">
+    {{-- <link rel="manifest" href="{{ asset('manifest.json') }}"> --}}
+    {{-- <link rel="icon" href="{{ asset('icon/logo.png') }}" type="image/x-icon"> --}}
     <link rel="apple--icon" href="{{ asset('icon/logo_180.png') }}">
 
     @livewireStyles
@@ -78,14 +78,14 @@
 
     @livewireScripts
 
-    <script>
+   {{--  <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/service-worker.js').then(console.log('service worker registered'));
             })
         }
 
-    </script>
+    </script> --}}
 </body>
 
 </html>
