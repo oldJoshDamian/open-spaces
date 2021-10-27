@@ -38,8 +38,8 @@
                     <!--Icon from: http://www.potlabicons.com/ -->
                     <img src="/icon/open spaces - logo _ edited.png" class="object-scale-down object-center w-8 h-8 md:w-16 md:h-16" />              
                 </a>
-                <a href="{{ route('home') }}">Open Spaces</a>
             </div>
+            
             <div class="block pr-4 lg:hidden">
                 <button id="nav-toggle" class="flex items-center p-1 text-blue-900 transition duration-300 ease-in-out transform hover:text-gray-900 focus:outline-none focus:shadow-outline hover:scale-105">
                     <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
