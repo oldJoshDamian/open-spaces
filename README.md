@@ -10,3 +10,8 @@ Public spaces are accesible to anyone with a link and appear in search results, 
 ## Usage:
 [Create A Space](http://openspaces.cloud/user/spaces/create)
 
+## Roadmap
+
+#### Add support for other media files (images, videos).
+#### Make discussions available on spaces.
+#### Add join feature to follow space updates.
