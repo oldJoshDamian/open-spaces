@@ -10,6 +10,12 @@
     <meta name="description" content="Create an organized and decentralized resource collection in minutes for free." />
     <meta name="keywords" content="decentralized e-library resource colection free organized" />
     <meta name="author" content="" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0652c5">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Open Spaces" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#0652c5" />
+
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
     {{-- <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" /> --}}
     <!--Replace with your tailwind.css once created-->
@@ -30,7 +36,7 @@
             <div class="flex items-center pl-4">
                 <a class="flex items-center p-2 text-2xl font-bold no-underline bg-white border-8 border-blue-600 border-double rounded-full shadow-lg toggleColour hover:no-underline lg:text-4xl" href="{{ route('home') }}">
                     <!--Icon from: http://www.potlabicons.com/ -->
-                    <img src="/icon/open spaces - logo _ edited.png" class="object-scale-down object-center w-16 h-16" />
+                    <img src="/icon/open spaces - logo _ edited.png" class="object-scale-down object-center w-8 h-8 md:w-16 md:h-16" />
                 </a>
             </div>
             <div class="block pr-4 lg:hidden">
@@ -53,7 +59,7 @@
                         <a class="inline-block px-4 py-2 text-black no-underline hover:text-gray-800 lg:text-white toggleColour hover:text-underline" href="{{ route('register') }}">Sign Up</a>
                     </li>
                 </ul>
-                <div class="mx-auto mt-4 lg:mt-0 lg:mx-0">
+                <div class="mx-auto mt-4 mb-4 lg:mb-0 lg:mt-0 lg:mx-0">
                     <a href="{{ route('space.create') }}" role="button" id="navAction" class="px-8 py-4 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow opacity-75 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
                         Create Your Space
                     </a>
@@ -63,7 +69,7 @@
         <hr class="py-0 my-0 border-b border-gray-100 opacity-25" />
     </nav>
     <!--Hero-->
-    <div class="pt-24">
+    <div class="pt-36">
         <div class="container flex flex-col flex-wrap items-center px-3 mx-auto md:flex-row">
             <!--Left Col-->
             <div class="flex flex-col items-start justify-center w-full text-center md:w-2/5 md:text-left">
