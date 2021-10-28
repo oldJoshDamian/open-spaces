@@ -18,14 +18,14 @@
     <meta property="og:url" content="https://openspaces.cloud/">
     <meta property="og:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
     <meta property="og:description" content="Create an organized and decentralized resource collection in minutes for free!">
-    <meta property="og:image" content="https://openspaces.cloud/icon/Screenshot from 2021-10-28 14-48-21.png">
+    <meta property="og:image" content="https://openspaces.cloud/icon/screenshot.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://openspaces.cloud/">
     <meta property="twitter:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
     <meta property="twitter:description" content="Create an organized and decentralized resource collection in minutes for free!">
-    <meta property="twitter:image" content="https://openspaces.cloud/icon/Screenshot from 2021-10-28 14-48-21.png">
+    <meta property="twitter:image" content="https://openspaces.cloud/icon/screenshot.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0652c5">
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,10 +33,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#0652c5" />
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
-    {{-- <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" /> --}}
-    <!--Replace with your tailwind.css once created-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
-    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+ 
     <style>
         .gradient {
             background-color: #d4418e;
