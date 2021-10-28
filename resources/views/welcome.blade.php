@@ -14,11 +14,11 @@
     <meta name="description" content="Create an organized and decentralized resource collection in minutes for free!" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://openspaces.cloud/">
+    <meta name="type" property="og:type" content="website">
+    <meta name="url" property="og:url" content="https://openspaces.cloud/">
     <meta property="og:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
     <meta property="og:description" content="Create an organized and decentralized resource collection in minutes for free!">
-    <meta property="og:image" content="https://openspaces.cloud/icon/screenshot.png">
+    <meta name="image" property="og:image" content="https://openspaces.cloud/icon/screenshot.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
