@@ -54,7 +54,7 @@
                     <!--Icon from: http://www.potlabicons.com/ -->
                     <img src="/icon/open spaces - logo _ edited.png" class="object-scale-down object-center w-8 h-8 md:w-16 md:h-16" />              
                 </a>
-                <span class="ml-4 font-bold text-2xl">{{ config('app.name') }}</span>
+                <span class="ml-4 toggleColour font-bold text-2xl">{{ config('app.name') }}</span>
             </div>
             
             <div class="block pr-4 lg:hidden">
