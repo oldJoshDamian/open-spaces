@@ -7,9 +7,25 @@
     <title>
         {{ config('app.name') }} - Store, Share and Explore Resources that live forever!
     </title>
-    <meta name="description" content="Create an organized and decentralized resource collection in minutes for free." />
     <meta name="keywords" content="decentralized e-library resource colection free organized" />
     <meta name="author" content="" />
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
+    <meta name="description" content="Create an organized and decentralized resource collection in minutes for free!" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://openspaces.cloud/">
+    <meta property="og:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
+    <meta property="og:description" content="Create an organized and decentralized resource collection in minutes for free!">
+    <meta property="og:image" content="https://openspaces.cloud/icons/screenshot.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://openspaces.cloud/">
+    <meta property="twitter:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
+    <meta property="twitter:description" content="Create an organized and decentralized resource collection in minutes for free!">
+    <meta property="twitter:image" content="https://openspaces.cloud/icons/screenshot.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0652c5">
     <meta name="apple-mobile-web-app-capable" content="yes" />
