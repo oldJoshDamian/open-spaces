@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
         {{ config('app.name') }} - Store, Share and Explore Resources that live forever!
     </title>
-    <meta name="description" content="Create an organized and decentralized resource collection in minutes for free." />
-    <meta name="keywords" content="decentralized e-library resource colection free organized" />
-    <meta name="author" content="" />
-    <link rel="manifest" href="/manifest.json">
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="author" content="Open Spaces" />
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
+    <meta name="description" content="Create an organized and decentralized resource collection in minutes for free!" />
+
+    <!-- Open Graph / Facebook -->
+    <meta name="type" property="og:type" content="website">
+    <meta name="url" property="og:url" content="https://openspaces.cloud/">
+    <meta property="og:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
+    <meta property="og:description" content="Create an organized and decentralized resource collection in minutes for free!">
+    <meta name="image" property="og:image" content="https://ipfs.io/ipfs/QmSMKJmEvZkaLn9vfvUs3biHXPUYG2obPTEfgJupf9no4H">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://openspaces.cloud/">
+    <meta property="twitter:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
+    <meta property="twitter:description" content="Create an organized and decentralized resource collection in minutes for free!">
+    <meta name="image" property="twitter:image" content="https://ipfs.io/ipfs/QmSMKJmEvZkaLn9vfvUs3biHXPUYG2obPTEfgJupf9no4H">
+    
     <meta name="theme-color" content="#0652c5">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Open Spaces" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#0652c5" />
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
-    {{-- <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" /> --}}
-    <!--Replace with your tailwind.css once created-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
-    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
+    <link rel="manifest" href="/manifest.json">
+    
     <style>
         .gradient {
             background-color: #d4418e;
@@ -33,11 +49,12 @@
     <!--Nav-->
     <nav id="header" class="fixed top-0 z-30 w-full text-white">
         <div class="container flex flex-wrap items-center justify-between w-full py-4 mx-auto mt-0">
-            <div class="flex items-center pl-4">
-                <a class="flex items-center p-2 text-2xl font-bold no-underline bg-white border-8 border-blue-600 border-double rounded-full shadow-lg toggleColour hover:no-underline lg:text-4xl" href="{{ route('home') }}">
+            <div class="flex justify-center items-center pl-4">
+                <a class="flex items-center p-2 font-bold no-underline bg-white border-8 border-blue-600 border-double rounded-full shadow-lg toggleColour hover:no-underline lg:text-4xl" href="{{ route('home') }}">
                     <!--Icon from: http://www.potlabicons.com/ -->
                     <img src="/icon/open spaces - logo _ edited.png" class="object-scale-down object-center w-8 h-8 md:w-16 md:h-16" />              
                 </a>
+                <span class="ml-4 toggleColour font-bold text-2xl">{{ config('app.name') }}</span>
             </div>
             
             <div class="block pr-4 lg:hidden">
