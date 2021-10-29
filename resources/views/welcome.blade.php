@@ -18,14 +18,14 @@
     <meta name="url" property="og:url" content="https://openspaces.cloud/">
     <meta property="og:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
     <meta property="og:description" content="Create an organized and decentralized resource collection in minutes for free!">
-    <meta name="image" property="og:image" content="https://openspaces.cloud/icon/screenshot.png">
+    <meta name="image" property="og:image" content="https://ipfs.io/ipfs/QmSMKJmEvZkaLn9vfvUs3biHXPUYG2obPTEfgJupf9no4H">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://openspaces.cloud/">
     <meta property="twitter:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
     <meta property="twitter:description" content="Create an organized and decentralized resource collection in minutes for free!">
-    <meta property="twitter:image" content="https://openspaces.cloud/icon/screenshot.png">
+    <meta property="twitter:image" content="https://ipfs.io/ipfs/QmSMKJmEvZkaLn9vfvUs3biHXPUYG2obPTEfgJupf9no4H">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0652c5">
     <meta name="apple-mobile-web-app-capable" content="yes" />
