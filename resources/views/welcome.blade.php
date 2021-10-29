@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>
         {{ config('app.name') }} - Store, Share and Explore Resources that live forever!
     </title>
-    <meta name="keywords" content="decentralized e-library resource colection free organized" />
-    <meta name="author" content="" />
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="author" content="Open Spaces" />
+    
     <!-- Primary Meta Tags -->
     <meta name="title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
     <meta name="description" content="Create an organized and decentralized resource collection in minutes for free!" />
@@ -25,8 +26,8 @@
     <meta property="twitter:url" content="https://openspaces.cloud/">
     <meta property="twitter:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
     <meta property="twitter:description" content="Create an organized and decentralized resource collection in minutes for free!">
-    <meta property="twitter:image" content="https://ipfs.io/ipfs/QmSMKJmEvZkaLn9vfvUs3biHXPUYG2obPTEfgJupf9no4H">
-    <link rel="manifest" href="/manifest.json">
+    <meta name="image" property="twitter:image" content="https://ipfs.io/ipfs/QmSMKJmEvZkaLn9vfvUs3biHXPUYG2obPTEfgJupf9no4H">
+    
     <meta name="theme-color" content="#0652c5">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Open Spaces" />
@@ -34,7 +35,8 @@
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
- 
+    <link rel="manifest" href="/manifest.json">
+    
     <style>
         .gradient {
             background-color: #d4418e;
