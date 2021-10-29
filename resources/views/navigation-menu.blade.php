@@ -7,7 +7,7 @@
                 <div class="flex items-center flex-shrink-0">
                     <a class="flex items-center p-2 text-2xl font-bold no-underline bg-white border-8 border-blue-600 border-double rounded-full toggleColour hover:no-underline lg:text-4xl" href="{{ route('home') }}">
                         <!--Icon from: http://www.potlabicons.com/ -->
-                        <img src="/icon/open spaces - logo _ edited.png" class="object-scale-down object-center w-9 h-9" />
+                        <img src="/icon/open spaces - logo _ edited.png" class="object-scale-down object-center w-7 h-7" />
                     </a>
                 </div>
 
@@ -122,10 +122,10 @@
                 @endif
 
                 <div>
-                    <div class="text-base text-white font-medium">
+                    <div class="text-base font-medium text-white">
                         {{ Auth::user()->name }}
                     </div>
-                    <div class="text-sm text-white font-medium">
+                    <div class="text-sm font-medium text-white">
                         {{ Auth::user()->email }}
                     </div>
                 </div>

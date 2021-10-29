@@ -14,12 +14,12 @@
             </h2>
             <div class="justify-end hidden md:flex">
                 <a class="mr-6" href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}">
-                    <x-jet-button class="bg-green-500">
+                    <x-jet-button>
                         add new topic
                     </x-jet-button>
                 </a>
                 <a href="{{ route('concept.resource.create', ['space' => $space, 'concept' => $concept]) }}">
-                    <x-jet-secondary-button class="text-green-500 border-green-500">
+                    <x-jet-secondary-button class="text-blue-500 border-blue-500">
                         add new resource
                     </x-jet-secondary-button>
                 </a>
@@ -87,7 +87,10 @@
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 
     <script type="text/javascript">
-    const lightbox = GLightbox({ ...options });
+        const lightbox = GLightbox({
+            ...options
+        });
+
     </script>
 
 </x-app-layout>
