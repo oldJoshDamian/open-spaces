@@ -23,7 +23,7 @@
                 </p>
             </div>
         </div>
-        <div class="flex items-start p-4 border-t border-l border-r border-gray-300 bg-blue-50">
+        {{-- <div class="flex items-start p-4 border-t border-l border-r border-gray-300 bg-blue-50">
             <x-jet-input value="personal_note" name="resource_type" wire:model="resource_type" type="radio" />
             <div class="ml-2 -mt-1">
                 <p class="font-semibold">
@@ -44,7 +44,7 @@
                     link to slide, ebook, youtube video e.t.c.
                 </p>
             </div>
-        </div>
+        </div> --}}
         <x-jet-input-error class="mt-2" for="resource_type" />
     </div>
     <div x-data="data()">
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div x-show="preview_ready" id="preview_parent" class="w-full overflow-x-auto my-4">
+        <div x-show="preview_ready" id="preview_parent" class="w-full my-4 overflow-x-auto">
         </div>
         <x-jet-label class="mt-6" value="File" />
         <input id="file" x-on:change="previewFile()" class="block w-full mt-2" type="file" name="file" required />

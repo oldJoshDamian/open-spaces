@@ -12,6 +12,12 @@ $resourceful = $resource->resourceful;
     @if(str_contains($resourceful->mime_type, 'video'))
     <x-resource.preview-video-file :resourceful="$resourceful" :resource="$resource" />
     @endif
+    @if(str_contains($resourceful->mime_type, 'audio'))
+    <x-resource.preview-audio-file :resourceful="$resourceful" :resource="$resource" />
+    @endif
+    @if(str_contains($resourceful->mime_type, 'image'))
+    <x-resource.preview-image-file :resourceful="$resourceful" :resource="$resource" />
+    @endif
     @break
 
     @case('App\Models\PersonalNote')

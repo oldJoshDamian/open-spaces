@@ -167,6 +167,15 @@ class ResourceController extends Controller
             case ($type === 'document'):
                 return view('resource.show-pdf', compact('resource'));
                 break;
+            case ($type === 'video'):
+                return view('resource.show-video', compact('resource'));
+                break;
+            case ($type === 'audio'):
+                return view('resource.show-audio', compact('resource'));
+                break;
+            case ($type === 'image'):
+                return view('resource.show-image', compact('resource'));
+                break;
             case ($type === 'personal-note'):
                 return view('resource.show-personal-note', compact('resource'));
                 break;

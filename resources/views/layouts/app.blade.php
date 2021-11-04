@@ -23,7 +23,7 @@
     {{-- <link rel="manifest" href="/manifest.json"> --}}
     <link rel="icon" href="/icon/open spaces - logo _ edited.png" type="image/x-icon">
     <link rel="apple--icon" href="/icon/open spaces - logo _ edited.png">
-
+    @stack('extras')
     @livewireStyles
 
     <!-- Scripts -->
