@@ -15,8 +15,8 @@ return [
     |
     */
     'ipfs' => [
-        'base_url' => env('IPFS_BASE_URL'),
-        'port' => env('IPFS_PORT'),
+        'base_url' => env('IPFS_BASE_URL', '172.104.202.55'),
+        'port' => env('IPFS_PORT', '5001'),
     ],
     'access_endpoint' => env('IPFS_ACCESS_ENDPOINT', 'https://ipfs.io')
 ];

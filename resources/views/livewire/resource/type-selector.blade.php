@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div x-show="preview_ready" id="preview_parent" class="w-full my-4 overflow-x-auto max-h-64">
+        <div x-show="preview_ready" id="preview_parent" class="w-full overflow-x-auto my-4">
         </div>
         <x-jet-label class="mt-6" value="File" />
         <input id="file" x-on:change="previewFile()" class="block w-full mt-2" type="file" name="file" required />
@@ -139,7 +139,7 @@
                     url = URL.createObjectURL(file);
                     let fileType = file.type
                     console.log(fileType)
-                    this.previewParent.innerHTML = "<div>Verify your upload:</div>";
+                    this.previewParent.innerHTML = "<div class='mb-2'>Verify your upload:</div>";
 
                     if (fileType.includes('image')) {
                         this.previewImage(url);
@@ -159,30 +159,30 @@
                 , previewAudio: function(url) {
                     let audio = new Audio();
                     audio.src = url;
-                    audio.setAttribute('controls', true)
+                    audio.setAttribute('controls', true);
+                    audio.classList.add('w-full');
                     this.previewParent.appendChild(audio);
                 }
                 , previewImage: function(url) {
                     let image = new Image();
                     image.src = url;
+                    image.classList.add('w-full');
                     this.previewParent.appendChild(image);
                 }
                 , previewVideo: function(url) {
                     let video = document.createElement('video');
                     video.src = url;
                     video.setAttribute('controls', true);
-                    video.addEventListener('loadedmetadata', function() {
+                    video.classList.add('w-full');
+                    /*video.addEventListener('canplay', function() {
                         let videoCanvas = document.createElement('CANVAS');
-                        video.currentTime = 5;
                         let videoCtx = videoCanvas.getContext('2d');
                         videoCanvas.width = video.videoWidth;
                         videoCanvas.height = video.videoHeight;
                         videoCtx.drawImage(video, 0, 0, videoCanvas.width, videoCanvas.height);
                         document.getElementById('poster_data').value = videoCanvas.toDataURL();
-                        console.log(document.getElementById('poster_data').value)
-                        video.currentTime = 0;
-                    });
-                    this.previewParent.appendChild(video);
+                        document.getElementById('preview_parent').appendChild(video);
+                    }, false);*/
                 }
                 , previewPDF: function(url) {
                     let canvas = document.createElement('canvas');

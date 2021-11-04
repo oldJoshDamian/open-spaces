@@ -6,8 +6,8 @@
         </div>
     </div>
     <div>
-        <div class="p-3">
-            <img class="object-cover mx-auto w-60 h-72 sm:h-40 sm:w-32" src="{{ $resourceful->poster_url }}" alt="{{ $resource->title }}" />
+        <div class="p-3 text-center">
+            <i class="fas text-8xl text-blue-700 fa-play-circle"></i>
         </div>
         <div class="p-3 text-sm font-semibold text-blue-700 bg-white">
             <div class="flex items-center justify-between">
