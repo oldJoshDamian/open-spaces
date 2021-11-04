@@ -2,21 +2,24 @@
     <div>
         <x-jet-label value="Type" />
         <div class="flex items-start p-4 mt-3 border-t border-l border-r border-gray-300 bg-blue-50 rounded-t-md">
-            <x-jet-input value="new_document" wire:model="resource_type" name="resource_type" type="radio" />
+            <x-jet-input value="new_file" wire:model="resource_type" name="resource_type" type="radio" />
             <div class="ml-2 -mt-1">
                 <p class="font-semibold">
-                    Upload New Document
+                    Upload New File
+                </p>
+                <p class="text-sm text-gray-700">
+                    select a file from your device.
                 </p>
             </div>
         </div>
         <div class="flex items-start p-4 border-t border-l border-r border-gray-300 bg-blue-50">
-            <x-jet-input value="existing_document" name="resource_type" wire:model="resource_type" type="radio" />
+            <x-jet-input value="existing_file" name="resource_type" wire:model="resource_type" type="radio" />
             <div class="ml-2 -mt-1">
                 <p class="font-semibold">
-                    Choose From My Document.
+                    Choose From My Files.
                 </p>
                 <p class="text-sm text-gray-700">
-                    choose a document from your existing documents.
+                    select a file from your existing uploads.
                 </p>
             </div>
         </div>
@@ -46,11 +49,11 @@
     </div>
     <div x-data="data()">
         @switch($resource_type)
-        @case('new_document')
-        <x-jet-label value="Document Name (optional)" />
-        <input name="cover_page_data" hidden x-ref="cover_page_data" />
-        <x-jet-input id="document_name" value="{{ old('document_name') }}" placeholder="name" class="block w-full mt-2" type="text" name="document_name" autocomplete="document_name" />
-        <x-jet-input-error class="mt-2" for="document_name" />
+        @case('new_file')
+        <x-jet-label value="File Name" />
+        <input name="poster_data" hidden x-ref="poster_data" />
+        <x-jet-input id="file_name" value="{{ old('file_name') }}" placeholder="name" class="block w-full mt-2" type="text" name="file_name" autocomplete="file_name" />
+        <x-jet-input-error class="mt-2" for="file_name" />
 
         <x-jet-label class="mt-6" value="Specific Pages (optional)" />
         <div class="grid grid-cols-2 gap-4 pt-3">
@@ -64,27 +67,26 @@
             </div>
         </div>
 
-        <div x-show="preview_ready" class="w-full my-4 overflow-x-auto max-h-96">
-            Preview
-            <canvas id="canvas"></canvas>
+        <div x-show="preview_ready" id="preview_parent" class="w-full my-4 overflow-x-auto max-h-64">
         </div>
         <x-jet-label class="mt-6" value="File" />
-        <input id="file" x-on:change="previewDocument()" class="block w-full mt-2" accept=".pdf" type="file" name="document_file" required />
-        <x-jet-input-error class="mt-2" for="document_file" />
+        <input id="file" x-on:change="previewFile()" class="block w-full mt-2" type="file" name="file" required />
+        <x-jet-input-error class="mt-2" for="file" />
         @break
 
-        @case('existing_document')
-        <select class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="existing_document">
-            <option>Select Document</option>
-            @foreach($documents as $document)
-            <option @if($document->id === old('existing_document')) __('selected') @endif value="{{ $document->id }}">
-                {{ $document->resource->title }}
+        @case('existing_file')
+        <select class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="existing_file">
+            <option>Select File</option>
+            @foreach($userFiles as $file)
+            <option @if($file->id === old('existing_file')) __('selected') @endif value="{{ $file->id }}">
+                <span class="p-2 text-blue-700">#{{ last(explode("/", $file->mime_type)) }}</span>
+                {{ $file->resource->title }}
             </option>
             @endforeach
         </select>
-        <x-jet-input-error class="mt-2" for="existing_document" />
+        <x-jet-input-error class="mt-2" for="existing_file" />
 
-        <x-jet-label class="mt-6" value="Specific Pages (optional)" />
+        <x-jet-label class="mt-6" value="Specific Pages (optional) - For Document files" />
         <div class="grid grid-cols-2 gap-4 pt-3">
             <div>
                 <x-jet-input id="document_start_page" value="{{ old('document_start_page') }}" placeholder="from" class="block w-full" type="number" name="document_start_page" autocomplete="document_start_page" />
@@ -113,7 +115,6 @@
         <x-jet-input-error class="mt-2" for="note_content" />
         @break
         @endswitch
-        <img x-ref="image">
         <div class="mt-6 text-right">
             <x-jet-button x-bind:disabled="!can_add">add</x-jet-button>
         </div>
@@ -122,16 +123,58 @@
         function data() {
             return {
                 can_add: true
+                , previewParent: false
                 , preview_ready: false
-                , previewPDF: function() {
+                , previewFile: function() {
+                    this.preview_ready = false;
                     this.can_add = false;
+                    this.previewParent = document.getElementById('preview_parent');
+                    this.previewParent.innerHTML = '';
                     let file = event.target.files[0];
-                    document.getElementById('document_name').value = file.name;
-                    const canvas = document.getElementById('canvas');
                     let url = '';
-                    if (file) {
-                        url = URL.createObjectURL(file);
+                    if (!file) {
+                        return;
                     }
+                    document.getElementById('file_name').value = file.name;
+                    url = URL.createObjectURL(file);
+                    let fileType = file.type
+                    console.log(fileType)
+                    this.previewParent.innerHTML = "<div>Verify your upload:</div>";
+
+                    if (fileType.includes('image')) {
+                        this.previewImage(url);
+                    }
+                    if (fileType.includes('pdf')) {
+                        this.previewPDF(url);
+                    }
+                    if (fileType.includes('video')) {
+                        this.previewVideo(url);
+                    }
+                    if (fileType.includes('audio')) {
+                        this.previewAudio(url)
+                    }
+                    this.preview_ready = true;
+                    this.can_add = true;
+                }
+                , previewAudio: function(url) {
+                    let audio = new Audio();
+                    audio.src = url;
+                    audio.setAttribute('controls', true)
+                    this.previewParent.appendChild(audio);
+                }
+                , previewImage: function(url) {
+                    let image = new Image();
+                    image.src = url;
+                    this.previewParent.appendChild(image);
+                }
+                , previewVideo: function(url) {
+                    let video = document.createElement('video');
+                    video.src = url;
+                    video.setAttribute('controls', true);
+                    this.previewParent.appendChild(video);
+                }
+                , previewPDF: function(url) {
+                    const canvas = document.createElement('canvas');
                     if (url) {
                         const loadingTask = pdfjsLib.getDocument(url);
                         loadingTask.promise.then((pdfDoc) => {
@@ -148,9 +191,8 @@
                                 });
                                 return renderTask.promise.then((result) => {
                                     URL.revokeObjectURL(url);
-                                    this.$refs.cover_page_data.value = canvas.toDataURL();
-                                    this.preview_ready = true;
-                                    this.can_add = true;
+                                    this.$refs.poster_data.value = canvas.toDataURL();
+                                    this.previewParent.appendChild(canvas)
                                 });
                             });
                         }).catch((error) => {

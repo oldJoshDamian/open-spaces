@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\OpenSpaces\File\UploadNewFile;
+use App\Actions\OpenSpaces\File\UploadPoster;
 use App\Models\Concept;
 use App\Models\Resource;
 use App\Models\Topic;
-use App\Models\User;
-use \IPFS;
 use Illuminate\Support\Str;
 use App\Models\Space;
 use Illuminate\Http\Request;
 use App\Models\ResourceLink;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
-use App\Models\Document;
+use App\Models\File;
 use App\Models\PersonalNote;
 
 class ResourceController extends Controller
@@ -48,17 +47,11 @@ class ResourceController extends Controller
     public function storeTopicResource(Request $request, Space $space, Concept $concept, Topic $topic)
     {
         $resource = $this->createResource($request, $topic);
-        return redirect()->route(
-            'topic.show',
-            [
-                'space' => $space,
-                'concept' => $concept,
-                'topic' => $topic
-            ]
-        )->with(
-            'flash.banner',
-            'Resource added successfully!'
-        );
+        return redirect()->route('topic.show', [
+            'space' => $space,
+            'concept' => $concept,
+            'topic' => $topic
+        ])->with('flash.banner', 'Resource added successfully!');
     }
 
     private function resourceStorageDisk()
@@ -75,15 +68,15 @@ class ResourceController extends Controller
     {
         return [
             'resource_type' => [
-                'required', Rule::in(['new_document', 'resource_link', 'personal_note', 'existing_document'])
+                'required', Rule::in(['new_file', 'resource_link', 'personal_note', 'existing_file'])
             ],
-            'document_file' => [
-                'required_if:resource_type,new_document', 'file', 'sometimes', 'mimetypes:application/pdf,application'
+            'file' => [
+                'required_if:resource_type,new_file', 'file', 'sometimes'
             ],
-            'existing_document' => [
-                'required_if:resource_type,exisiting_document', 'sometimes', 'exists:documents,id'
+            'existing_file' => [
+                'required_if:resource_type,exisiting_file', 'sometimes', 'exists:files,id'
             ],
-            'document_name' => [
+            'file_name' => [
                 'string', 'nullable', 'min:3'
             ],
             'document_start_page' => [
@@ -112,46 +105,31 @@ class ResourceController extends Controller
         ]);
 
         switch ($data['resource_type']):
-            case ('new_document'):
-                $document_file = $request->file('document_file');
-                $mime_type = $document_file->getMimeType();
-                $fileName = $document_file->getFilename();
-                $resourceDisk = $this->resourceStorageDisk();
-                if ($resourceDisk === 'IPFS') {
-                    $filepath = IPFS::add(fopen($document_file, 'r+'), $fileName, ['pin' => true])['Hash'];
-                } else {
-                    $filepath = Storage::disk($this->resourceStorageDisk())->putFile($this->folders()['resources'], $document_file);
+            case ('new_file'):
+                $file = $request->file('file');
+                $cover_page_path = null;
+                $uploadedFile = UploadNewFile::upload($file);
+                $resource->title = $data['file_name'] ?? $uploadedFile['fileName'];
+                if (($uploadedFile['mimeType'] === 'application/pdf' || $uploadedFile['mimeType'] === 'video/mp4') && $request->poster_data) {
+                    $cover_page_path = UploadPoster::upload($request->poster_data);
                 }
-                $cover_page_data = substr($request->cover_page_data, strpos($request->cover_page_data, ",") + 1);
-                if ($cover_page_data) {
-                    $cover_page_name = Str::random(16) . '.png';
-                    $base64Data = base64_decode($cover_page_data);
-                    if ($resourceDisk === 'IPFS') {
-                        $cover_page_path = IPFS::add($base64Data, $cover_page_name, ['pin' => true])['Hash'];
-                    } else {
-                        $cover_page_path = $this->folders()['cover_pages'] . '/' . $cover_page_name;
-                        Storage::disk($this->resourceStorageDisk())->put($cover_page_path, $base64Data);
-                    }
-                }
-                $filename = $data['document_name'] ?? $document_file->getClientOriginalName();
-                $resource->title = $filename;
-                Document::create([
-                    'url' => $filepath,
-                    'mime_type' => $mime_type,
-                    'cover_page' => $cover_page_path,
+                File::create([
+                    'hash' => $uploadedFile['filePath'],
+                    'mime_type' => $uploadedFile['mimeType'],
+                    'poster' => $cover_page_path,
                     'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null,
-                    'stored_on' => $resourceDisk
+                    'stored_on' => config('filesystems.resource_disk')
                 ])->resource()->save($resource);
                 break;
-            case ('existing_document'):
-                $document = Document::find($data['existing_document']);
-                $resource->title = $document->resource->title;
-                Document::create([
-                    'url' => $document->url,
-                    'mime_type' => $document->mime_type,
-                    'cover_page' => $document->cover_page,
+            case ('existing_file'):
+                $file = File::find($data['existing_file']);
+                $resource->title = $file->resource->title;
+                File::create([
+                    'url' => $file->url,
+                    'mime_type' => $file->mime_type,
+                    'poster' => $file->cover_page,
                     'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null,
-                    'stored_on' => $document->stored_on
+                    'stored_on' => $file->stored_on
                 ])->resource()->save($resource);
                 break;
             case ('personal_note'):
@@ -169,14 +147,6 @@ class ResourceController extends Controller
         endswitch;
         $resource->push();
         return $resource;
-    }
-
-    private function folders()
-    {
-        return [
-            'resources' => config('filesystems.folders')['resources'],
-            'cover_pages' => config('filesystems.folders')['cover_pages']
-        ];
     }
 
     public function storeConceptResource(Request $request, Space $space, Concept $concept)

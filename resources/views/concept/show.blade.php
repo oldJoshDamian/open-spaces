@@ -30,7 +30,7 @@
     <div>
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="mb-20 overflow-hidden md:mb-0">
-                <div class="px-4">
+                <div class="px-4 sm:px-0">
                     <div class="mb-3 text-lg font-bold text-gray-800">
                         Topics ({{ $topics->count() }})
                     </div>
@@ -71,12 +71,12 @@
 
             <div class="fixed bottom-0 left-0 flex items-center justify-center w-full p-3 overflow-x-auto bg-gray-100 md:hidden flex-nowrap">
                 <a class="mr-6" href="{{ route('topic.create', ['space' => $space, 'concept' => $concept]) }}">
-                    <x-jet-button class="bg-green-500">
+                    <x-jet-button>
                         add new topic
                     </x-jet-button>
                 </a>
                 <a href="{{ route('concept.resource.create', ['space' => $space, 'concept' => $concept]) }}">
-                    <x-jet-secondary-button class="text-green-500 border-green-500">
+                    <x-jet-secondary-button class="text-blue-500 border-blue-500">
                         add new resource
                     </x-jet-secondary-button>
                 </a>
