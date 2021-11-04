@@ -23,9 +23,10 @@ class File extends Model
         'full_url'
     ];
 
-    public function getCoverPageUrlAttribute()
+    public function getPosterUrlAttribute()
     {
         $resourceDisk = $this->stored_on;
+
         if ($resourceDisk === 'IPFS') {
             return config('ipfs.access_endpoint') . '/ipfs/' . $this->poster;
         }

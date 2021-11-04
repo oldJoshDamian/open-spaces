@@ -51,7 +51,7 @@
         @switch($resource_type)
         @case('new_file')
         <x-jet-label value="File Name" />
-        <input name="poster_data" hidden x-ref="poster_data" />
+        <input id="poster_data" name="poster_data" hidden x-ref="poster_data" />
         <x-jet-input id="file_name" value="{{ old('file_name') }}" placeholder="name" class="block w-full mt-2" type="text" name="file_name" autocomplete="file_name" />
         <x-jet-input-error class="mt-2" for="file_name" />
 
@@ -171,10 +171,21 @@
                     let video = document.createElement('video');
                     video.src = url;
                     video.setAttribute('controls', true);
+                    video.addEventListener('loadedmetadata', function() {
+                        let videoCanvas = document.createElement('CANVAS');
+                        video.currentTime = 5;
+                        let videoCtx = videoCanvas.getContext('2d');
+                        videoCanvas.width = video.videoWidth;
+                        videoCanvas.height = video.videoHeight;
+                        videoCtx.drawImage(video, 0, 0, videoCanvas.width, videoCanvas.height);
+                        document.getElementById('poster_data').value = videoCanvas.toDataURL();
+                        console.log(document.getElementById('poster_data').value)
+                        video.currentTime = 0;
+                    });
                     this.previewParent.appendChild(video);
                 }
                 , previewPDF: function(url) {
-                    const canvas = document.createElement('canvas');
+                    let canvas = document.createElement('canvas');
                     if (url) {
                         const loadingTask = pdfjsLib.getDocument(url);
                         loadingTask.promise.then((pdfDoc) => {
@@ -190,7 +201,6 @@
                                     , viewport
                                 });
                                 return renderTask.promise.then((result) => {
-                                    URL.revokeObjectURL(url);
                                     this.$refs.poster_data.value = canvas.toDataURL();
                                     this.previewParent.appendChild(canvas)
                                 });

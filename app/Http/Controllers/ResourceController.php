@@ -107,16 +107,16 @@ class ResourceController extends Controller
         switch ($data['resource_type']):
             case ('new_file'):
                 $file = $request->file('file');
-                $cover_page_path = null;
+                $poster_path = null;
                 $uploadedFile = UploadNewFile::upload($file);
                 $resource->title = $data['file_name'] ?? $uploadedFile['fileName'];
                 if (($uploadedFile['mimeType'] === 'application/pdf' || $uploadedFile['mimeType'] === 'video/mp4') && $request->poster_data) {
-                    $cover_page_path = UploadPoster::upload($request->poster_data);
+                    $poster_path = UploadPoster::upload($request->poster_data);
                 }
                 File::create([
                     'hash' => $uploadedFile['filePath'],
                     'mime_type' => $uploadedFile['mimeType'],
-                    'poster' => $cover_page_path,
+                    'poster' => $poster_path,
                     'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null,
                     'stored_on' => config('filesystems.resource_disk')
                 ])->resource()->save($resource);
@@ -127,7 +127,7 @@ class ResourceController extends Controller
                 File::create([
                     'url' => $file->url,
                     'mime_type' => $file->mime_type,
-                    'poster' => $file->cover_page,
+                    'poster' => $file->poster,
                     'specific_pages' => ($data['document_start_page']) ? ['start_page' => $data['document_start_page'], 'end_page' => $data['document_end_page']] : null,
                     'stored_on' => $file->stored_on
                 ])->resource()->save($resource);
