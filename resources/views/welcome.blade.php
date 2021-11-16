@@ -4,12 +4,12 @@
     <title>
         {{ config('app.name') }} - Store, Share and Explore Resources that live forever!
     </title>
-    
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="author" content="Open Spaces" />
-    
+
     <!-- Primary Meta Tags -->
     <meta name="title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
     <meta name="description" content="Create an organized and decentralized resource collection in minutes for free!" />
@@ -27,7 +27,7 @@
     <meta property="twitter:title" content="{{ config('app.name') }} - Store, Share and Explore Resources that live forever!">
     <meta property="twitter:description" content="Create an organized and decentralized resource collection in minutes for free!">
     <meta name="image" property="twitter:image" content="https://ipfs.io/ipfs/QmSMKJmEvZkaLn9vfvUs3biHXPUYG2obPTEfgJupf9no4H">
-    
+
     <meta name="theme-color" content="#0652c5">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Open Spaces" />
@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <link rel="manifest" href="/manifest.json">
-    
+
     <style>
         .gradient {
             background-color: #d4418e;
@@ -49,14 +49,14 @@
     <!--Nav-->
     <nav id="header" class="fixed top-0 z-30 w-full text-white">
         <div class="container flex flex-wrap items-center justify-between w-full py-4 mx-auto mt-0">
-            <div class="flex justify-center items-center pl-4">
+            <div class="flex items-center justify-center pl-4">
                 <a class="flex items-center p-2 font-bold no-underline bg-white border-8 border-blue-600 border-double rounded-full shadow-lg toggleColour hover:no-underline lg:text-4xl" href="{{ route('home') }}">
                     <!--Icon from: http://www.potlabicons.com/ -->
-                    <img src="/icon/open spaces - logo _ edited.png" class="object-scale-down object-center w-8 h-8 md:w-16 md:h-16" />              
+                    <img src="/icon/open spaces - logo _ edited.png" class="object-scale-down object-center w-8 h-8 md:w-16 md:h-16" />
                 </a>
-                <span class="ml-4 toggleColour font-bold text-2xl">{{ config('app.name') }}</span>
+                <span class="ml-4 text-2xl font-bold toggleColour">{{ config('app.name') }}</span>
             </div>
-            
+
             <div class="block pr-4 lg:hidden">
                 <button id="nav-toggle" class="flex items-center p-1 text-blue-900 transition duration-300 ease-in-out transform hover:text-gray-900 focus:outline-none focus:shadow-outline hover:scale-105">
                     <svg class="w-6 h-6 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -87,23 +87,23 @@
         <hr class="py-0 my-0 border-b border-gray-100 opacity-25" />
     </nav>
     <!--Hero-->
-    <div class="pt-36">
+    <div class="pt-40 pb-8">
         <div class="container flex flex-col flex-wrap items-center px-3 mx-auto md:flex-row">
             <!--Left Col-->
-            <div class="flex flex-col items-start justify-center w-full text-center md:w-2/5 md:text-left">
+            <div class="flex flex-col items-start justify-center w-full text-center md:w-3/5 md:text-left">
                 <h1 class="my-4 text-5xl font-bold leading-tight">
                     Store, Share and Explore Resources that live forever!
                 </h1>
                 <p class="mb-8 text-2xl leading-normal">
                     Create an organized and decentralized resource collection in minutes for free.
                 </p>
-                <a role="button" href="{{ route('space.create') }}" class="px-8 py-4 mx-auto my-6 font-bold text-gray-800 uppercase transition duration-300 ease-in-out transform bg-white rounded-full shadow-lg lg:mx-0 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
+                <a role="button" href="{{ route('space.create') }}" class="px-8 py-4 mx-auto my-6 font-bold text-gray-800 uppercase transition duration-300 ease-in-out transform bg-white rounded-full shadow-lg md:mx-0 lg:mx-0 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
                     Create Your Space
                 </a>
             </div>
             <!--Right Col-->
-            <div class="w-full py-6 text-center md:w-3/5">
-                <img class="z-50 w-full md:w-4/5" src="hero.png" />
+            <div class="w-full py-6 text-center md:flex md:justify-end md:w-2/5">
+                <img class="w-full md:w-4/5" src="hero.png" />
             </div>
         </div>
     </div>
@@ -313,22 +313,22 @@
                         {{ config('app.name') }}
                     </a>
                 </div>
-                
-                
+
+
                 <div class="flex-1">
                     <p class="text-gray-500 uppercase md:mb-6">Social</p>
                     <ul class="mb-6 list-reset">
-                        
+
                         <li class="inline-block mt-2 mr-2 md:block md:mr-0">
                             <a href="https://github.com/joshDamian/open-spaces" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Github</a>
                         </li>
-                        
+
                     </ul>
                 </div>
                 <div class="flex-1">
                     <p class="text-gray-500 uppercase md:mb-6">Company</p>
                     <ul class="mb-6 list-reset">
-                        
+
                         <li class="inline-block mt-2 mr-2 md:block md:mr-0">
                             <a href="mailto:akachijc@gmail.com" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Contact</a>
                         </li>
